@@ -4,17 +4,22 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "version": "0.1.1",
+    "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.65.0"
     },
     "categories": [
         "Programming Languages",
-        "Snippets"
+        "Snippets",
+        "Other"
     ],
-    "keywords": ["c64","basic","commodore"],
+    "keywords": ["c64","basic","basic language","commodore", "basic v2", "pet"],
     "repository": {
         "type": "git",
-        "url": "https://github.com/gverduci/c64basicv2.git"
+        "url": "https://github.com/gverduci/c64basicv2"
+    },
+    "bugs": {
+        "url": "https://github.com/rust-lang/vscode-rust/issues"
     },
     "icon": "images/c64basicv2_logo.png",
     "contributes": {

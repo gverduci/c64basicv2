@@ -1,0 +1,651 @@
+{
+	"abs": {
+		"prefix": "abs",
+		"body": [
+			"abs(${1:<numeric expression>})$0"
+		],
+		"description": "ABS evaluates to the absolute value (value without the sign) of the given numeric term."
+	},
+	"asc": {
+		"prefix": "asc",
+		"body": [
+			"asc(${1:<string>})$0"
+		],
+		"description": "The ASC keyword takes the first char of a string and maps it to the numeric index of the Commodore ASCII-table."
+	},
+	"atn": {
+		"prefix": "atn",
+		"body": [
+			"atn(${1:<numeric expression>})$0"
+		],
+		"description": "The numerical function ATN is a mathematical function that returns the arc tangent of a numeric value (the inverse function of TAN)."
+	},
+	"chr": {
+		"prefix": "chr",
+		"body": [
+			"chr$(${1:<numeric expression>})$0"
+		],
+		"description": "CHR$ can be used to convert a number between 0 and 255 into an ASCII character (of string type) and is the inverse function of ASC."
+	},
+	"close": {
+		"prefix": "close",
+		"body": [
+			"close ${1:<logical file number>}$0"
+		],
+		"description": "The BASIC command CLOSE is used for closing currently opened files or drive numbers."
+	},
+	"cmd": {
+		"prefix": "cmd",
+		"body": [
+			"cmd ${1:<logical file number>},${2:<expression>}$0"
+		],
+		"description": "The BASIC command CMD changes the data output from the screen to another peripheral device like datasette, modem, printer or disk drive. "
+	},
+	"cos": {
+		"prefix": "cos",
+		"body": [
+			"cos(${1:<numeric expression>})$0"
+		],
+		"description": "The numeric function COS is a mathematical function which evaluates to the cosine for a given angle, a number considered to be in radians."
+	},
+	"data": {
+		"prefix": "data",
+		"body": [
+			"data ${1:<constant>}$0"
+		],
+		"description": "The BASIC-Command DATA is used to store constant information in the program code, and is used with the BASIC-command READ. "
+	},
+	"def":{
+		"prefix": "def",
+		"body": [
+			"def fn ${1:<function name>}(${2:<parameter name>})=${3:<mathematical expression>}",
+			"$0"
+		],
+		"description":"The BASIC-command DEF defines a function with exactly one single numeric argument which can be executed with FN afterwards."
+	},
+	"dim": {
+		"prefix": "dim",
+		"body": [
+			"dim ${1:<variable>}(${2:<d1>})$0"
+			
+		],
+		"description": "The BASIC command DIM allocates space in array memory for a new array"
+	},
+	"exp": {
+		"prefix": "exp",
+		"body": [
+			"exp(${1:<number>})$0"
+		],
+		"description": "EXP is a mathematical function that evaluates the inverse natural LOG of the argument."
+	},
+	"fn":{
+		"prefix": "fn",
+		"body": [
+			"fn ${1:<function name>}(${2:<number>})$0"
+		],
+		"description":"The BASIC command FN executes a function which has been defined previously in the course of the program with the BASIC-command DEF."
+	},
+	"for": {
+		"prefix": "for",
+		"body": [
+			"for ${1:<counter variable>} = ${2:<start value>} to ${3:<end value>}:${4:<expression>}:next ${1:<counter variable>}$0"
+		],
+		"description": "The BASIC command FOR is the start command of a FOR…TO…NEXT loop."
+	},
+	"fors": {
+		"prefix": "fors",
+		"body": [
+			"for ${1:<counter variable>} = ${2:<start value>} to ${3:<end value>} step ${4:<stepsize>}:$(5:<expression>):next ${1:<counter variable>}$0"
+		],
+		"description": "The BASIC command FOR is the start command of a FOR…TO…STEP…NEXT loop."
+	},
+	"fre": {
+		"prefix": "fre",
+		"body": [
+			"fre(${1:<dummy argument>})$0"
+		],
+		"description": "FRE first performs a garbage collection to free up unused string memory."
+	},
+	"get": {
+		"prefix": "get",
+		"body": [
+			"get ${1:<variable>}$0"
+		],
+		"description": "The BASIC command GET reads one or more chars from the keyboard cache into a variable (string, floating point or integer) and can only be used in a BASIC program."
+	},
+	"get#": {
+		"prefix": "get#",
+		"body": [
+			"get#${1:<logic file number>},${2:<variable>}$0"
+		],
+		"description": "The BASIC command GET# reads single characters from the specified device or the opened file. "
+	},
+	"gosub": {
+		"prefix": "gosub",
+		"body": [
+			"gosub ${1:<line>}",
+			"$0"
+		],
+		"description": "The BASIC command GET# reads single characters from the specified device or the opened file. "
+	},
+	"goto": {
+		"prefix": "goto",
+		"body": [
+			"goto ${1:<line>}",
+			"$0"
+		],
+		"description": "The BASIC command GET# reads single characters from the specified device or the opened file. "
+	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"if ${1:<condition>} ${2|then,goto|} ${3:<line or espression>}$0"
+		],
+		"description": "The BASIC command IF is used to test a condition."
+	},
+	"input": {
+		"prefix": "input",
+		"body": [
+			"input ${1:<string>};${2:<variable>}$0"
+		],
+		"description": "The BASIC command INPUT is used to read data from the keyboard into one or more supplied variables."
+	},
+	"input#": {
+		"prefix": "input#",
+		"body": [
+			"input#${1:<logic file number>},${2:<variable>}$0"
+		],
+		"description": "The BASIC command INPUT# is used for reading data from a file stored on peripheral device media such as disk or tape."
+	},
+	"int": {
+		"prefix": "int",
+		"body": [
+			"int(${1:<number>})$0"
+		],
+		"description": "INT is used to round numbers, whereas rounding is different from its common mathematical definition."
+	},
+	"left$": {
+		"prefix": "left$",
+		"body": [
+			"left$(${1:<string>},${2:<integer number>})$0"
+		],
+		"description": "LEFT$ will be used for cutting strings into component parts beginning at the left side until to the indicated integer number."
+	},
+	"len": {
+		"prefix": "len",
+		"body": [
+			"len(${1:<string>})$0"
+		],
+		"description": "The function LEN returns the number of characters in a string. "
+	},
+	"let": {
+		"prefix": "let",
+		"body": [
+			"let ${1:<variable>}=${2:expression}$0"
+		],
+		"description": "The BASIC-Command LET will be used for assign numerical values or chars in the right type of variable."
+	},
+	"load": {
+		"prefix": "load",
+		"body": [
+			"load ${1:<filename>},${2:<device number>}${3:<secondary number>}$0"
+		],
+		"description": "The BASIC command LOAD is normally used for loading program files (PRG) like BASIC, machine language programs, but actually any kind of data from datasette or disk drive into RAM."
+	},
+	"log": {
+		"prefix": "log",
+		"body": [
+			"log(${1:<number>})$0"
+		],
+		"description": "The mathematical function LOG is a natural logarithm with the basis e(E)."
+	},
+	"mid$": {
+		"prefix": "mid$",
+		"body": [
+			"mid$(${1:<string>},${2:<integer number (start)>},${3:<integer number (end optional)>})$0"
+		],
+		"description": "MID$ will be used for cutting strings into component parts inside strings beginning by the startchar (1. integer number) until to the indicated length number (2. integer number) from the left side to the right side."
+	},
+	"not": {
+		"prefix": "not",
+		"body": [
+			"not(${1:<boolean/integer>})$0"
+		],
+		"description": "NOT reverse the boolean true into false."
+	},
+	"on": {
+		"prefix": "on",
+		"body": [
+			"on ${1:<index>} ${2|gosub,goto|} ${3:<line>}$0"
+		],
+		"description": "The command ON is part of a structure which jumps to a specific line."
+	},
+	"open": {
+		"prefix": "open",
+		"body": [
+			"open ${1:<logical filenumber>},${2:<device number>}${3:<secondary number>}$0"
+		],
+		"description": "The BASIC command OPEN is used for opening a logical file"
+	},
+	"peek": {
+		"prefix": "peek",
+		"body": [
+			"peek(${1:<memory address>})$0"
+		],
+		"description": "The BASIC function PEEK returns the memory contents of the specified address, which must be in the range 0 through 65535. "
+	},
+	"poke": {
+		"prefix": "poke",
+		"body": [
+			"poke ${1:<memory address>},${2:number}$0"
+		],
+		"description": "The BASIC command POKE changes the content of any address in the memory address, ranging from 0 to 65535, to the given byte value in the range 0 through 255."
+	},
+	"pos": {
+		"prefix": "pos",
+		"body": [
+			"pos(${1:<dummy argument>})$0"
+		],
+		"description": "The function POS determined the actual position of the cursor between 0 (first, leftmost column) and 79 (last, rightmost column in the second line) of the logical line on screen."
+	},
+	"print": {
+		"prefix": "print",
+		"body": [
+			"print ${1:<expression>}$0"
+		],
+		"description": "The BASIC command PRINT is used to print data to the current output device, normally the screen."
+	},
+	"print#": {
+		"prefix": "print#",
+		"body": [
+			"print#${1:<logical filenumber>},${2:<variable>}$0"
+		],
+		"description": "The BASIC command PRINT# is used for storing data in a file. Before PRINT# can be used, the destination file has to be opened with the BASIC command OPEN."
+	},
+	"read": {
+		"prefix": "read",
+		"body": [
+			"read ${1:<variable>}$0"
+		],
+		"description": "The BASIC command READ is used for reading constant values from DATA lines into the indicated variables. "
+	},
+	"right$": {
+		"prefix": "right$",
+		"body": [
+			"right$(${1:<string>},${2:<integer number>})$0"
+		],
+		"description": "RIGHT$ will be used for cutting strings into component parts beginning at the right side until to the left side."
+	},
+	"rnd": {
+		"prefix": "rnd",
+		"body": [
+			"rnd(${1:number})*${2:number}$0"
+		],
+		"description": "The function RND generates random floating point numbers in the range of 0.0 (inclusive) to 1.0 (exclusive). "
+	},
+	"save": {
+		"prefix": "save",
+		"body": [
+			"save ${1:<filename>},${2:<device number>}${3:<secondary number>}$0"
+		],
+		"description": "A written BASIC or computer code program, which exists in temporary RAM-memory, can be saved with the BASIC command SAVE permanently to a storage device such as a datasette, diskdrive or harddisk as a filetype program (PRG)."
+	},
+	"sgn": {
+		"prefix": "sgn",
+		"body": [
+			"sgn(${1:number})$0"
+		],
+		"description": "The function SGN gives autonomous of the algebraic sign the number (-1; 0; 1) of a numerical argument."
+	},
+	"sin": {
+		"prefix": "sin",
+		"body": [
+			"sin(${1:<numeric expression>})$0"
+		],
+		"description": "The numeric function SIN is a mathematical function which evaluates to the sine for a given angle, a number regarded as being in radians."
+	},
+	"spc": {
+		"prefix": "spc",
+		"body": [
+			"spc(${1:<integer>})$0"
+		],
+		"description": "SPC can be used to set a number of spaces."
+	},
+	"sqr": {
+		"prefix": "sqr",
+		"body": [
+			"sqr(${1:<number>})$0"
+		],
+		"description": "The numeric function SQR is a mathemathical function for square root of a number."
+	},
+	"str$": {
+		"prefix": "str$",
+		"body": [
+			"str$(${1:<number>})$0"
+		],
+		"description": "STR$ is used to converting numerical values or variables into a string."
+	},
+	"tab": {
+		"prefix": "tab",
+		"body": [
+			"tab(${1:<integer>})$0"
+		],
+		"description": "With the output function TAB the cursor position is set to logical screen column for use in BASIC output commands like PRINT."
+	},
+	"tan": {
+		"prefix": "tan",
+		"body": [
+			"tan(${1:<number>})$0"
+		],
+		"description": "The numerical function TAN is a mathematical function which evaluates to the tangent for a given angle, a number regarded as being in radians."
+	},
+	"usr": {
+		"prefix": "usr",
+		"body": [
+			"usr(${1:<number>})$0"
+		],
+		"description": "USR is a user-defined function in the built-in BASIC interpreter"
+	},
+	"val": {
+		"prefix": "val",
+		"body": [
+			"val(${1:<string>})$0"
+		],
+		"description": "The function VAL finds a numerical value in a string."
+	},
+	"verify": {
+		"prefix": "verify",
+		"body": [
+			"verify ${1:<filename>},${2:<device number>}$0"
+		],
+		"description": "The BASIC command VERIFY is used for verifying files."
+	},
+	"wait": {
+		"prefix": "wait",
+		"body": [
+			"wait ${1:<memory adress>},${2:<and mask>},${2:<flip mask (optional)>}$0"
+		],
+		"description": "WAIT is a keyword in the built-in BASIC interpreter, which waits for a given memory location to match specific bit constellations."
+	},
+	"{clr}": {
+		"prefix": "{clr}",
+		"body": [
+			"chr$(147)$0"
+		],
+		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen."
+	},
+	"{home}": {
+		"prefix": "{home}",
+		"body": [
+			"chr$(19)$0"
+		],
+		"description": "Home: Next character will be printed in the upper left-hand corner of the screen."
+	},
+	"{crsr right}": {
+		"prefix": "{crsr right}",
+		"body": [
+			"chr$(29)$0"
+		],
+		"description": "Advances the cursor one character position without printing anything."
+	},
+	"{crsr left}": {
+		"prefix": "{crsr left}",
+		"body": [
+			"chr$(157)$0"
+		],
+		"description": "Moves the cursor one character position backwards, without printing or deleting anything."
+	},
+	"{crsr down}": {
+		"prefix": "{crsr down}",
+		"body": [
+			"chr$(17)$0"
+		],
+		"description": "Cursor down: Next character will be printed in subsequent column one text line further down the screen."
+	},
+	"{crsr up}": {
+		"prefix": "{crsr up}",
+		"body": [
+			"chr$(145)$0"
+		],
+		"description": "Cursor up: Next character will be printed in subsequent column one text line further up the screen."
+	},
+	"{wht}": {
+		"prefix": "{wht}",
+		"body": [
+			"chr$(5)$0"
+		],
+		"description": "Changes the text color to white."
+	},
+	"{red}": {
+		"prefix": "{red}",
+		"body": [
+			"chr$(28)$0"
+		],
+		"description": "Changes the text color to red."
+	},
+	"{cyn}": {
+		"prefix": "{cyn}",
+		"body": [
+			"chr$(159)$0"
+		],
+		"description": "Changes the text color to cyan."
+	},
+	"{pur}": {
+		"prefix": "{pur}",
+		"body": [
+			"chr$(156)$0"
+		],
+		"description": "Changes the text color to purple."
+	},
+	"{grn}": {
+		"prefix": "{grn}",
+		"body": [
+			"chr$(30)$0"
+		],
+		"description": "Changes the text color to green."
+	},
+	"{blu}": {
+		"prefix": "{blu}",
+		"body": [
+			"chr$(31)$0"
+		],
+		"description": "Changes the text color to blue."
+	},
+	"{yel}": {
+		"prefix": "{yel}",
+		"body": [
+			"chr$(158)$0"
+		],
+		"description": "Changes the text color to yellow."
+	},
+	"{rvs on}": {
+		"prefix": "{rvs on}",
+		"body": [
+			"chr$(18)$0"
+		],
+		"description": "Control character: Reverse on: Selects reverse video text."
+	},
+	"{rvs off}": {
+		"prefix": "{rvs off}",
+		"body": [
+			"chr$(146)$0"
+		],
+		"description": "Control character: Reverse off: De-selects reverse video text."
+	},
+	"{orange}": {
+		"prefix": "{orange}",
+		"body": [
+			"chr$(129)$0"
+		],
+		"description": "Changes the text color to orange."
+	},
+	"{brown}": {
+		"prefix": "{brown}",
+		"body": [
+			"chr$(149)$0"
+		],
+		"description": "Changes the text color to brown."
+	},
+	"{pink}": {
+		"prefix": "{pink}",
+		"body": [
+			"chr$(150)$0"
+		],
+		"description": "Changes the text color to pink."
+	},
+	"{darkgrey}": {
+		"prefix": "{darkgrey}",
+		"body": [
+			"chr$(151)$0"
+		],
+		"description": "Changes the text color to darkgrey."
+	},
+	"{grey}": {
+		"prefix": "{grey}",
+		"body": [
+			"chr$(152)$0"
+		],
+		"description": "Changes the text color to grey."
+	},
+	"{lightgreen}": {
+		"prefix": "{lightgreen}",
+		"body": [
+			"chr$(153)$0"
+		],
+		"description": "Changes the text color to lightgreen."
+	},
+	"{lightblue}": {
+		"prefix": "{lightblue}",
+		"body": [
+			"chr$(154)$0"
+		],
+		"description": "Changes the text color to lightblue."
+	},
+	"{lightgrey}": {
+		"prefix": "{lightgrey}",
+		"body": [
+			"chr$(155)$0"
+		],
+		"description": "Changes the text color to lightgrey."
+	},
+	"{f1}": {
+		"prefix": "{f1}",
+		"body": [
+			"chr$(133)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f2}": {
+		"prefix": "{f2}",
+		"body": [
+			"chr$(137)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f3}": {
+		"prefix": "{f3}",
+		"body": [
+			"chr$(134)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f4}": {
+		"prefix": "{f4}",
+		"body": [
+			"chr$(138)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f5}": {
+		"prefix": "{f5}",
+		"body": [
+			"chr$(135)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f6}": {
+		"prefix": "{f6}",
+		"body": [
+			"chr$(139)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f7}": {
+		"prefix": "{f7}",
+		"body": [
+			"chr$(136)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{f8}": {
+		"prefix": "{f8}",
+		"body": [
+			"chr$(140)$0"
+		],
+		"description": "To use for input with GET"
+	},
+	"{del}": {
+		"prefix": "{del}",
+		"body": [
+			"chr$(20)$0"
+		],
+		"description": "Delete, or backspace; erases the previous character and moves the cursor one character position to the left."
+	},
+	"{inst}": {
+		"prefix": "{inst}",
+		"body": [
+			"chr$(148)$0"
+		],
+		"description": "Insert: Makes room for extra characters at the current cursor position, by pushing existing characters at that position further to the right."
+	},
+	"{run/stop}": {
+		"prefix": "{run/stop}",
+		"body": [
+			"chr$(3)$0"
+		],
+		"description": "Uset by GET query if RUN/STOP has been deactivated"
+	},
+	"{ctrl+i}": {
+		"prefix": "{ctrl+i}",
+		"body": [
+			"chr$(9)$0"
+		],
+		"description": "Enables changing the character set using the SHIFT + Commodore key combination."
+	},
+	"{return}": {
+		"prefix": "{return}",
+		"body": [
+			"chr$(13)$0"
+		],
+		"description": "Control character: return."
+	},
+	"{ctrl+n}": {
+		"prefix": "{ctrl+n}",
+		"body": [
+			"chr$(14)$0"
+		],
+		"description": "Select the lowercase/uppercase character set."
+	},
+	"{ctrl+/}": {
+		"prefix": "{ctrl+/}",
+		"body": [
+			"chr$(149)$0"
+		],
+		"description": "Select the uppercase/semigraphics character set."
+	},
+	"{space}": {
+		"prefix": "{space}",
+		"body": [
+			"chr$(32)$0"
+		],
+		"description": "Control character: Space."
+	},
+	"{shift return}": {
+		"prefix": "{shift return}",
+		"body": [
+			"chr$(141)$0"
+		],
+		"description": "Control character: new row."
+	}
+
+}

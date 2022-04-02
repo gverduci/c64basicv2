@@ -1,0 +1,104 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "C64 BASICV2",
+	"patterns": [
+		{
+			"include": "#control"
+		},
+		{
+			"include": "#operators"
+		},
+		{
+			"include": "#other"
+		},
+		{
+			"include": "#otherString"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#numerics"
+		},
+		{
+			"include": "#vardefs"
+		},
+		{
+			"include": "#func"
+		}
+	],
+	"repository": {
+		"func": {
+			"patterns": [{
+				"name": "entity.name.function.c64basicv2",
+				"match": "(def fn|fn)\\s+([a-z0-9]+)",
+				"captures": {
+					"1": {
+						"name": "keyword.control.c64basicv2"
+					},
+					"2": {
+						"name": "entity.name.function.c64basicv2"
+					}
+				}
+			}]
+		},			
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.c64basicv2",
+				"match": "(rem)(.*)"
+			}]
+		},
+		"vardefs": {
+			"patterns": [{
+				"name": "storage.modifier.c64basicv2",
+				"match": "\\b(dim|data|let)\\b"
+			}]
+		},	
+		"numerics": {
+			"patterns": [{
+				"name": "constant.numeric.c64basicv2",
+				"match": "\\b([0-9]+)\\b"
+			}]
+		},
+		"control": {
+			"patterns": [{
+				"name": "keyword.control.c64basicv2",
+		    	"match": "\\b(end|for|gosub|goto|if|next|return|step|stop|then|to)\\b"
+			}]
+		},
+		"other": {
+			"patterns": [{
+				"name": "keyword.other.c64basicv2",
+		    	"match": "\\b(abs|asc|atn|close|clr|cmd|cont|cos|data|exp|fre|get|get#|input|input#|int|len|let|list|load|log|new|next|on|open|peek|π|poke|pos|print|print#|read|restore|rnd|run|save|sgn|sin|spc|sqr|status|st|stop|sys|tab|tan|time|ti|time|ti|usr|val|verify|wait)\\b"
+			}]
+		},
+		"otherString": {
+			"patterns": [{
+				"name": "keyword.other.c64basicv2",
+		    	"begin": "\\b(chr|left|mid|right|str|time|ti)\\b",
+				"end": "\\$"
+			}]
+		},
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.c64basicv2",
+				"match": "(\\*|/|\\+|-|\\^|=|<>|<|>|<=|=<|>=|=>|\\band\\b|\\bor\\b|\\bnot\\b)"
+			}]
+		},		
+		"strings": {
+			"name": "string.quoted.double.c64basicv2",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.c64basicv2",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.c64basicv2"
+}

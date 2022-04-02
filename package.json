@@ -1,0 +1,55 @@
+{
+    "name": "c64basicv2",
+    "displayName": "COMMODORE 64 BASIC V2",
+    "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
+    "publisher": "gverduci",
+    "version": "0.1.1",
+    "engines": {
+        "vscode": "^1.65.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "keywords": ["c64","basic","commodore"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gverduci/c64basicv2.git"
+    },
+    "icon": "images/c64basicv2_logo.png",
+    "contributes": {
+        "themes": [
+            {
+              "id": "Visual Studio Dark - c64basicv2",
+              "label": "Dark (Visual Studio - c64basicv2)",
+              "uiTheme": "vs-dark",
+              "path": "./themes/c64basicv2_dark_vs.json"
+            },
+            {
+              "id": "Visual Studio Light - c64basicv2",
+              "label": "Light (Visual Studio - c64basicv2)",
+              "uiTheme": "vs",
+              "path": "./themes/c64basicv2_light_vs.json"
+            }
+          ],
+        "languages": [{
+            "id": "c64basicv2",
+            "aliases": ["C64 BASICV2", "basic v2"],
+            "extensions": [".prg"],
+            "configuration": "./language-configuration.json",
+            "icon": {
+                "light": "./icons/c64-light.png",
+                "dark": "./icons/c64-dark.png"
+              }
+        }],
+        "grammars": [{
+            "language": "c64basicv2",
+            "scopeName": "source.c64basicv2",
+            "path": "./syntaxes/c64basicv2.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "c64basicv2",
+            "path": "./snippets.json"
+        }]
+    }
+}

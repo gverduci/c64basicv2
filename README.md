@@ -1,4 +1,4 @@
-![c64basicv2 logo](./images/c64basicv2_logo.png)
+![c64basicv2 logo](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_logo.png)
 
 # **** COMMODORE 64 BASIC V2 **** (c64basicv2) Visual Studio Code Extension
 
@@ -11,6 +11,8 @@ Syntax highlighting, snippets, file icon, theme, tasks for *Commodore 64 basic v
 - File icons
 - Theme
 - Tasks (in this README)
+
+![c64basicv2 logo](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_syntaxhighlighting)
 
 ## Task Settings
 

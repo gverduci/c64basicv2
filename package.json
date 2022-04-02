@@ -55,6 +55,11 @@
         "snippets": [{
             "language": "c64basicv2",
             "path": "./snippets.json"
-        }]
+        }],
+        "configurationDefaults":{
+            "[c64basicv2]":{
+            "editor.rulers": [40, 80]
+            }
+        }
     }
 }

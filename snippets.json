@@ -51,7 +51,7 @@
 	"data": {
 		"prefix": "data",
 		"body": [
-			"data ${1:<constant>}$0"
+			"data ${1:<constant>},${2:<constant>},${3:<constant>},${4:<constant>},${5:<constant>},${6:<constant>},${7:<constant>},${8:<constant>}$0"
 		],
 		"description": "The BASIC-Command DATA is used to store constant information in the program code, and is used with the BASIC-command READ. "
 	},

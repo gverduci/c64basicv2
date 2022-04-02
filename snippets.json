@@ -88,14 +88,14 @@
 	"for": {
 		"prefix": "for",
 		"body": [
-			"for ${1:<counter variable>} = ${2:<start value>} to ${3:<end value>}:${4:<expression>}:next ${1:<counter variable>}$0"
+			"for ${1:<counter variable>}=${2:<start value>} to ${3:<end value>}:${4:<expression>}:next ${1:<counter variable>}$0"
 		],
 		"description": "The BASIC command FOR is the start command of a FOR…TO…NEXT loop."
 	},
 	"fors": {
 		"prefix": "fors",
 		"body": [
-			"for ${1:<counter variable>} = ${2:<start value>} to ${3:<end value>} step ${4:<stepsize>}:$(5:<expression>):next ${1:<counter variable>}$0"
+			"for ${1:<counter variable>}=${2:<start value>} to ${3:<end value>} step ${4:<stepsize>}:$(5:<expression>):next ${1:<counter variable>}$0"
 		],
 		"description": "The BASIC command FOR is the start command of a FOR…TO…STEP…NEXT loop."
 	},
@@ -381,33 +381,40 @@
 		],
 		"description": "Home: Next character will be printed in the upper left-hand corner of the screen."
 	},
-	"{crsr right}": {
-		"prefix": "{crsr right}",
+	"{right}": {
+		"prefix": "{right}",
 		"body": [
 			"chr$(29)$0"
 		],
 		"description": "Advances the cursor one character position without printing anything."
 	},
-	"{crsr left}": {
-		"prefix": "{crsr left}",
+	"{left}": {
+		"prefix": "{left}",
 		"body": [
 			"chr$(157)$0"
 		],
 		"description": "Moves the cursor one character position backwards, without printing or deleting anything."
 	},
-	"{crsr down}": {
-		"prefix": "{crsr down}",
+	"{down}": {
+		"prefix": "{down}",
 		"body": [
 			"chr$(17)$0"
 		],
 		"description": "Cursor down: Next character will be printed in subsequent column one text line further down the screen."
 	},
-	"{crsr up}": {
-		"prefix": "{crsr up}",
+	"{up}": {
+		"prefix": "{up}",
 		"body": [
 			"chr$(145)$0"
 		],
 		"description": "Cursor up: Next character will be printed in subsequent column one text line further up the screen."
+	},
+	"{blk}": {
+		"prefix": "{blk}",
+		"body": [
+			"chr$(144)$0"
+		],
+		"description": "Changes the text color to white."
 	},
 	"{wht}": {
 		"prefix": "{wht}",
@@ -479,8 +486,22 @@
 		],
 		"description": "Changes the text color to orange."
 	},
+	"[<1>]": {
+		"prefix": "[<1>]",
+		"body": [
+			"chr$(129)$0"
+		],
+		"description": "Changes the text color to orange."
+	},
 	"{brown}": {
 		"prefix": "{brown}",
+		"body": [
+			"chr$(149)$0"
+		],
+		"description": "Changes the text color to brown."
+	},
+	"[<2>]": {
+		"prefix": "[<2>]",
 		"body": [
 			"chr$(149)$0"
 		],
@@ -493,6 +514,13 @@
 		],
 		"description": "Changes the text color to pink."
 	},
+	"[<3>]": {
+		"prefix": "[<3>]",
+		"body": [
+			"chr$(150)$0"
+		],
+		"description": "Changes the text color to pink."
+	},
 	"{darkgrey}": {
 		"prefix": "{darkgrey}",
 		"body": [
@@ -500,8 +528,22 @@
 		],
 		"description": "Changes the text color to darkgrey."
 	},
+	"[<4>]": {
+		"prefix": "[<4>]",
+		"body": [
+			"chr$(151)$0"
+		],
+		"description": "Changes the text color to pink."
+	},
 	"{grey}": {
 		"prefix": "{grey}",
+		"body": [
+			"chr$(152)$0"
+		],
+		"description": "Changes the text color to grey."
+	},
+	"[<5>]": {
+		"prefix": "[<5>]",
 		"body": [
 			"chr$(152)$0"
 		],
@@ -514,6 +556,13 @@
 		],
 		"description": "Changes the text color to lightgreen."
 	},
+	"[<6>]": {
+		"prefix": "[<6>]",
+		"body": [
+			"chr$(153)$0"
+		],
+		"description": "Changes the text color to lightgreen."
+	},
 	"{lightblue}": {
 		"prefix": "{lightblue}",
 		"body": [
@@ -521,8 +570,22 @@
 		],
 		"description": "Changes the text color to lightblue."
 	},
+	"[<7>]": {
+		"prefix": "[<7>]",
+		"body": [
+			"chr$(154)$0"
+		],
+		"description": "Changes the text color to lightblue."
+	},
 	"{lightgrey}": {
 		"prefix": "{lightgrey}",
+		"body": [
+			"chr$(155)$0"
+		],
+		"description": "Changes the text color to lightgrey."
+	},
+	"[<8>]": {
+		"prefix": "[<8>]",
 		"body": [
 			"chr$(155)$0"
 		],

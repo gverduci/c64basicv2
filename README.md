@@ -50,6 +50,10 @@ You can find the list of control characters on this page: [Control character](ht
 
 Snippets for Control character transform string like {clr} to the correspondig command chr$(xxx). In our example: chr$(147).
 
+But pay attention: Inside print statement you have to remove the double apex, print "{clr}" become print {clr} and then print chr$(147).
+
+![c64basicv2 Control Character Snippet](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlcharsnippets.gif)
+
 ## Task Settings
 
 Configure `tasks.json` and hit Crtl+Shift+B to convert/run the currently open basic program file to a C64 prg with the same name.

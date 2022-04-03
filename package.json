@@ -3,7 +3,7 @@
     "displayName": "COMMODORE 64 BASIC V2",
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.65.0"

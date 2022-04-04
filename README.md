@@ -54,6 +54,17 @@ But pay attention: Inside print statement you have to remove the double apex, pr
 
 ![c64basicv2 Control Character Snippet](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlcharsnippets.gif)
 
+There is another option: using *petcat* you can write directly the following Control characters without conversion to chr$:
+
+{clear}             {home}              {right}         {left}              {up}                {down}
+{reverse on}        {reverse off}       {black}         {white}             {red}               {cyan}
+{purple}            {green}             {blue}          {yellow}            {orange}            {brown}
+{pink}              {dark gray}         {gray}          {light green}       {light blue}        {light gray}
+{f1}                {f2}                {f3}            {f4}                {f5}                {f6}
+{f7}                {f8}                {space}         {pi}
+
+[petcat src](https://github.com/svn2github/vice-emu/blob/524c58c4c2159dbe82520d36b7dde6a082eeddf7/vice/src/petcat.c#L683)
+
 ## Task Settings
 
 Configure `tasks.json` and hit Crtl+Shift+B to convert/run the currently open basic program file to a C64 prg with the same name.
@@ -69,7 +80,7 @@ Install *vice* to use *petcat* and *x64sc*.
             "label": "Convert between ASCII, PETSCII and tokenized BASIC",
             "type": "shell",
             "linux": {
-                "command": "/usr/bin/petcat -wsimon -o ./bin/${fileBasename} -- ${file}"
+                "command": "/usr/bin/petcat -w2 -o ./bin/${fileBasename} -- ${file}"
             },
             "group": {
                 "kind": "build",
@@ -83,7 +94,7 @@ Install *vice* to use *petcat* and *x64sc*.
             "label": "Run C64_BASIC prg",
             "type": "shell",
             "linux": {
-                "command": "/usr/bin/petcat -wsimon -o ./bin/${fileBasename} -- ${file} & /usr/bin/x64sc ./bin/${fileBasename}"
+                "command": "/usr/bin/petcat -w2 -o ./bin/${fileBasename} -- ${file} & /usr/bin/x64sc ./bin/${fileBasename}"
             },
             "group": {
                 "kind": "build",

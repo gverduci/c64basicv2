@@ -374,6 +374,13 @@
 		],
 		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen."
 	},
+	"{clear}": {
+		"prefix": "{clear}",
+		"body": [
+			"chr$(147)$0"
+		],
+		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen."
+	},
 	"{home}": {
 		"prefix": "{home}",
 		"body": [
@@ -416,8 +423,22 @@
 		],
 		"description": "Changes the text color to white."
 	},
+	"{black}": {
+		"prefix": "{black}",
+		"body": [
+			"chr$(144)$0"
+		],
+		"description": "Changes the text color to white."
+	},
 	"{wht}": {
 		"prefix": "{wht}",
+		"body": [
+			"chr$(5)$0"
+		],
+		"description": "Changes the text color to white."
+	},
+	"{white}": {
+		"prefix": "{white}",
 		"body": [
 			"chr$(5)$0"
 		],
@@ -437,8 +458,22 @@
 		],
 		"description": "Changes the text color to cyan."
 	},
+	"{cyan}": {
+		"prefix": "{cyan}",
+		"body": [
+			"chr$(159)$0"
+		],
+		"description": "Changes the text color to cyan."
+	},
 	"{pur}": {
 		"prefix": "{pur}",
+		"body": [
+			"chr$(156)$0"
+		],
+		"description": "Changes the text color to purple."
+	},
+	"{purple}": {
+		"prefix": "{purple}",
 		"body": [
 			"chr$(156)$0"
 		],
@@ -451,8 +486,22 @@
 		],
 		"description": "Changes the text color to green."
 	},
+	"{green}": {
+		"prefix": "{green}",
+		"body": [
+			"chr$(30)$0"
+		],
+		"description": "Changes the text color to green."
+	},
 	"{blu}": {
 		"prefix": "{blu}",
+		"body": [
+			"chr$(31)$0"
+		],
+		"description": "Changes the text color to blue."
+	},
+	"{blue}": {
+		"prefix": "{blue}",
 		"body": [
 			"chr$(31)$0"
 		],
@@ -465,6 +514,13 @@
 		],
 		"description": "Changes the text color to yellow."
 	},
+	"{yellow}": {
+		"prefix": "{yellow}",
+		"body": [
+			"chr$(158)$0"
+		],
+		"description": "Changes the text color to yellow."
+	},
 	"{rvs on}": {
 		"prefix": "{rvs on}",
 		"body": [
@@ -472,8 +528,22 @@
 		],
 		"description": "Control character: Reverse on: Selects reverse video text."
 	},
+	"{reverse on}": {
+		"prefix": "{reverse on}",
+		"body": [
+			"chr$(18)$0"
+		],
+		"description": "Control character: Reverse on: Selects reverse video text."
+	},
 	"{rvs off}": {
 		"prefix": "{rvs off}",
+		"body": [
+			"chr$(146)$0"
+		],
+		"description": "Control character: Reverse off: De-selects reverse video text."
+	},
+	"{reverse off}": {
+		"prefix": "{reverse off}",
 		"body": [
 			"chr$(146)$0"
 		],
@@ -521,8 +591,8 @@
 		],
 		"description": "Changes the text color to pink."
 	},
-	"{darkgrey}": {
-		"prefix": "{darkgrey}",
+	"{dark grey}": {
+		"prefix": "{dark grey}",
 		"body": [
 			"chr$(151)$0"
 		],
@@ -549,8 +619,8 @@
 		],
 		"description": "Changes the text color to grey."
 	},
-	"{lightgreen}": {
-		"prefix": "{lightgreen}",
+	"{light green}": {
+		"prefix": "{light green}",
 		"body": [
 			"chr$(153)$0"
 		],
@@ -563,8 +633,8 @@
 		],
 		"description": "Changes the text color to lightgreen."
 	},
-	"{lightblue}": {
-		"prefix": "{lightblue}",
+	"{light blue}": {
+		"prefix": "{light blue}",
 		"body": [
 			"chr$(154)$0"
 		],
@@ -577,8 +647,8 @@
 		],
 		"description": "Changes the text color to lightblue."
 	},
-	"{lightgrey}": {
-		"prefix": "{lightgrey}",
+	"{light grey}": {
+		"prefix": "{light grey}",
 		"body": [
 			"chr$(155)$0"
 		],
@@ -709,6 +779,12 @@
 			"chr$(141)$0"
 		],
 		"description": "Control character: new row."
+	},
+	"{pi}": {
+		"prefix": "{pi}",
+		"body": [
+			"chr$(126)$0"
+		],
+		"description": "Control character: PI."
 	}
-
 }

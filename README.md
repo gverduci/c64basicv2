@@ -2,7 +2,7 @@
 
 # **** COMMODORE 64 BASIC V2 **** (c64basicv2) Visual Studio Code Extension
 
-This extension helps you to write *Commodore 64 basic v2* programs. It provides you: syntax highlighting, snippets, file icons, a theme, tasks, and rulers.
+This extension helps you to write *Commodore 64 basic v2* programs. It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers and commands.
 
 Rules for snippets come from the following pages of C64-Wiki:
 - [BASIC](https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_2.0_.28second_release.29_Commands) 
@@ -25,6 +25,7 @@ The provided features are:
 - Theme
 - Rulers: 40th and 80th column
 - Tasks: suggested in this README
+- Command: Automatic Proofreader
 
 ### Syntax highlighting
 An example of syntax highlighting is:
@@ -64,6 +65,10 @@ There is another option: using *petcat* you can write directly the following Con
 {f7}                {f8}                {space}         {pi}
 
 [petcat src](https://github.com/svn2github/vice-emu/blob/524c58c4c2159dbe82520d36b7dde6a082eeddf7/vice/src/petcat.c#L683)
+
+### Command - Automatic Proofreader
+A short error-checking program that helps you type in COMPUTE!'s (gazette magazine and books) program listings without typing mistakes.
+Hit F1 and search "Automatic Proofreader" then hit enter: a popup shows the checksum for the current line.
 
 ## Task Settings
 

@@ -1,9 +1,16 @@
 # Change Log
 
-All notable changes to the "testvscode" extension will be documented in this file.
+All notable changes to the "c64basicv2" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.3.0] - 05/04/2022
 
-## [Unreleased]
+- other snippets synonyms
+- Automatic Proofreader command (beta)
+
+## [0.2.0] - 03/04/2022
+
+- fix and enhancement
+
+## [0.1.1] - 02/04/2022
 
 - Initial release

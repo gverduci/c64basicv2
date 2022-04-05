@@ -2,7 +2,7 @@
 
 # **** COMMODORE 64 BASIC V2 **** (c64basicv2) Visual Studio Code Extension
 
-This extension helps you to write *Commodore 64 basic v2* programs. It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers and commands.
+This extension helps you to write *Commodore 64 basic v2* programs (.prg extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers and commands.
 
 Rules for snippets come from the following pages of C64-Wiki:
 - [BASIC](https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_2.0_.28second_release.29_Commands) 
@@ -67,8 +67,13 @@ There is another option: using *petcat* you can write directly the following Con
 [petcat src](https://github.com/svn2github/vice-emu/blob/524c58c4c2159dbe82520d36b7dde6a082eeddf7/vice/src/petcat.c#L683)
 
 ### Command - Automatic Proofreader
-A short error-checking program that helps you type in COMPUTE!'s (gazette magazine and books) program listings without typing mistakes.
-Hit F1 and search "Automatic Proofreader" then hit enter: a popup shows the checksum for the current line.
+An error-checking command that helps you type in COMPUTE! (gazette magazine and books) program listings without typing mistakes. This command emulates (I hope) the original "The Automatic Proofreader" program published on COMPUTE!'s Gazette. This is an example:
+
+![c64basicv2 Automatic Proofreader](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/proofreaderEx.pdf)
+
+Hit F1, search "Automatic Proofreader" then hit enter: a popup shows the checksum for the current line.
+
+For others info on "The Automatic Proofreader" original program see [Wikipedia](https://en.wikipedia.org/wiki/The_Automatic_Proofreader).
 
 ## Task Settings
 
@@ -151,6 +156,4 @@ Install *vice* to use *petcat*, *x64sc* and *c1541*.
 
 ## Release Notes
 
-### 0.1.1
-
-Initial release of `c64basicv2` extension.
+[CHANGELOG.md](./CHANGELOG.md)

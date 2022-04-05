@@ -6,7 +6,7 @@
     "version": "0.3.0",
     "license": "BSD-3-Clause License",
     "engines": {
-        "vscode": "^1.65.0"
+        "vscode": "^1.66.0"
     },
     "categories": [
         "Programming Languages",

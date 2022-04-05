@@ -69,7 +69,7 @@ There is another option: using *petcat* you can write directly the following Con
 ### Command - Automatic Proofreader
 An error-checking command that helps you type in COMPUTE! (gazette magazine and books) program listings without typing mistakes. This command emulates (I hope) the original "The Automatic Proofreader" program published on COMPUTE!'s Gazette. This is an example:
 
-![c64basicv2 Automatic Proofreader](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/proofreaderEx.pdf)
+![c64basicv2 Automatic Proofreader](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/proofreaderEx.png)
 
 Hit F1, search "Automatic Proofreader" then hit enter: a popup shows the checksum for the current line.
 
@@ -134,7 +134,7 @@ for filename in ./src/*.prg; do
     echo $SOURCE
     DEST=$(echo ${SOURCE##*/})
     echo $DEST
-    petcat -wsimon -o ./bin/$DEST -- $SOURCE
+    petcat -w2 -o ./bin/$DEST -- $SOURCE
 done
 ```
 

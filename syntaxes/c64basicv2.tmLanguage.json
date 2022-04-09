@@ -54,38 +54,38 @@
 		"vardefs": {
 			"patterns": [{
 				"name": "storage.modifier.c64basicv2",
-				"match": "\\b(dim|data|let)\\b"
+				"match": "(dim|data|let)"
 			}]
 		},	
 		"numerics": {
 			"patterns": [{
 				"name": "constant.numeric.c64basicv2",
-				"match": "\\b([0-9]+)\\b"
+				"match": "([0-9]+)"
 			}]
 		},
 		"control": {
 			"patterns": [{
 				"name": "keyword.control.c64basicv2",
-		    	"match": "\\b(end|for|gosub|goto|if|next|return|step|stop|then|to)\\b"
+		    	"match": "(end|for|gosub|goto|if|next|return|step|stop|then|to)"
 			}]
 		},
 		"other": {
 			"patterns": [{
 				"name": "keyword.other.c64basicv2",
-		    	"match": "\\b(abs|asc|atn|close|clr|cmd|cont|cos|data|exp|fre|get|get#|input|input#|int|len|let|list|load|log|new|next|on|open|peek|π|poke|pos|print|print#|read|restore|rnd|run|save|sgn|sin|spc|sqr|status|st|stop|sys|tab|tan|time|ti|time|ti|usr|val|verify|wait)\\b"
+		    	"match": "(abs|asc|atn|close|clr|cmd|cont|cos|data|exp|fre|get|get#|input|input#|int|len|let|list|load|log|new|next|on|open|peek|π|poke|pos|print|print#|read|restore|rnd|run|save|sgn|sin|spc|sqr|status|st|stop|sys|tab|tan|time|ti|time|ti|usr|val|verify|wait)"
 			}]
 		},
 		"otherString": {
 			"patterns": [{
 				"name": "keyword.other.c64basicv2",
-		    	"begin": "\\b(chr|left|mid|right|str|time|ti)\\b",
+		    	"begin": "(chr|left|mid|right|str|time|ti)",
 				"end": "\\$"
 			}]
 		},
 		"operators": {
 			"patterns": [{
 				"name": "keyword.operator.c64basicv2",
-				"match": "(\\*|/|\\+|-|\\^|=|<>|<|>|<=|=<|>=|=>|\\band\\b|\\bor\\b|\\bnot\\b)"
+				"match": "(\\*|/|\\+|-|\\^|=|<>|<|>|<=|=<|>=|=>|and|or|not)"
 			}]
 		},		
 		"strings": {

@@ -67,8 +67,9 @@
         },
         "commands": [
             {
-              "command": "c64basicv2.automaticProofreader",
-              "title": "c64basicv2: Automatic Proofreader"
+                "command": "c64basicv2.automaticProofreader",
+                "title": "c64basicv2: Automatic Proofreader",
+                "category": "c64basicv2"
             }
           ]
     },

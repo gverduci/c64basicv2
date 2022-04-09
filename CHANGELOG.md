@@ -4,7 +4,7 @@ All notable changes to the "c64basicv2" extension will be documented in this fil
 
 ## [0.3.5] - 05/04/2022
 
-- [Syntax highlighting] removed word boundary controls to support lines like: 350 ifx=1thenprintchr$(18);
+- [Syntax highlighting] Removed word boundary controls to support lines with keywords without separators. Ex: 350 ifx=1thenprintchr$(18);
 
 ## [0.3.0] - 05/04/2022
 

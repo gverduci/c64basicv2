@@ -9,11 +9,17 @@ Rules for snippets come from the following pages of C64-Wiki:
 - [Control character](https://www.c64-wiki.com/wiki/control_character) 
 
 You might follow this process to develop your program:
-1. write the program;
-2. test it with [vice](https://vice-emu.sourceforge.io/) using the following task named "Run C64_BASIC prg";
-3. create a d64 image using the "created64.sh" script (see next sections of this README);
-4. use this d64 image with a sd2iec device;
-5. run it on the real c64 hardware.
+1. create a folder structure like this:
+
+        \    -> root dir
+        \bin -> converted programs
+        \src -> source programs
+
+2. write the program;
+3. test it with [vice](https://vice-emu.sourceforge.io/) using the "Convert and Run" command;
+4. create a d64 image using the "created64.sh" script (see next sections of this README);
+5. use this d64 image with a sd2iec device;
+6. run it on the real c64 hardware.
 
 ## Features
 
@@ -25,7 +31,8 @@ The provided features are:
 - Theme
 - Rulers: 40th and 80th column
 - Tasks: suggested in this README
-- Command: Automatic Proofreader
+- Command: Automatic Proofreader, Convert, Convert and Run
+- Keyboard Shortcuts
 
 ### Syntax highlighting
 An example of syntax highlighting is:
@@ -66,7 +73,7 @@ There is another option: using *petcat* you can write directly the following Con
 
 [petcat src](https://github.com/svn2github/vice-emu/blob/524c58c4c2159dbe82520d36b7dde6a082eeddf7/vice/src/petcat.c#L683)
 
-### Command - Automatic Proofreader
+### Command - Automatic Proofreader (Keyboard Shortcut: ctrl+shift+p ctrl+shift+r)
 An error-checking command that helps you type in COMPUTE! (gazette magazine and books) program listings without typing mistakes. This command emulates (I hope) the original "The Automatic Proofreader" program published on COMPUTE!'s Gazette. This is an example:
 
 ![c64basicv2 Automatic Proofreader](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/proofreaderEx.png)
@@ -75,7 +82,33 @@ Hit F1, search "Automatic Proofreader" then hit enter: a popup shows the checksu
 
 For others info on "The Automatic Proofreader" original program see [Wikipedia](https://en.wikipedia.org/wiki/The_Automatic_Proofreader).
 
+### Command - Convert (Keyboard Shortcut: ctrl+shift+b)
+Use this command to convert current prg to tokenized BASIC using Vice petcat command.
+Needed settings:
+- c64basicv2.petcat           - default value: /usr/bin/petcat
+- c64basicv2.convertOutputDir - default value: bin
+
+Hit F1, search "Convert" then hit enter.
+
+### Command - Convert and Run (Keyboard Shortcut: f5)
+Convert and run current prg using Vice x64sc command.
+Needed settings:
+- c64basicv2.x64sc            - default value: /usr/bin/x64sc
+
+Hit F1, search "Convert and Run" then hit enter.
+
+## Settings
+
+| Name                          | Description              | Default value   |
+| ----------------------------- | ------------------------ | --------------- |
+| `c64basicv2.petcat`           | Vice petcat command path | /usr/bin/petcat |
+| `c64basicv2.convertOutputDir` | output dir               | bin             |
+| `c64basicv2.x64sc`            | Vice x64sc command path  | /usr/bin/x64sc  |
+| `c64basicv2.showDiagnostics`  | Enable Diagnostics       | true            |
+
 ## Task Settings
+
+Commands "Convert" and "Convert and Run" replace task settings.
 
 Configure `tasks.json` and hit Crtl+Shift+B to convert/run the currently open basic program file to a C64 prg with the same name.
 Install *vice* to use *petcat* and *x64sc*.

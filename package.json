@@ -3,7 +3,7 @@
     "displayName": "COMMODORE 64 BASIC V2",
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
-    "version": "0.3.5",
+    "version": "0.4.0",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -23,7 +23,9 @@
     },
     "icon": "images/c64basicv2_logo.png",
     "activationEvents": [
-        "onCommand:c64basicv2.automaticProofreader"
+        "onCommand:c64basicv2.automaticProofreader",
+        "onCommand:c64basicv2.convert",
+        "onCommand:c64basicv2.convert-run"
 	],
     "main": "./out/extension.js",
     "contributes": {
@@ -60,17 +62,70 @@
             "language": "c64basicv2",
             "path": "./snippets.json"
         }],
+        "configuration":{
+			"title": "c64basicv2",
+			"properties": {
+				"c64basicv2.x64sc": {
+					"type": "string",
+					"default": "/usr/bin/x64sc",
+					"markdownDescription": "Full path and filename to your x64sc file."
+				},
+                "c64basicv2.petcat": {
+					"type": "string",
+					"default": "/usr/bin/petcat",
+					"markdownDescription": "Full path and filename to your petcat file."
+				},
+                "c64basicv2.convertOutputDir": {
+					"type": "string",
+					"default": "bin",
+					"markdownDescription": "Relative path to your destination petcat output folder."
+				},
+                "c64basicv2.showDiagnostics": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable diagnostics."
+				}
+                
+            }
+        },
         "configurationDefaults":{
             "[c64basicv2]":{
             "editor.rulers": [40, 80]
             }
         },
+        "keybindings": [
+			{
+				"command": "c64basicv2.convert-run",
+				"key": "f5",
+				"when": "editorLangId = c64basicv2 || resourceLangId == c64basicv2"
+			},
+			{
+				"command": "c64basicv2.convert",
+				"key": "ctrl+shift+b",
+				"when": "editorLangId == c64basicv2 || resourceLangId == c64basicv2"
+			},
+            {
+				"command": "c64basicv2.automaticProofreader",
+				"key": "ctrl+shift+p ctrl+shift+r",
+				"when": "editorLangId == c64basicv2 || resourceLangId == c64basicv2"
+			}
+		],
         "commands": [
             {
                 "command": "c64basicv2.automaticProofreader",
                 "title": "c64basicv2: Automatic Proofreader",
                 "category": "c64basicv2"
-            }
+            },
+            {
+                "command": "c64basicv2.convert",
+                "title": "c64basicv2: Convert",
+                "category": "c64basicv2"
+              },
+              {
+                "command": "c64basicv2.convert-run",
+                "title": "c64basicv2: Convert and Run",
+                "category": "c64basicv2"
+              }
           ]
     },
 	"scripts": {

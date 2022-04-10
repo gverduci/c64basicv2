@@ -21,7 +21,7 @@ export function automaticProofreader () {
 		const line = document.lineAt(currLine).text;
 		const trimmedLine = line.trim().replace(/ /g,"");
 		checksum = sum(trimmedLine);
-		vscode.window.showInformationMessage(checksum.toString(10));
+		vscode.window.showInformationMessage(`Line checksum: ${checksum.toString(10)}`);
 	}
 	return checksum;
 };

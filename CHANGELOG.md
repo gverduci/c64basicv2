@@ -2,6 +2,10 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.4.1] - 10/04/2022
+
+- [Commands] fix "Convert" and "Convert and Run" commands (windows)
+
 ## [0.4.0] - 10/04/2022
 
 - [Commands] Added "Convert" and "Convert and Run" commands

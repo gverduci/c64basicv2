@@ -6,12 +6,31 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
 	if (tokenizedBASICFile.outputFile){
 		const configuration = vscode.workspace.getConfiguration('c64basicv2');
 		const showDiagnostics : boolean | undefined = configuration.get("showDiagnostics");
-		const x64scCommand : string | undefined = configuration.get("x64sc");
+		let command : string | undefined = configuration.get("x64sc");
 
 		const rootFolder = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.path : undefined;
-		let x64scOptions = [
+		let baseX64scOptions = [
 			tokenizedBASICFile.outputFile
 		];
+
+		let x64scOptions = [];
+		if (process.platform === "win32"){
+			x64scOptions = ['/c', `"${command}"`];
+			baseX64scOptions.forEach(o=>{
+				let arg = o;
+				if (arg.indexOf("\\c:\\") > -1){
+					arg=arg.replace("\\c:\\", "c:\\");
+				}
+				if (arg.indexOf(" ") > -1){
+					arg = `"${arg}`;
+				}
+				x64scOptions.push(arg);
+			});
+			command = process.env.ComSpec || "cmd.exe";
+		} else{
+			x64scOptions = baseX64scOptions;
+		}
+
 		if (showDiagnostics) {
 			const output = vscode.window.createOutputChannel('c64basicv2 Run');
             output.show(true);
@@ -19,10 +38,11 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
             output.appendLine("**** COMMODORE 64 BASIC V2 ****");
             output.appendLine("c64basicv2 diagnostics");
             output.appendLine("");
-            output.appendLine(`Platform                 : ${process.platform}`);
-            output.appendLine(`Current Dir              : ${rootFolder}`);
-            output.appendLine(`Emulator Runtime (x64sc) : ${x64scCommand}`);
-            output.appendLine(`Emulator Options         :`);
+            output.appendLine(`Platform       : ${process.platform}`);
+            output.appendLine(`Current Dir    : ${rootFolder}`);
+			output.appendLine(`Current File   : ${tokenizedBASICFile.outputFile}`);
+            output.appendLine(`Command        : ${command}`);
+            output.appendLine(`Command Options:`);
             output.appendLine("");
             for (var i = 0; i < x64scOptions.length; i++) {
                 output.appendLine(`  ${x64scOptions[i]}`);
@@ -30,13 +50,12 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
             output.appendLine("");
             output.appendLine("");
 		}
-		if (x64scCommand) {
-			let x64sc = spawn(x64scCommand, x64scOptions,
+		if (command) {
+			let x64sc = spawn(command, x64scOptions,
 				{
 					detached: true,
 					stdio: 'inherit',
-					shell: true,
-					cwd: rootFolder
+					shell: true
 				});
 			x64sc.unref();
 		}

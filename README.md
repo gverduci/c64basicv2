@@ -16,10 +16,22 @@ You might follow this process to develop your program:
         \src -> source programs
 
 2. write the program;
-3. test it with [vice](https://vice-emu.sourceforge.io/) using the "Convert and Run" command;
+3. test it with [Vice](https://vice-emu.sourceforge.io/) using the "Convert and Run" command;
 4. create a d64 image using the "created64.sh" script (see next sections of this README);
 5. use this d64 image with a sd2iec device;
 6. run it on the real c64 hardware.
+
+You can create the folder structure using [Yeoman](https://yeoman.io/learning/):
+
+```bash
+npm install -g generator-c64basicv2
+
+mkdir myC64Project
+cd myC64Project
+
+npx yo c64basicv2
+
+```
 
 ## Features
 

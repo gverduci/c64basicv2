@@ -92,6 +92,10 @@ An error-checking command that helps you type in COMPUTE! (gazette magazine and 
 
 Hit F1, search "Automatic Proofreader" then hit enter: a popup shows the checksum for the current line.
 
+Since version 0.5.0, "Automatic Proofreader" is displayed on each row after the 80th column.
+
+![c64basicv2 Automatic Proofreader inline](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/proofreaderInlineEx.png)
+
 For others info on "The Automatic Proofreader" original program see [Wikipedia](https://en.wikipedia.org/wiki/The_Automatic_Proofreader).
 
 ### Command - Convert (Keyboard Shortcut: ctrl+shift+b)
@@ -111,12 +115,13 @@ Hit F1, search "Convert and Run" then hit enter.
 
 ## Settings
 
-| Name                          | Description              | Default value   |
-| ----------------------------- | ------------------------ | --------------- |
-| `c64basicv2.petcat`           | Vice petcat command path | /usr/bin/petcat |
-| `c64basicv2.convertOutputDir` | output dir               | bin             |
-| `c64basicv2.x64sc`            | Vice x64sc command path  | /usr/bin/x64sc  |
-| `c64basicv2.showDiagnostics`  | Enable Diagnostics       | true            |
+| Name                                        | Description                         | Default value   |
+| ------------------------------------------- | ----------------------------------- | --------------- |
+| `c64basicv2.petcat`                         | Vice petcat command path            | /usr/bin/petcat |
+| `c64basicv2.convertOutputDir`               | output dir                          | bin             |
+| `c64basicv2.x64sc`                          | Vice x64sc command path             | /usr/bin/x64sc  |
+| `c64basicv2.showDiagnostics`                | Enable Diagnostics                  | true            |
+| `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader | true            |
 
 ## Task Settings
 

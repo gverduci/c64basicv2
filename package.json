@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -26,7 +26,8 @@
     "activationEvents": [
         "onCommand:c64basicv2.automaticProofreader",
         "onCommand:c64basicv2.convert",
-        "onCommand:c64basicv2.convert-run"
+        "onCommand:c64basicv2.convert-run",
+        "onStartupFinished"
 	],
     "main": "./out/extension.js",
     "contributes": {
@@ -85,6 +86,11 @@
 					"type": "boolean",
 					"default": true,
 					"markdownDescription": "Enable diagnostics."
+				},
+                "c64basicv2.showInlineAutomaticProofreader": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable inline Automatic Proofreader."
 				}
                 
             }

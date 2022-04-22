@@ -42,18 +42,18 @@ export function activate(context: vscode.ExtensionContext) {
 	}
 
 	if (showInlineAutomaticProofreader) {
-		if (activeEditor) {
+		if (activeEditor && activeEditor.document && activeEditor.document.languageId === 'c64basicv2') {
 			triggerUpdateDecorations();
 		}
 		vscode.window.onDidChangeActiveTextEditor(editor => {
 			activeEditor = editor;
-			if (editor) {
+			if (editor && editor.document && editor.document.languageId === 'c64basicv2') {
 				triggerUpdateDecorations();
 			}
 		}, null, context.subscriptions);
 
 		vscode.workspace.onDidChangeTextDocument(event => {
-			if (activeEditor && event.document === activeEditor.document) {
+			if (activeEditor && event.document === activeEditor.document && activeEditor.document && activeEditor.document.languageId === 'c64basicv2') {
 				triggerUpdateDecorations(true);
 			}
 		}, null, context.subscriptions);

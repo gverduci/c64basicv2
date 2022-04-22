@@ -2,6 +2,10 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.5.1] - 22/04/2022
+
+- [Decorator] Fix: inline Automatic Proofreader only with c64basicv2 files
+
 ## [0.5.0] - 21/04/2022
 
 - [Decorator] Added inline Automatic Proofreader

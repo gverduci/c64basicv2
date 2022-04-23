@@ -2,6 +2,10 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.6.0] - 22/04/2022
+
+- [Diagnostics] Added diagnostic: line too long
+
 ## [0.5.1] - 22/04/2022
 
 - [Decorator] Fix: inline Automatic Proofreader only with c64basicv2 files

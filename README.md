@@ -115,13 +115,14 @@ Hit F1, search "Convert and Run" then hit enter.
 
 ## Settings
 
-| Name                                        | Description                         | Default value   |
-| ------------------------------------------- | ----------------------------------- | --------------- |
-| `c64basicv2.petcat`                         | Vice petcat command path            | /usr/bin/petcat |
-| `c64basicv2.convertOutputDir`               | output dir                          | bin             |
-| `c64basicv2.x64sc`                          | Vice x64sc command path             | /usr/bin/x64sc  |
-| `c64basicv2.showDiagnostics`                | Enable Diagnostics                  | true            |
-| `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader | true            |
+| Name                                        | Description                                                           | Default value   |
+| ------------------------------------------- | --------------------------------------------------------------------- | --------------- |
+| `c64basicv2.petcat`                         | Vice petcat command path                                              | /usr/bin/petcat |
+| `c64basicv2.convertOutputDir`               | output dir                                                            | bin             |
+| `c64basicv2.x64sc`                          | Vice x64sc command path                                               | /usr/bin/x64sc  |
+| `c64basicv2.showCommandLogs`                | Enable log diagnostics for commands (OUTPUT Window)                   | true            |
+| `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader                                   | true            |
+| `c64basicv2.enableDiagnostics`              | Enable diagnostics for c64 basic v2 text files                        | true            |
 
 ## Task Settings
 

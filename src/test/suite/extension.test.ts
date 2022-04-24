@@ -1,4 +1,3 @@
-import { downloadAndUnzipVSCode } from '@vscode/test-electron';
 import * as assert from 'assert';
 
 // You can import and use all API from the 'vscode' module
@@ -13,7 +12,7 @@ const extensionCommandNames = [
   ];
 
 suite('Extension Test Suite', () => {
-	vscode.window.showInformationMessage('Start all tests.');
+	vscode.window.showInformationMessage('Start Extension tests.');
 	test('Should activate extension', async () => {
 		await vscode.extensions
 		  .getExtension(extensionNames)

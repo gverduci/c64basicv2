@@ -5,7 +5,7 @@ import * as TokenizedBASICFile from "./tokenizedBASICFile";
 export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) {
 	if (tokenizedBASICFile.outputFile){
 		const configuration = vscode.workspace.getConfiguration('c64basicv2');
-		const showDiagnostics : boolean | undefined = configuration.get("showDiagnostics");
+		const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
 		let command : string | undefined = configuration.get("x64sc");
 		if (command && fs.existsSync(command)) {
 			const rootFolder = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.path : undefined;
@@ -31,7 +31,7 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
 				x64scOptions = baseX64scOptions;
 			}
 
-			if (showDiagnostics) {
+			if (showCommandLogs) {
 				const output = vscode.window.createOutputChannel('c64basicv2 Run');
 				output.show(true);
 				output.appendLine("");

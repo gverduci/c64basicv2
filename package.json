@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -82,15 +82,20 @@
 					"default": "bin",
 					"markdownDescription": "Relative path to your destination petcat output folder."
 				},
-                "c64basicv2.showDiagnostics": {
+                "c64basicv2.showCommandLogs": {
 					"type": "boolean",
 					"default": true,
-					"markdownDescription": "Enable diagnostics."
+					"markdownDescription": "Enable log diagnostics for commands (OUTPUT Window)."
 				},
                 "c64basicv2.showInlineAutomaticProofreader": {
 					"type": "boolean",
 					"default": true,
 					"markdownDescription": "Enable inline Automatic Proofreader."
+				},
+                "c64basicv2.enableDiagnostics": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enable diagnostics for c64 basic v2 text files."
 				}
                 
             }

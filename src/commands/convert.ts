@@ -9,7 +9,7 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 	if (editor) {
 		const document = editor.document;
 		const configuration = vscode.workspace.getConfiguration('c64basicv2');
-		const showDiagnostics : boolean | undefined = configuration.get("showDiagnostics");
+		const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
 		const outputRelativeDir : string | undefined = configuration.get("convertOutputDir");
 		let command : string | undefined = configuration.get("petcat");
 		if (command && fs.existsSync(command)) {
@@ -43,7 +43,7 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 					petcatOptions = basePetcatOptions;
 				}		
 		
-				if (showDiagnostics) {
+				if (showCommandLogs) {
 					const output = vscode.window.createOutputChannel('c64basicv2 convert');
 					output.show(true);
 					output.appendLine("");

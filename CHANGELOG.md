@@ -2,6 +2,12 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.6.1] - 22/04/2022
+
+- [Diagnostics] Added "enableDiagnostics" configuration property
+- [Diagnostics] Fix [Issue #1](https://github.com/gverduci/c64basicv2/issues/1): check lines containing control character
+- [Commands] Fix [Issue #2](https://github.com/gverduci/c64basicv2/issues/2): renamed "showDiagnostics" configuration property to "showCommandLogs"
+
 ## [0.6.0] - 22/04/2022
 
 - [Diagnostics] Added diagnostic: line too long
@@ -16,7 +22,7 @@ All notable changes to the "c64basicv2" extension will be documented in this fil
 
 ## [0.4.1] - 10/04/2022
 
-- [Commands] fix "Convert" and "Convert and Run" commands (windows)
+- [Commands] Fix "Convert" and "Convert and Run" commands (windows)
 
 ## [0.4.0] - 10/04/2022
 

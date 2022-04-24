@@ -7,9 +7,7 @@ import { isTextEditor } from '../utils';
 
 export class DecoratorsSubscription {
     private timeout: ReturnType<typeof setTimeout> | undefined;
-    private showInlineAutomaticProofreader: boolean | undefined;
     constructor() {
-        this.showInlineAutomaticProofreader = workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader');
 	}
 
     public onReady(): void {
@@ -22,7 +20,7 @@ export class DecoratorsSubscription {
 
     private triggerUpdateDecorations(throttle: boolean) {
         if (window.activeTextEditor !== null && !isTextEditor(window.activeTextEditor)) { return; };
-		if (this.showInlineAutomaticProofreader) {
+		if (workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader')) {
 			if (this.timeout) {
 				clearTimeout(this.timeout);
 				this.timeout = undefined;

@@ -2,7 +2,7 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
-## [0.6.1] - 22/04/2022
+## [0.6.1] - 24/04/2022
 
 - [Diagnostics] Added "enableDiagnostics" configuration property
 - [Diagnostics] Fix [Issue #1](https://github.com/gverduci/c64basicv2/issues/1): check lines containing control character

@@ -267,7 +267,25 @@
 		"body": [
 			"read ${1:<variable>}$0"
 		],
-		"description": "The BASIC command READ is used for reading constant values from DATA lines into the indicated variables. "
+		"description": "The BASIC command READ is used for reading constant values from DATA lines into the indicated variables."
+	},
+	"rem": {
+		"prefix": "rem",
+		"body": [
+			"rem ${1:<comment>}",
+			"$0"
+		],
+		"description": "The BASIC comment."
+	},
+	"remMultiline": {
+		"prefix": "rem",
+		"body": [
+			"rem",
+			"rem ${1:<comment>}",
+			"rem",
+			"$0"
+		],
+		"description": "The BASIC comment."
 	},
 	"right$": {
 		"prefix": "right$",

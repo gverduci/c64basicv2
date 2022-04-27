@@ -29,7 +29,7 @@ export function updateDecorations(activeEditor:vscode.TextEditor | undefined) {
     const annotationOver80: vscode.DecorationOptions[] = [];
     for (let index = 0; index < activeEditor.document.lineCount; index++) {
         const line = activeEditor.document.lineAt(index).text;
-        const containsCommand = line.indexOf('{') > -1;
+        const containsCommand = false; // line.indexOf('{') > -1;
         if (line.trim().length > 0 && !containsCommand){
             const checksum = autoProofreader.automaticProofreader(line);
             const checksumTxt = ("   " + checksum).slice(-3);

@@ -26,6 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
 		activeEditor = editor;
 		if (editor && editor.document && editor.document.languageId === 'c64basicv2') {
 			c64basicv2Diagnostics(editor.document);
+			decorators.onReady();
 		}
 	}, null, context.subscriptions);
 

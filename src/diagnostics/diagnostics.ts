@@ -13,7 +13,7 @@ function crushControlChars(lineText: string): string {
 }
 
 function startWihtNumber(lineText: string): boolean {
-    return /^\d/.test(lineText);
+    return lineText.trim().length > 0 ? /^\d/.test(lineText) : true;
 }
 
 const lineChecks = [

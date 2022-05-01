@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -48,7 +48,7 @@
         "languages": [{
             "id": "c64basicv2",
             "aliases": ["C64 BASICV2", "basic v2"],
-            "extensions": [".prg"],
+            "extensions": [".prg", ".bas"],
             "configuration": "./language-configuration.json",
             "icon": {
                 "light": "./icons/c64-light.png",
@@ -89,7 +89,7 @@
 				},
                 "c64basicv2.showInlineAutomaticProofreader": {
 					"type": "boolean",
-					"default": true,
+					"default": false,
 					"markdownDescription": "Enable inline Automatic Proofreader."
 				},
                 "c64basicv2.enableDiagnostics": {

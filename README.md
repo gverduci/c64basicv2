@@ -2,7 +2,7 @@
 
 # **** COMMODORE 64 BASIC V2 **** (c64basicv2) Visual Studio Code Extension
 
-This extension helps you to write *Commodore 64 basic v2* programs (.prg extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers and commands.
+This extension helps you to write *Commodore 64 basic v2* programs (.prg or .bas extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers and commands.
 
 Rules for snippets come from the following pages of C64-Wiki:
 - [BASIC](https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_2.0_.28second_release.29_Commands) 
@@ -121,7 +121,7 @@ Hit F1, search "Convert and Run" then hit enter.
 | `c64basicv2.convertOutputDir`               | output dir                                                            | bin             |
 | `c64basicv2.x64sc`                          | Vice x64sc command path                                               | /usr/bin/x64sc  |
 | `c64basicv2.showCommandLogs`                | Enable log diagnostics for commands (OUTPUT Window)                   | true            |
-| `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader                                   | true            |
+| `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader                                   | false           |
 | `c64basicv2.enableDiagnostics`              | Enable diagnostics for c64 basic v2 text files                        | true            |
 
 ## Task Settings

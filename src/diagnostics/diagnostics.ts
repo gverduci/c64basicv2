@@ -1,8 +1,19 @@
 import * as vscode from 'vscode';
 
+function createDiagnostic(doc: vscode.TextDocument, range: vscode.Range, code: string, message: string, severity: vscode.DiagnosticSeverity): vscode.Diagnostic {
+    const index = 0;
+    const diagnostic = new vscode.Diagnostic(range, message, severity);
+    diagnostic.code = code;
+    return diagnostic;
+}
+
 function crushControlChars(lineText: string): string {
     const crushed = lineText.replace(/\{(\w+|-|\s|\d+|\/|\.)*\}/gi, "_");
     return crushed;
+}
+
+function startWihtNumber(lineText: string): boolean {
+    return /^\d/.test(lineText);
 }
 
 const lineChecks = [
@@ -11,9 +22,15 @@ const lineChecks = [
         createDiagnostic: (doc: vscode.TextDocument, lineOfText: vscode.TextLine, lineIndex: number): vscode.Diagnostic => {
             const index = 0;
             const range = new vscode.Range(lineIndex, index, lineIndex, lineOfText.text.length);
-            const diagnostic = new vscode.Diagnostic(range, "Line over 80 characters!", vscode.DiagnosticSeverity.Error);
-            diagnostic.code = 'OVER80';
-            return diagnostic;
+            return createDiagnostic(doc, range, 'OVER80', "Line over 80 characters!", vscode.DiagnosticSeverity.Error);
+        }
+    },
+    {
+        check:(lineOfText: vscode.TextLine) => !startWihtNumber(lineOfText.text),
+        createDiagnostic: (doc: vscode.TextDocument, lineOfText: vscode.TextLine, lineIndex: number): vscode.Diagnostic => {
+            const index = 0;
+            const range = new vscode.Range(lineIndex, index, lineIndex, lineOfText.text.length);
+            return createDiagnostic(doc, range, 'LINENUN', "Line must start with a number!", vscode.DiagnosticSeverity.Error);
         }
     }
 ];

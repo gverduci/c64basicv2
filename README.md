@@ -132,7 +132,7 @@ Checks implemented:
 | `c64basicv2.x64sc`                          | Vice x64sc command path                                               | /usr/bin/x64sc  |
 | `c64basicv2.showCommandLogs`                | Enable log diagnostics for commands (OUTPUT Window)                   | true            |
 | `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader                                   | false           |
-| `c64basicv2.enableDiagnostics`              | Enable diagnostics for c64 basic v2 text files                        | true            |
+| `c64basicv2.enableDiagnostics`              | Enable diagnostics for c64 basic v2 text files                        | false           |
 
 ## Task Settings
 

@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.6.5",
+    "version": "0.6.6",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -94,7 +94,7 @@
 				},
                 "c64basicv2.enableDiagnostics": {
 					"type": "boolean",
-					"default": true,
+					"default": false,
 					"markdownDescription": "Enable diagnostics for c64 basic v2 text files."
 				}
                 

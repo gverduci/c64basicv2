@@ -113,6 +113,16 @@ Needed settings:
 
 Hit F1, search "Convert and Run" then hit enter.
 
+### Diagnostic
+Check lines for error and warning. 
+
+Checks implemented:
+
+| Code               | Description                                                                                      | Type              |
+| ------------------ | ------------------------------------------------------------------------------------------------ | ----------------- |
+| `OVER80`           | Warns that lines with more then 80 characters cannot be edited in c64, but the program will run  | warning           |
+| `LINENUN`          | Warns that the missing line number will be entered by petcat                                     | warning           |
+
 ## Settings
 
 | Name                                        | Description                                                           | Default value   |

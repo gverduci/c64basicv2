@@ -22,7 +22,7 @@ const lineChecks = [
         createDiagnostic: (doc: vscode.TextDocument, lineOfText: vscode.TextLine, lineIndex: number): vscode.Diagnostic => {
             const index = 0;
             const range = new vscode.Range(lineIndex, index, lineIndex, lineOfText.text.length);
-            return createDiagnostic(doc, range, 'OVER80', "Line over 80 characters!", vscode.DiagnosticSeverity.Error);
+            return createDiagnostic(doc, range, 'OVER80', "Line over 80 characters cannot be edited in c64!", vscode.DiagnosticSeverity.Warning);
         }
     },
     {
@@ -30,7 +30,7 @@ const lineChecks = [
         createDiagnostic: (doc: vscode.TextDocument, lineOfText: vscode.TextLine, lineIndex: number): vscode.Diagnostic => {
             const index = 0;
             const range = new vscode.Range(lineIndex, index, lineIndex, lineOfText.text.length);
-            return createDiagnostic(doc, range, 'LINENUN', "Line must start with a number!", vscode.DiagnosticSeverity.Error);
+            return createDiagnostic(doc, range, 'LINENUN', "The line number will be entered by petcat!", vscode.DiagnosticSeverity.Warning);
         }
     }
 ];

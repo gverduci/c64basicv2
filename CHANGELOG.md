@@ -2,6 +2,10 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.6.5] - 01/05/2022
+
+- [Diagnostics] fix
+
 ## [0.6.2] - 01/05/2022
 
 - [Diagnostics] Added check line start with a number

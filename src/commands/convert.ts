@@ -13,9 +13,15 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 		const outputRelativeDir : string | undefined = configuration.get("convertOutputDir");
 		let command : string | undefined = configuration.get("petcat");
 		if (command && fs.existsSync(command)) {
-			const rootFolder = vscode.workspace.workspaceFolders ? path.normalize(vscode.workspace.workspaceFolders[0].uri.path) : undefined;
+			let rootFolder = vscode.workspace.workspaceFolders ? path.normalize(vscode.workspace.workspaceFolders[0].uri.path) : undefined;
+			if (rootFolder  && process.platform === "win32"){
+				if (rootFolder.indexOf("\\c:\\") > -1){
+					rootFolder=rootFolder.replace("\\c:\\", "c:\\");
+				}
+			}
 			const fileBasename = path.basename(document.fileName);
 			const outputDir = `${rootFolder}${path.sep}${outputRelativeDir}`;
+			
 			const outputFile = `${outputDir}${path.sep}${fileBasename}`;
 			if (outputDir && fs.existsSync(outputDir)) {
 				const basePetcatOptions = [

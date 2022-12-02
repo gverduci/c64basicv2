@@ -3,6 +3,7 @@ import { spawnSync } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as TokenizedBASICFile from "./tokenizedBASICFile";
+import { TextDecoder } from 'util';
 
 export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 	const editor = vscode.window.activeTextEditor;
@@ -13,7 +14,7 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 		const outputRelativeDir : string | undefined = configuration.get("convertOutputDir");
 		let command : string | undefined = configuration.get("petcat");
 		if (command && fs.existsSync(command)) {
-			let rootFolder = vscode.workspace.workspaceFolders ? path.normalize(vscode.workspace.workspaceFolders[0].uri.path) : undefined;
+			let rootFolder = vscode.workspace.workspaceFolders ? path.normalize(vscode.workspace.workspaceFolders[0].uri.fsPath) : undefined;
 			if (rootFolder  && process.platform === "win32"){
 				if (rootFolder.indexOf("\\c:\\") > -1){
 					rootFolder=rootFolder.replace("\\c:\\", "c:\\");
@@ -24,33 +25,35 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 			
 			const outputFile = `${outputDir}${path.sep}${fileBasename}`;
 			if (outputDir && fs.existsSync(outputDir)) {
-				const basePetcatOptions = [
+				const basePetcatArgs = [
 					"-w2", 
 					"-o",
 					outputFile,
 					"--",
 					document.fileName
 				];
-				let petcatOptions = [];
+				let petcatArgs: string[] = [];
 				if (process.platform === "win32"){
-					petcatOptions = ['/c', `"${command}"`];
-						basePetcatOptions.forEach(o=>{
-							let arg = o;
-							if (arg.indexOf("\\c:\\") > -1){
-								arg=arg.replace("\\c:\\", "c:\\");
-							}
-							if (arg.indexOf(" ") > -1){
-								arg = `"${arg}`;
-							}
-							petcatOptions.push(arg);
-						});
+					petcatArgs = ['/c'];
+					if (command.indexOf(" ") > -1) {
+						petcatArgs.push(`"${command}"`);
+					} else {
+						petcatArgs.push(command);
+					}
 					command = process.env.ComSpec || "cmd.exe";
-				} else{
-					petcatOptions = basePetcatOptions;
-				}		
-		
+				} 
+
+				basePetcatArgs.forEach(o=>{
+					let arg = o;
+					if (arg.indexOf(" ") > -1){
+						arg = `"${arg}"`;
+					}
+					petcatArgs.push(arg);
+				});
+
+				let output;
 				if (showCommandLogs) {
-					const output = vscode.window.createOutputChannel('c64basicv2 convert');
+					output = vscode.window.createOutputChannel('c64basicv2 convert');
 					output.show(true);
 					output.appendLine("");
 					output.appendLine("**** COMMODORE 64 BASIC V2 ****");
@@ -62,19 +65,23 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 					output.appendLine(`Command        : ${command}`);
 					output.appendLine(`Command Options:`);
 					output.appendLine("");
-					for (var i = 0; i < petcatOptions.length; i++) {
-						output.appendLine(`  ${petcatOptions[i]}`);
+					for (var i = 0; i < petcatArgs.length; i++) {
+						output.appendLine(`  ${petcatArgs[i]}`);
 					}
 					output.appendLine("");
 					output.appendLine("");
 				}
 
 				if (command){
-					const petcat = spawnSync(command, petcatOptions, {shell: true});
+					const petcat = spawnSync(command, petcatArgs, {shell: true, windowsVerbatimArguments: true});
 					if (petcat){
 						let errorCode = petcat.status;
 						if (errorCode && errorCode > 0) {
 							vscode.window.showErrorMessage(`${fileBasename} conversion error!`);
+							if (showCommandLogs && output) {
+								output.appendLine(`${fileBasename} conversion error!`);
+								output.appendLine(new TextDecoder().decode(petcat.stderr));
+							}
 						} else{
 							vscode.window.showInformationMessage(`${fileBasename} converted!`);
 						}

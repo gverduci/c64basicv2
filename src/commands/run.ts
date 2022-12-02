@@ -8,28 +8,29 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
 		const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
 		let command : string | undefined = configuration.get("x64sc");
 		if (command && fs.existsSync(command)) {
-			const rootFolder = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.path : undefined;
+			const rootFolder = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
 			let baseX64scOptions = [
 				tokenizedBASICFile.outputFile
 			];
 
-			let x64scOptions = [];
+			let x64scOptions: string[] = [];
 			if (process.platform === "win32"){
-				x64scOptions = ['/c', `"${command}"`];
-				baseX64scOptions.forEach(o=>{
-					let arg = o;
-					if (arg.indexOf("\\c:\\") > -1){
-						arg=arg.replace("\\c:\\", "c:\\");
-					}
-					if (arg.indexOf(" ") > -1){
-						arg = `"${arg}`;
-					}
-					x64scOptions.push(arg);
-				});
+				x64scOptions = ['/c'];
+				if (command.indexOf(" ") > -1) {
+					x64scOptions.push(`"${command}"`);
+				} else {
+					x64scOptions.push(command);
+				}
 				command = process.env.ComSpec || "cmd.exe";
-			} else{
-				x64scOptions = baseX64scOptions;
-			}
+			} 
+
+			baseX64scOptions.forEach(o=>{
+				let arg = o;
+				if (arg.indexOf(" ") > -1){
+					arg = `"${arg}"`;
+				}
+				x64scOptions.push(arg);
+			});
 
 			if (showCommandLogs) {
 				const output = vscode.window.createOutputChannel('c64basicv2 Run');

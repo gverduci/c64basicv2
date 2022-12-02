@@ -2,6 +2,10 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.6.7] - 01/05/2022
+
+- [Diagnostics] fix #3 Windows (Path) support
+
 ## [0.6.5] - 01/05/2022
 
 - [Diagnostics] fix

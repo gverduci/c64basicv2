@@ -33,15 +33,6 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 					document.fileName
 				];
 				let petcatArgs: string[] = [];
-				if (process.platform === "win32"){
-					petcatArgs = ['/c'];
-					if (command.indexOf(" ") > -1) {
-						petcatArgs.push(`"${command}"`);
-					} else {
-						petcatArgs.push(command);
-					}
-					command = process.env.ComSpec || "cmd.exe";
-				} 
 
 				basePetcatArgs.forEach(o=>{
 					let arg = o;
@@ -73,7 +64,13 @@ export function convert () : TokenizedBASICFile.TokenizedBASICFile {
 				}
 
 				if (command){
-					const petcat = spawnSync(command, petcatArgs, {shell: true, windowsVerbatimArguments: true});
+					const cmd = '.' + path.sep + path.basename(command);
+					const petcat = spawnSync(cmd, petcatArgs, {
+						shell: true,
+						windowsVerbatimArguments: true, 
+						cwd: path.dirname(command)
+					});
+					
 					if (petcat){
 						let errorCode = petcat.status;
 						if (errorCode && errorCode > 0) {

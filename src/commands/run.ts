@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import { spawn } from 'child_process';
 import * as fs from 'fs';
 import * as TokenizedBASICFile from "./tokenizedBASICFile";
@@ -14,15 +15,6 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
 			];
 
 			let x64scOptions: string[] = [];
-			if (process.platform === "win32"){
-				x64scOptions = ['/c'];
-				if (command.indexOf(" ") > -1) {
-					x64scOptions.push(`"${command}"`);
-				} else {
-					x64scOptions.push(command);
-				}
-				command = process.env.ComSpec || "cmd.exe";
-			} 
 
 			baseX64scOptions.forEach(o=>{
 				let arg = o;
@@ -52,8 +44,11 @@ export function run (tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile) 
 				output.appendLine("");
 			}
 			if (command) {
-				let x64sc = spawn(command, x64scOptions,
+				const cmd = '.' + path.sep + path.basename(command);
+				let x64sc = spawn(cmd, x64scOptions, 
 					{
+						windowsVerbatimArguments: true, 
+					    cwd: path.dirname(command),
 						detached: true,
 						stdio: 'inherit',
 						shell: true

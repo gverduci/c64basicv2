@@ -2,9 +2,13 @@
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
 
+## [0.6.8] - 01/05/2022
+
+- [Commands] other path fix (windows/linux path with spaces)
+
 ## [0.6.7] - 01/05/2022
 
-- [Diagnostics] fix #3 Windows (Path) support
+- [Commands] fix #3 Windows (Path) support
 
 ## [0.6.5] - 01/05/2022
 

@@ -9,8 +9,13 @@ import { decorators } from './decorators/decoratorsSubscription';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	const outputChannel: vscode.OutputChannel = vscode.window.createOutputChannel('c64basicv2');;
+	outputChannel.appendLine("");
+	outputChannel.appendLine("**** COMMODORE 64 BASIC V2 ****");
+	outputChannel.appendLine("");
+
 	// Commands
-	commands.subscription(context);
+	commands.subscription(context, outputChannel);
 	
 	// Diagnostics
 	const c64basicv2Diagnostics = diagnostics.subscription(context);

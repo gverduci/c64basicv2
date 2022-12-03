@@ -1,7 +1,8 @@
-on:
+on:  
   push:
-    branches:
-      - master
+    tags:
+      - '*'
+
 name: Deploy Extension
 jobs:
   deploy:
@@ -14,3 +15,12 @@ jobs:
           args: "publish -p $VSCE_TOKEN"
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+      - name: Package extension
+        uses: lannonbr/vsce-action@3.0.0
+        with:
+          args: "package -o c64basicv2-${{ github.event.release.tag_name }}.vsix"
+      - name: Github Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: c64basicv2-${{ github.event.release.tag_name }}.vsix
+          draft: true

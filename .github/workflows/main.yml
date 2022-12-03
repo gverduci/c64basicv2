@@ -1,0 +1,4 @@
+- name: GitHub Action for vsce
+  # You may pin to the exact commit or the version.
+  # uses: lannonbr/vsce-action@0f3391ee0477b08fae949eb0a875e91e6d20b075
+  uses: lannonbr/vsce-action@3.0.0

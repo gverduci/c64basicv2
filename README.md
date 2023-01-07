@@ -134,6 +134,8 @@ Using the preview button on the editor Toolbar, you can show a panel containing 
 
 ![c64basicv2 Preview](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_preview.png)
 
+The preview uses the "Pet Me 64" font released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
+
 ### Diagnostic
 Check lines for errors and warnings. 
 

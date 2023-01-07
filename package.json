@@ -34,10 +34,36 @@
         "onCommand:c64basicv2.automaticProofreader",
         "onCommand:c64basicv2.convert",
         "onCommand:c64basicv2.convert-run",
+        "onCommand:c64basicv2.command.copySpecialCharacter",
+        "onCommand:c64basicv2.command.copySpecialCharacterChr",
+        "onCommand:mdx-preview.commands.openPreview",
+        "onCommand:mdx-preview.commands.refreshPreview",
         "onStartupFinished"
     ],
     "main": "./out/extension.js",
     "contributes": {
+        "colors": [
+            {
+                "id": "c64.screen.border",
+                "description": "Screen Border Color",
+                "defaults": {
+                "dark": "#6076c5",
+                "light": "#6076c5",
+                "highContrast": "#6076c5",
+                "highContrastLght": "#6076c5"
+                }
+            },
+            {
+                "id": "c64.screen.inside",
+                "description": "Screen Border Color",
+                "defaults": {
+                "dark": "#20398d",
+                "light": "#20398d",
+                "highContrast": "#20398d",
+                "highContrastLght": "#20398d"
+                }
+            }
+        ],
         "themes": [
             {
                 "id": "Visual Studio Dark - c64basicv2",
@@ -158,8 +184,70 @@
                 "command": "c64basicv2.convert-run",
                 "title": "c64basicv2: Convert and Run",
                 "category": "c64basicv2"
+            },
+            {
+                "command": "c64basicv2.command.copySpecialCharacter",
+                "title": "Copy Control Character",
+                "category": "c64basicv2",
+                "icon": "$(symbol-object)"
+            },
+            {
+                "command": "c64basicv2.command.copySpecialCharacterChr",
+                "title": "Copy Control Character (chr$)",
+                "category": "c64basicv2",
+                "icon": "$(symbol-key)"
+            },
+            {
+                "command": "c64basicv2.commands.openPreview",
+                "title": "C64 Open Preview",
+                "category": "c64basicv2",
+                "icon": "$(open-preview)"
+            },
+            {
+                "command": "c64basicv2.commands.refreshPreview",
+                "title": "Refresh Preview",
+                "category": "c64basicv2"
             }
-        ]
+            
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "c64basicv2.commands.openPreview",
+                    "when": "editorLangId == c64basicv2",
+                    "group": "navigation"
+                }
+            ],
+            "view/item/context": [
+                {
+                    "command": "c64basicv2.command.copySpecialCharacter",
+                    "when": "view == specialCharacter",
+                    "group": "inline"
+                },
+                {
+                    "command": "c64basicv2.command.copySpecialCharacterChr",
+                    "when": "view == specialCharacter",
+                    "group": "inline"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "c64basicv2",
+                    "title": "c64 basic v2",
+                    "icon": "icons/c64-light.png"
+                }
+            ]
+        },
+        "views": {
+            "c64basicv2": [
+                {
+                    "id": "specialCharacter",
+                    "name": "Control character"
+                }
+            ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

@@ -1,0 +1,65 @@
+html, body {
+  min-height:100%;overflow: auto;
+  font: normal 12px "PetMe64";
+}
+
+body {
+  height:100vh;
+}
+
+/**
+ * C64 blue screen (color from vice)
+ */
+section {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 40rem;
+  height: fit-content;
+  margin-left: -20rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  color: #6C5EB5;
+  text-transform: uppercase;
+  z-index: 1;
+  min-height: 400px;
+}
+/* Outside sceen: light blue*/
+section:before {
+  position: absolute;
+  left: -4rem;
+  right: -4rem;
+  top: 0px;
+  bottom: 0px;
+  content: "";
+  background: #6C5EB5;
+  z-index: -1;
+  
+}
+/* Inside screen: blue*/
+section:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 3.5rem;
+  bottom: 3.5rem;
+  content: "";
+  background: #352879;
+  z-index: -1;
+}
+
+@keyframes blinking {
+  0% {
+    background: #352879;
+  }
+  50% {
+    background: #6C5EB5;
+  }
+}
+
+#cursor {
+  width: 1em;
+  height: 1em;
+  animation: blinking 0.75s infinite;
+}

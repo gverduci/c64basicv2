@@ -1,8 +1,10 @@
 import {
 	window,
 	workspace,
+	ExtensionContext
 } from 'vscode';
 import * as autoProofreaderDecorator from './automaticProofreader';
+import * as specialCharacterDecorator from './specialCharacterDecorator';
 import { isTextEditor } from '../utils';
 
 export class DecoratorsSubscription {
@@ -10,15 +12,15 @@ export class DecoratorsSubscription {
     constructor() {
 	}
 
-    public onReady(): void {
-		this.triggerUpdateDecorations(false);
+    public onReady(context: ExtensionContext): void {
+		this.triggerUpdateDecorations(false, context);
 	}
 
-    public onActiveTextEditorChanged(): void {
-		this.triggerUpdateDecorations(true);
+    public onActiveTextEditorChanged(context: ExtensionContext): void {
+		this.triggerUpdateDecorations(true, context);
 	}
 
-    private triggerUpdateDecorations(throttle: boolean) {
+    private triggerUpdateDecorations(throttle: boolean, context: ExtensionContext) {
         if (window.activeTextEditor !== null && !isTextEditor(window.activeTextEditor)) { return; };
 		if (workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader')) {
 			if (this.timeout) {
@@ -26,9 +28,13 @@ export class DecoratorsSubscription {
 				this.timeout = undefined;
 			}
 			if (throttle) {
-				this.timeout = setTimeout(() => autoProofreaderDecorator.updateDecorations(window.activeTextEditor), 500);
+				this.timeout = setTimeout(() => {
+					autoProofreaderDecorator.updateDecorations(window.activeTextEditor);
+					specialCharacterDecorator.updateDecorations(window.activeTextEditor, context);
+				}, 500);
 			} else {
 				autoProofreaderDecorator.updateDecorations(window.activeTextEditor);
+				specialCharacterDecorator.updateDecorations(window.activeTextEditor, context);
 			}
 		}
 	}

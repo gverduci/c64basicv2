@@ -2,7 +2,7 @@
 
 # **** COMMODORE 64 BASIC V2 **** (c64basicv2) Visual Studio Code Extension
 
-This extension helps you to write *Commodore 64 basic v2* programs (.prg or .bas extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers and commands.
+This extension helps you to write *Commodore 64 basic v2* programs (.prg or .bas extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers, commands, a control characters view, and a simple preview.
 
 Rules for snippets come from the following pages of C64-Wiki:
 - [BASIC](https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_2.0_.28second_release.29_Commands) 
@@ -45,6 +45,8 @@ The provided features are:
 - Tasks: suggested in this README
 - Command: Automatic Proofreader, Convert, Convert and Run
 - Keyboard Shortcuts
+- Control character view in the Primary Sidebar 
+- Code preview
 
 ### Syntax highlighting
 An example of syntax highlighting is:
@@ -62,35 +64,42 @@ Control characters in c64 basic are special characters like this:
 
 ![c64basicv2 logo](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/clrCtrlChar.png)
 
-Books and old magazines represent special characters using this syntax: {ctrl character name}. For example, the previous character is written with this syntax: {clr}.
+Books and old magazines represent special characters using the symbolic syntax: {ctrl character name}. For example, the previous character is written with this syntax: {clr}.
 
 If you use this control character in a print statement (print "{clr}"), c64 clears the screen.
 
 You can find the list of control characters on this page: [Control character](https://www.c64-wiki.com/wiki/control_character).
 
-Snippets for Control character transform string like {clr} to the correspondig command chr$(xxx). In our example: chr$(147).
+Snippets for Control character suggest a symbolic character or the corresponding chr$(xxx). In our example: chr$(147).
 
-But pay attention: Inside print statement you have to remove the double apex, print "{clr}" become print {clr} and then print chr$(147).
+If you use the chr$ mode, pay attention: Inside a *print* statement, you have to remove the double apex, print "{clr}" become print {clr} and then print chr$(147).
 
 ![c64basicv2 Control Character Snippet](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlcharsnippets.gif)
 
-There is another option: using *petcat* you can write directly the following Control characters without conversion to chr$:
+The best option is using the symbolic representation, *petcat* will convert the symbol for you. *petcat* recognize the following symbols:
+```
+{CTRL-A}    {CTRL-B}    {stop}      {CTRL-D}    {wht}   {CTRL-F}    {CTRL-G}
+{dish}      {ensh}      {CTRL-K}    {CTRL-L}    {swlc}  {CTRL-O}
+{CTRL-P}    {down}      {rvon}      {home}      {del}   {CTRL-U}    {CTRL-V}     {CTRL-W}
+{CTRL-X}    {CTRL-Y}    {CTRL-Z}    {esc}       {red}   {rght}      {grn}        {blu}
 
-{clear}             {home}              {right}         {left}              {up}                {down}
-{reverse on}        {reverse off}       {black}         {white}             {red}               {cyan}
-{purple}            {green}             {blue}          {yellow}            {orange}            {brown}
-{pink}              {dark gray}         {gray}          {light green}       {light blue}        {light gray}
-{f1}                {f2}                {f3}            {f4}                {f5}                {f6}
-{f7}                {f8}                {space}         {pi}
-
-[petcat src](https://github.com/svn2github/vice-emu/blob/524c58c4c2159dbe82520d36b7dde6a082eeddf7/vice/src/petcat.c#L683)
+{orng}      {f1}        {f3}        {f5}
+{f7}        {f2}        {f4}        {f6}        {f8}    {sret}      {swuc}
+{blk}       {up}        {rvof}      {clr}       {inst}  {brn}       {lred}       {gry1}
+{gry2}      {lgrn}      {lblu}      {gry}       {pur}   {left}      {yel}        {cyn}
+```
+Other details: [petcat src](https://github.com/svn2github/vice-emu/blob/524c58c4c2159dbe82520d36b7dde6a082eeddf7/vice/src/petcat.c#L683)
 
 ### Command - Automatic Proofreader (Keyboard Shortcut: ctrl+shift+p ctrl+shift+r)
-An error-checking command that helps you type in COMPUTE! (gazette magazine and books) program listings without typing mistakes. This command emulates (I hope) the original "The Automatic Proofreader" program published on COMPUTE!'s Gazette. This is an example:
+Automatic Proofreader is an error-checking command that helps you to type program listings without mistakes.
+
+This command emulates (I hope) the original "The Automatic Proofreader" program published on COMPUTE!'s Gazette. 
+
+An example:
 
 ![c64basicv2 Automatic Proofreader](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/proofreaderEx.png)
 
-Hit F1, search "Automatic Proofreader" then hit enter: a popup shows the checksum for the current line.
+Hit "F1", search "Automatic Proofreader" and press "enter": a popup shows the checksum for the current line.
 
 Since version 0.5.0, "Automatic Proofreader" is displayed on each row after the 80th column.
 
@@ -99,28 +108,40 @@ Since version 0.5.0, "Automatic Proofreader" is displayed on each row after the 
 For others info on "The Automatic Proofreader" original program see [Wikipedia](https://en.wikipedia.org/wiki/The_Automatic_Proofreader).
 
 ### Command - Convert (Keyboard Shortcut: ctrl+shift+b)
-Use this command to convert current prg to tokenized BASIC using Vice petcat command.
+Use this command to convert the current program to tokenized BASIC using the Vice petcat command.
 Needed settings:
 - c64basicv2.petcat           - default value: /usr/bin/petcat
 - c64basicv2.convertOutputDir - default value: bin
 
-Hit F1, search "Convert" then hit enter.
+Hit "F1", search "Convert" and press "enter".
 
 ### Command - Convert and Run (Keyboard Shortcut: f5)
-Convert and run current prg using Vice x64sc command.
+Convert and run the current program using the Vice x64sc command.
 Needed settings:
 - c64basicv2.x64sc            - default value: /usr/bin/x64sc
 
 Hit F1, search "Convert and Run" then hit enter.
 
+### Control characters view on the Primary Sidebar 
+Using the Control characters view in the Primary Sidebar, you can visually add a control character:
+
+![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlCharView.png)
+
+Using the first command ({}) on the line you can add the symbolic representation of the control character (ex: {wht}). Using the second command (abc) you can add the chr$ command.
+
+### Preview
+Using the preview button on the editor Toolbar, you can show a panel containing your code formatted like the C64 screen. This view is useful for checking control characters.
+
+![c64basicv2 Preview](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_preview.png)
+
 ### Diagnostic
-Check lines for error and warning. 
+Check lines for errors and warnings. 
 
 Checks implemented:
 
 | Code               | Description                                                                                      | Type              |
 | ------------------ | ------------------------------------------------------------------------------------------------ | ----------------- |
-| `OVER80`           | Warns that lines with more then 80 characters cannot be edited in c64, but the program will run  | warning           |
+| `OVER80`           | Warns that lines with more than 80 characters cannot be edited in c64, but the program will run  | warning           |
 | `LINENUN`          | Warns that the missing line number will be entered by petcat                                     | warning           |
 
 ## Settings
@@ -138,7 +159,7 @@ Checks implemented:
 
 Commands "Convert" and "Convert and Run" replace task settings.
 
-Configure `tasks.json` and hit Crtl+Shift+B to convert/run the currently open basic program file to a C64 prg with the same name.
+Configure `tasks.json` and hit Crtl+Shift+B to convert/run the currently open basic program file to a C64 program with the same name.
 Install *vice* to use *petcat* and *x64sc*.
 
 ```json
@@ -186,7 +207,7 @@ Install *vice* to use *petcat* and *x64sc*.
 \src -> source programs
 ```
 
-*convertAll.sh*: to convert all the prg (src folder) between ASCII, PETSCII and tokenized BASIC.
+*convertAll.sh*: to convert all the programs (src folder) between ASCII, PETSCII, and tokenized BASIC.
 
 ```bash
 #!/bin/bash

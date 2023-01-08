@@ -156,6 +156,7 @@ Checks implemented:
 | `c64basicv2.showCommandLogs`                | Enable log diagnostics for commands (OUTPUT Window)                   | true            |
 | `c64basicv2.showInlineAutomaticProofreader` | Enable inline Automatic Proofreader                                   | false           |
 | `c64basicv2.enableDiagnostics`              | Enable diagnostics for c64 basic v2 text files                        | false           |
+| `c64basicv2.showCtrlCharacterInfo`          | Enable control character info on mouse hover                          | false           |
 
 ## Task Settings
 

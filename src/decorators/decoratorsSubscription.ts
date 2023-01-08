@@ -22,19 +22,30 @@ export class DecoratorsSubscription {
 
     private triggerUpdateDecorations(throttle: boolean, context: ExtensionContext) {
         if (window.activeTextEditor !== null && !isTextEditor(window.activeTextEditor)) { return; };
-		if (workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader')) {
+		if (
+			workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader') || 
+		    workspace.getConfiguration('c64basicv2').get('showCtrlCharacterInfo')
+		) {
 			if (this.timeout) {
 				clearTimeout(this.timeout);
 				this.timeout = undefined;
 			}
 			if (throttle) {
 				this.timeout = setTimeout(() => {
-					autoProofreaderDecorator.updateDecorations(window.activeTextEditor);
-					specialCharacterDecorator.updateDecorations(window.activeTextEditor, context);
+					if (workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader')){
+						autoProofreaderDecorator.updateDecorations(window.activeTextEditor);
+					}
+					if (workspace.getConfiguration('c64basicv2').get('showCtrlCharacterInfo')){
+						specialCharacterDecorator.updateDecorations(window.activeTextEditor, context);
+					}
 				}, 500);
 			} else {
-				autoProofreaderDecorator.updateDecorations(window.activeTextEditor);
-				specialCharacterDecorator.updateDecorations(window.activeTextEditor, context);
+				if (workspace.getConfiguration('c64basicv2').get('showInlineAutomaticProofreader')){
+					autoProofreaderDecorator.updateDecorations(window.activeTextEditor);
+				}
+				if (workspace.getConfiguration('c64basicv2').get('showCtrlCharacterInfo')){
+					specialCharacterDecorator.updateDecorations(window.activeTextEditor, context);
+				}
 			}
 		}
 	}

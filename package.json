@@ -36,8 +36,8 @@
         "onCommand:c64basicv2.convert-run",
         "onCommand:c64basicv2.command.copySpecialCharacter",
         "onCommand:c64basicv2.command.copySpecialCharacterChr",
-        "onCommand:mdx-preview.commands.openPreview",
-        "onCommand:mdx-preview.commands.refreshPreview",
+        "onCommand:c64basicv2.commands.openPreview",
+        "onCommand:c64basicv2.commands.refreshPreview",
         "onStartupFinished"
     ],
     "main": "./out/extension.js",
@@ -141,6 +141,11 @@
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "Enable diagnostics for c64 basic v2 text files."
+                },
+                "c64basicv2.showCtrlCharacterInfo": {
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Enable control character info on mouse hover."
                 }
             }
         },
@@ -208,7 +213,7 @@
                 "title": "Refresh Preview",
                 "category": "c64basicv2"
             }
-            
+
         ],
         "menus": {
             "editor/title": [

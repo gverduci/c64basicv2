@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SID Register</title>
+    <style>
+        .snippet{
+            text-decoration: underline; 
+            color:lightblue;
+        }
+        .string{
+            text-decoration: underline; 
+            color:lightblue;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tbody>
+        <tr>
+            <th>Base</th>
+            <th colspan="2"><div class="string" data="s=54272">S=54272</div></th>
+            <th colspan="8"></th>
+        </tr>
+        <tr>
+            <th>Addr</th>
+            <th colspan="8">Data</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>128</th>
+            <th>64</th>
+            <th>32</th>
+            <th>16</th>
+            <th>8</th>
+            <th>4</th>
+            <th>2</th>
+            <th>1</th>
+            <th>Voice 1</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s,">s+0</div></td>
+            <td>F7</td>
+            <td>F6</td>
+            <td>F5</td>
+            <td>F4</td>
+            <td>F3</td>
+            <td>F2</td>
+            <td>F1</td>
+            <td>F0</td>
+            <td>Freq.lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+1,">s+1</div></td>
+            <td>F15</td>
+            <td>F14</td>
+            <td>F13</td>
+            <td>F12</td>
+            <td>F11</td>
+            <td>F10</td>
+            <td>F9</td>
+            <td>F8</td>
+            <td>Freq.hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+2,">s+2</div></td>
+            <td>PW7</td>
+            <td>PW6</td>
+            <td>PW5</td>
+            <td>PW4</td>
+            <td>PW3</td>
+            <td>PW2</td>
+            <td>PW1</td>
+            <td>PW0</td>
+            <td>PW lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+3,">s+3</div></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>PW11</td>
+            <td>PW10</td>
+            <td>PW9</td>
+            <td>PW8</td>
+            <td>PW hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+4,">s+4</div></td>
+            <td><div class="string" data="poke s+4,128">Noise</div></td>
+            <td><div class="string" data="poke s+4,64">Square</div></td>
+            <td><div class="string" data="poke s+4,32">STooth</div></td>
+            <td><div class="string" data="poke s+4,16">Triang</div></td>
+            <td>Test</td>
+            <td>Ring</td>
+            <td>Sync</td>
+            <td>Gate</td>
+            <td>Control</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+5,">s+5</div></td>
+            <td>ATK3</td>
+            <td>ATK2</td>
+            <td>ATK1</td>
+            <td>ATK0</td>
+            <td>DC3</td>
+            <td>DC2</td>
+            <td>DC1</td>
+            <td>DC0</td>
+            <td>Att/Dec</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+6,">s+6</div></td>
+            <td>STN3</td>
+            <td>STN2</td>
+            <td>STN1</td>
+            <td>STN0</td>
+            <td>RIS3</td>
+            <td>RIS2</td>
+            <td>RIS1</td>
+            <td>RIS0</td>
+            <td>Sus/Rel</td>
+            <td>wo</td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Voice 2</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+7,">s+7</div></td>
+            <td>F7</td>
+            <td>F6</td>
+            <td>F5</td>
+            <td>F4</td>
+            <td>F3</td>
+            <td>F2</td>
+            <td>F1</td>
+            <td>F0</td>
+            <td>F.lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+8,">s+8</div></td>
+            <td>F15</td>
+            <td>F14</td>
+            <td>F13</td>
+            <td>F12</td>
+            <td>F11</td>
+            <td>F10</td>
+            <td>F9</td>
+            <td>F8</td>
+            <td>F.hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+9,">s+9</div></td>
+            <td>PW7</td>
+            <td>PW6</td>
+            <td>PW5</td>
+            <td>PW4</td>
+            <td>PW3</td>
+            <td>PW2</td>
+            <td>PW1</td>
+            <td>PW0</td>
+            <td>PW lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+10,">s+10</div></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>PW11</td>
+            <td>PW10</td>
+            <td>PW9</td>
+            <td>PW8</td>
+            <td>PW hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+11,">s+11</div></td>
+            <td><div class="string" data="poke s+11,128">Noise</div></td>
+            <td><div class="string" data="poke s+11,64">Square</div></td>
+            <td><div class="string" data="poke s+11,32">STooth</div></td>
+            <td><div class="string" data="poke s+11,16">Triang</div></td>
+            <td>Test</td>
+            <td>Ring</td>
+            <td>Sync</td>
+            <td>Gate</td>
+            <td>Control</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+12,">s+12</div></td>
+            <td>ATK3</td>
+            <td>ATK2</td>
+            <td>ATK1</td>
+            <td>ATK0</td>
+            <td>DC3</td>
+            <td>DC2</td>
+            <td>DC1</td>
+            <td>DC0</td>
+            <td>Att/Dec</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+13,">s+13</div></td>
+            <td>STN3</td>
+            <td>STN2</td>
+            <td>STN1</td>
+            <td>STN0</td>
+            <td>RIS3</td>
+            <td>RIS2</td>
+            <td>RIS1</td>
+            <td>RIS0</td>
+            <td>Sus/Rel</td>
+            <td>wo</td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Voice 3</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+14,">s+14</div></td>
+            <td>F7</td>
+            <td>F6</td>
+            <td>F5</td>
+            <td>F4</td>
+            <td>F3</td>
+            <td>F2</td>
+            <td>F1</td>
+            <td>F0</td>
+            <td>F.lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+15,">s+15</div></td>
+            <td>F15</td>
+            <td>F14</td>
+            <td>F13</td>
+            <td>F12</td>
+            <td>F11</td>
+            <td>F10</td>
+            <td>F9</td>
+            <td>F8</td>
+            <td>F.hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+16,">s+16</div></td>
+            <td>PW7</td>
+            <td>PW6</td>
+            <td>PW5</td>
+            <td>PW4</td>
+            <td>PW3</td>
+            <td>PW2</td>
+            <td>PW1</td>
+            <td>PW0</td>
+            <td>PW lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+17,">s+17</div></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>PW11</td>
+            <td>PW10</td>
+            <td>PW9</td>
+            <td>PW8</td>
+            <td>PW hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+18,">s+18</div></td>
+            <td><div class="string" data="poke s+18,128">Noise</div></td>
+            <td><div class="string" data="poke s+18,64">Square</div></td>
+            <td><div class="string" data="poke s+18,32">STooth</div></td>
+            <td><div class="string" data="poke s+18,16">Triang</div></td>
+            <td>Test</td>
+            <td>Ring</td>
+            <td>Sync</td>
+            <td>Gate</td>
+            <td>Control</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+19,">s+19</div></td>
+            <td>ATK3</td>
+            <td>ATK2</td>
+            <td>ATK1</td>
+            <td>ATK0</td>
+            <td>DC3</td>
+            <td>DC2</td>
+            <td>DC1</td>
+            <td>DC0</td>
+            <td>Att/Dec</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+20,">s+20</div></td>
+            <td>STN3</td>
+            <td>STN2</td>
+            <td>STN1</td>
+            <td>STN0</td>
+            <td>RIS3</td>
+            <td>RIS2</td>
+            <td>RIS1</td>
+            <td>RIS0</td>
+            <td>Sus/Rel</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Filter</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+21,">s+21</div></td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>FC2</td>
+            <td>FC1</td>
+            <td>FC0</td>
+            <td>FC.lo</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+22,">s+22</div></td>
+            <td>FC10</td>
+            <td>FC9</td>
+            <td>FC8</td>
+            <td>FC7</td>
+            <td>FC6</td>
+            <td>FC5</td>
+            <td>FC4</td>
+            <td>FC3</td>
+            <td>FC.hi</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+23,">s+23</div></td>
+            <td>RES3</td>
+            <td>RES2</td>
+            <td>RES1</td>
+            <td>RES0</td>
+            <td>FiltEX</td>
+            <td>Filt 3</td>
+            <td>Filt 2</td>
+            <td>Filt 1</td>
+            <td>RES/Filt</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <td><div class="snippet" data="poke s+24,">s+24</div></td>
+            <td>3OFF</td>
+            <td>HP</td>
+            <td>BP</td>
+            <td>LP</td>
+            <td>VOL3</td>
+            <td>VOL2</td>
+            <td>VOL1</td>
+            <td>VOL0</td>
+            <td>Mode/Vol</td>
+            <td>wo</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Misc</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td><div class="string" data="peek s+25">s+25</div></td>
+            <td>PX7</td>
+            <td>PX6</td>
+            <td>PX5</td>
+            <td>PX4</td>
+            <td>PX3</td>
+            <td>PX2</td>
+            <td>PX1</td>
+            <td>PX0</td>
+            <td>POTX</td>
+            <td>ro</td>
+        </tr>
+        <tr>
+            <td><div class="string" data="peek s+26">s+26</div></td>
+            <td>PY7</td>
+            <td>PY6</td>
+            <td>PY5</td>
+            <td>PY4</td>
+            <td>PY3</td>
+            <td>PY2</td>
+            <td>PY1</td>
+            <td>PY0</td>
+            <td>POTY</td>
+            <td>ro</td>
+        </tr>
+        <tr>
+            <td><div class="string" data="peek s+27">s+27</div></td>
+            <td>07</td>
+            <td>06</td>
+            <td>05</td>
+            <td>04</td>
+            <td>03</td>
+            <td>02</td>
+            <td>01</td>
+            <td>00</td>
+            <td>OSC3/Rand</td>
+            <td>ro</td>
+        </tr>
+        <tr>
+            <td><div class="string" data="peek s+28">s+28</div></td>
+            <td>E7</td>
+            <td>E6</td>
+            <td>E5</td>
+            <td>E4</td>
+            <td>E3</td>
+            <td>E2</td>
+            <td>E1</td>
+            <td>E0</td>
+            <td>ENV3</td>
+            <td>ro</td>
+        </tr>
+    </tbody>
+    <script nonce="${nonce}" src="${scriptUri}"></script>
+</table>
+</body>
+</html>

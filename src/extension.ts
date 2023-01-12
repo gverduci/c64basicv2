@@ -6,6 +6,7 @@ import * as diagnostics from './diagnostics/diagnosticsSubscription';
 
 import { decorators } from './decorators/decoratorsSubscription';
 import { SpecialCharacters } from './views/SpecialCharacters';
+import { SIDWebview } from './webview/sidWebview';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -65,6 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const disposables: vscode.Disposable[] = [];
 	context.subscriptions.push(new vscode.Disposable(() => vscode.Disposable.from(...disposables).dispose()));
+	context.subscriptions.push(new SIDWebview(context));
 	const specialCharacters = new SpecialCharacters(context);
 	disposables.push(vscode.window.registerTreeDataProvider('specialCharacter', specialCharacters));
 }

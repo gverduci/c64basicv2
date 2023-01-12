@@ -250,7 +250,15 @@
                 {
                     "id": "specialCharacter",
                     "name": "Control character"
-                }
+                },
+                {
+					"type": "webview",
+					"id": "c64basicv2.view.sid",
+					"name": "SID Register",
+					"contextualTitle": "c64basicv2",
+					"icon": "$(add)",
+					"visibility": "visible"
+				}
             ]
         }
     },

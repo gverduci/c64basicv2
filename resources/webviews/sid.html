@@ -7,11 +7,19 @@
     <style>
         .snippet{
             text-decoration: underline; 
-            color:lightblue;
+            color:#569cd6;
         }
         .string{
             text-decoration: underline; 
-            color:lightblue;
+            color:#569cd6;
+        }
+        th{
+            background-color:#383838;
+        }
+        table {border: none;border-collapse: collapse;}
+        body {
+            padding-left: 8px;
+            padding-top: 8px;
         }
     </style>
 </head>
@@ -19,13 +27,8 @@
     <table>
         <tbody>
         <tr>
-            <th>Base</th>
-            <th colspan="2"><div class="string" data="s=54272">S=54272</div></th>
-            <th colspan="8"></th>
-        </tr>
-        <tr>
-            <th>Addr</th>
-            <th colspan="8">Data</th>
+            <th colspan="3"><div style="display: flex;"><div>Addr&nbsp;</div><div class="string" data="s=54272">S=54272</div></div></th>
+            <th colspan="6">Data</th>
             <th>Name</th>
             <th></th>
         </tr>
@@ -43,7 +46,7 @@
             <th></th>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s,">s+0</div></td>
+            <th><div class="snippet" data="poke s,">s+0</div></th>
             <td>F7</td>
             <td>F6</td>
             <td>F5</td>
@@ -56,7 +59,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+1,">s+1</div></td>
+            <th><div class="snippet" data="poke s+1,">s+1</div></th>
             <td>F15</td>
             <td>F14</td>
             <td>F13</td>
@@ -69,7 +72,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+2,">s+2</div></td>
+            <th><div class="snippet" data="poke s+2,">s+2</div></th>
             <td>PW7</td>
             <td>PW6</td>
             <td>PW5</td>
@@ -82,7 +85,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+3,">s+3</div></td>
+            <th><div class="snippet" data="poke s+3,">s+3</div></th>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -95,7 +98,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+4,">s+4</div></td>
+            <th><div class="snippet" data="poke s+4,">s+4</div></th>
             <td><div class="string" data="poke s+4,128">Noise</div></td>
             <td><div class="string" data="poke s+4,64">Square</div></td>
             <td><div class="string" data="poke s+4,32">STooth</div></td>
@@ -108,7 +111,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+5,">s+5</div></td>
+            <th><div class="snippet" data="poke s+5,">s+5</div></th>
             <td>ATK3</td>
             <td>ATK2</td>
             <td>ATK1</td>
@@ -121,7 +124,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+6,">s+6</div></td>
+            <th><div class="snippet" data="poke s+6,">s+6</div></th>
             <td>STN3</td>
             <td>STN2</td>
             <td>STN1</td>
@@ -148,7 +151,7 @@
             <th></th>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+7,">s+7</div></td>
+            <th><div class="snippet" data="poke s+7,">s+7</div></th>
             <td>F7</td>
             <td>F6</td>
             <td>F5</td>
@@ -161,7 +164,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+8,">s+8</div></td>
+            <th><div class="snippet" data="poke s+8,">s+8</div></th>
             <td>F15</td>
             <td>F14</td>
             <td>F13</td>
@@ -174,7 +177,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+9,">s+9</div></td>
+            <th><div class="snippet" data="poke s+9,">s+9</div></th>
             <td>PW7</td>
             <td>PW6</td>
             <td>PW5</td>
@@ -187,7 +190,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+10,">s+10</div></td>
+            <th><div class="snippet" data="poke s+10,">s+10</div></th>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -200,7 +203,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+11,">s+11</div></td>
+            <th><div class="snippet" data="poke s+11,">s+11</div></th>
             <td><div class="string" data="poke s+11,128">Noise</div></td>
             <td><div class="string" data="poke s+11,64">Square</div></td>
             <td><div class="string" data="poke s+11,32">STooth</div></td>
@@ -213,7 +216,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+12,">s+12</div></td>
+            <th><div class="snippet" data="poke s+12,">s+12</div></th>
             <td>ATK3</td>
             <td>ATK2</td>
             <td>ATK1</td>
@@ -226,7 +229,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+13,">s+13</div></td>
+            <th><div class="snippet" data="poke s+13,">s+13</div></th>
             <td>STN3</td>
             <td>STN2</td>
             <td>STN1</td>
@@ -253,7 +256,7 @@
             <th></th>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+14,">s+14</div></td>
+            <th><div class="snippet" data="poke s+14,">s+14</div></th>
             <td>F7</td>
             <td>F6</td>
             <td>F5</td>
@@ -266,7 +269,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+15,">s+15</div></td>
+            <th><div class="snippet" data="poke s+15,">s+15</div></th>
             <td>F15</td>
             <td>F14</td>
             <td>F13</td>
@@ -279,7 +282,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+16,">s+16</div></td>
+            <th><div class="snippet" data="poke s+16,">s+16</div></th>
             <td>PW7</td>
             <td>PW6</td>
             <td>PW5</td>
@@ -292,7 +295,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+17,">s+17</div></td>
+            <th><div class="snippet" data="poke s+17,">s+17</div></th>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -305,7 +308,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+18,">s+18</div></td>
+            <th><div class="snippet" data="poke s+18,">s+18</div></th>
             <td><div class="string" data="poke s+18,128">Noise</div></td>
             <td><div class="string" data="poke s+18,64">Square</div></td>
             <td><div class="string" data="poke s+18,32">STooth</div></td>
@@ -318,7 +321,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+19,">s+19</div></td>
+            <th><div class="snippet" data="poke s+19,">s+19</div></th>
             <td>ATK3</td>
             <td>ATK2</td>
             <td>ATK1</td>
@@ -331,7 +334,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+20,">s+20</div></td>
+            <th><div class="snippet" data="poke s+20,">s+20</div></th>
             <td>STN3</td>
             <td>STN2</td>
             <td>STN1</td>
@@ -357,7 +360,7 @@
             <th></th>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+21,">s+21</div></td>
+            <th><div class="snippet" data="poke s+21,">s+21</div></th>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -370,7 +373,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+22,">s+22</div></td>
+            <th><div class="snippet" data="poke s+22,">s+22</div></th>
             <td>FC10</td>
             <td>FC9</td>
             <td>FC8</td>
@@ -383,7 +386,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+23,">s+23</div></td>
+            <th><div class="snippet" data="poke s+23,">s+23</div></th>
             <td>RES3</td>
             <td>RES2</td>
             <td>RES1</td>
@@ -396,7 +399,7 @@
             <td>wo</td>
         </tr>
         <tr>
-            <td><div class="snippet" data="poke s+24,">s+24</div></td>
+            <th><div class="snippet" data="poke s+24,">s+24</div></th>
             <td>3OFF</td>
             <td>HP</td>
             <td>BP</td>
@@ -422,7 +425,7 @@
             <th></th>
         </tr>
         <tr>
-            <td><div class="string" data="peek s+25">s+25</div></td>
+            <th><div class="string" data="peek s+25">s+25</div></th>
             <td>PX7</td>
             <td>PX6</td>
             <td>PX5</td>
@@ -435,7 +438,7 @@
             <td>ro</td>
         </tr>
         <tr>
-            <td><div class="string" data="peek s+26">s+26</div></td>
+            <th><div class="string" data="peek s+26">s+26</div></th>
             <td>PY7</td>
             <td>PY6</td>
             <td>PY5</td>
@@ -448,7 +451,7 @@
             <td>ro</td>
         </tr>
         <tr>
-            <td><div class="string" data="peek s+27">s+27</div></td>
+            <th><div class="string" data="peek s+27">s+27</div></th>
             <td>07</td>
             <td>06</td>
             <td>05</td>
@@ -461,7 +464,7 @@
             <td>ro</td>
         </tr>
         <tr>
-            <td><div class="string" data="peek s+28">s+28</div></td>
+            <th><div class="string" data="peek s+28">s+28</div></th>
             <td>E7</td>
             <td>E6</td>
             <td>E5</td>

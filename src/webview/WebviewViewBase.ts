@@ -110,13 +110,15 @@ export abstract class WebviewViewBase implements WebviewViewProvider, Disposable
 		const scriptUri = Uri.joinPath(webRootUri, this.scriptUri);
 		const content = new TextDecoder('utf8').decode(await workspace.fs.readFile(uri));
 		const html = content.replace(
-			/\$\{(nonce|scriptUri)\}/g,
+			/\$\{(nonce|scriptUri|webRootUri)\}/g,
 			(_substring: string, token: string) => {
 				switch (token) {
 					case 'nonce':
 						return this.getNonce();
 					case 'scriptUri':
 						return webview.asWebviewUri(scriptUri).toString();
+					case 'webRootUri':
+						return webview.asWebviewUri(webRootUri).toString();
 					default:
 						return '';
 				}

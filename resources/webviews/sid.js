@@ -31,6 +31,16 @@
         });
     });
 
+    const adsrBtn = /** @type {HTMLElement} */ (document.querySelector('.adsrBtn'));
+    adsrBtn.addEventListener('click', (evt) => {
+        const adsrHi = /** @type {HTMLElement} */ (document.querySelector('.adsrHi'));
+        const adsrLow = /** @type {HTMLElement} */ (document.querySelector('.adsrLow'));
+        const valHi = parseInt(adsrHi.value, 10) << 4;
+        const valLow = parseInt(adsrLow.value, 10);
+        const val = valHi + valLow;
+        onStringClicked(`${val}`);
+    });
+
     
     // console.log('Initial state', oldState);
 

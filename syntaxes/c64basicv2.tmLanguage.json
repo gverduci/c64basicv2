@@ -72,14 +72,7 @@
 		"other": {
 			"patterns": [{
 				"name": "keyword.other.c64basicv2",
-		    	"match": "(abs|asc|atn|close|clr|cmd|cont|cos|data|exp|fre|get|get#|input|input#|int|len|let|list|load|log|new|next|on|open|peek|π|poke|pos|print|print#|read|restore|rnd|run|save|sgn|sin|spc|sqr|status|st|stop|sys|tab|tan|time|ti|time|ti|usr|val|verify|wait)"
-			}]
-		},
-		"otherString": {
-			"patterns": [{
-				"name": "keyword.other.c64basicv2",
-		    	"begin": "(chr|left|mid|right|str|time|ti)",
-				"end": "\\$"
+		    	"match": "(abs|asc|atn|close|clr|cmd|cont|cos|data|exp|fre|get|get#|input|input#|int|len|let|list|load|log|new|next|on|open|peek|π|poke|pos|print|print#|read|restore|rnd|run|save|sgn|sin|spc|sqr|status|sys|tab|tan|time\\$|time|ti\\$|ti|usr|val|verify|wait|chr\\$|left\\$|mid\\$|right\\$|str\\$|stop|st)"
 			}]
 		},
 		"operators": {

@@ -8,17 +8,17 @@ export function isTextEditor(editor: TextEditor | undefined): boolean {
     return false;
 }
 
-export function getFileExtensions():string[] | undefined {
-	return [
+export function getFileExtensions(): string[] | undefined {
+    return [
         ".prg",
         ".bas"
     ];
 }
 
-export function isC64basicv2Extension(extension: string):boolean {
+export function isC64basicv2Extension(extension: string): boolean {
     const extensions = getFileExtensions();
-    if (extensions){
-	    return extensions.indexOf(extension) > -1;
+    if (extensions) {
+        return extensions.indexOf(extension) > -1;
     }
     return false;
 }

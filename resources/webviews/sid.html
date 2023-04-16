@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#000000">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${cspSource}; script-src 'nonce-${nonce}';">
+    <link rel="stylesheet" type="text/css" href="${stylesUri}">
     <title>SID Register</title>
     <style>
         .snippet {
@@ -179,6 +181,9 @@
 </head>
 
 <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script defer="defer" nonce="${nonce}" src="${scriptUri}"></script>
     <table>
         <tbody>
             <tr>
@@ -976,7 +981,6 @@
              <li class="white h">H</li>
         </ul>
     </div>
-    <script nonce="${nonce}" src="${scriptUri}"></script>
 </body>
 
 </html>

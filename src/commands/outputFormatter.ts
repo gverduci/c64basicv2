@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 export function outputFormatter (platform: string,  currentDir: string | undefined, currentFile: string, command:string, options:string[], outputChannel: vscode.OutputChannel) {
     const configuration = vscode.workspace.getConfiguration('c64basicv2');
-	const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
+    const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
     if (showCommandLogs) {
         outputChannel.appendLine("**** Run configuration ****");
         outputChannel.appendLine(`Platform       : ${platform}`);
@@ -11,7 +11,7 @@ export function outputFormatter (platform: string,  currentDir: string | undefin
         outputChannel.appendLine(`Command        : ${command}`);
         outputChannel.appendLine(`Command Options:`);
         outputChannel.appendLine("");
-        for (var i = 0; i < options.length; i++) {
+        for (let i = 0; i < options.length; i++) {
             outputChannel.appendLine(`  ${options[i]}`);
         }
         outputChannel.appendLine("");
@@ -21,7 +21,7 @@ export function outputFormatter (platform: string,  currentDir: string | undefin
 
 function logFormatter (type:string, message: string, outputChannel: vscode.OutputChannel) {
     const configuration = vscode.workspace.getConfiguration('c64basicv2');
-	const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
+    const showCommandLogs : boolean | undefined = configuration.get("showCommandLogs");
     if (showCommandLogs) {
         outputChannel.appendLine(`${type}        : ${message}`);
     }

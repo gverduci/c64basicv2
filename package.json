@@ -34,8 +34,6 @@
         "onCommand:c64basicv2.automaticProofreader",
         "onCommand:c64basicv2.convert",
         "onCommand:c64basicv2.convert-run",
-        "onCommand:c64basicv2.command.copySpecialCharacter",
-        "onCommand:c64basicv2.command.copySpecialCharacterChr",
         "onCommand:c64basicv2.commands.openPreview",
         "onCommand:c64basicv2.commands.refreshPreview",
         "onStartupFinished"
@@ -161,7 +159,7 @@
             {
                 "command": "c64basicv2.convert-run",
                 "key": "f5",
-                "when": "editorLangId = c64basicv2 || resourceLangId == c64basicv2"
+                "when": "editorLangId == c64basicv2 || resourceLangId == c64basicv2"
             },
             {
                 "command": "c64basicv2.convert",
@@ -191,18 +189,6 @@
                 "category": "c64basicv2"
             },
             {
-                "command": "c64basicv2.command.copySpecialCharacter",
-                "title": "Copy Control Character",
-                "category": "c64basicv2",
-                "icon": "$(symbol-object)"
-            },
-            {
-                "command": "c64basicv2.command.copySpecialCharacterChr",
-                "title": "Copy Control Character (chr$)",
-                "category": "c64basicv2",
-                "icon": "$(symbol-key)"
-            },
-            {
                 "command": "c64basicv2.commands.openPreview",
                 "title": "C64 Open Preview",
                 "category": "c64basicv2",
@@ -222,18 +208,6 @@
                     "when": "editorLangId == c64basicv2",
                     "group": "navigation"
                 }
-            ],
-            "view/item/context": [
-                {
-                    "command": "c64basicv2.command.copySpecialCharacter",
-                    "when": "view == specialCharacter",
-                    "group": "inline"
-                },
-                {
-                    "command": "c64basicv2.command.copySpecialCharacterChr",
-                    "when": "view == specialCharacter",
-                    "group": "inline"
-                }
             ]
         },
         "viewsContainers": {
@@ -248,9 +222,13 @@
         "views": {
             "c64basicv2": [
                 {
-                    "id": "specialCharacter",
-                    "name": "Control character"
-                },
+					"type": "webview",
+					"id": "c64basicv2.view.chars",
+					"name": "Control characters",
+					"contextualTitle": "c64basicv2",
+					"icon": "$(add)",
+					"visibility": "visible"
+				},
                 {
 					"type": "webview",
 					"id": "c64basicv2.view.sid",
@@ -263,6 +241,13 @@
         }
     },
     "scripts": {
+        "install:all": "npm install && cd webview-ui/sid && npm install && cd ../chars && npm install",
+        "start:sidwebview": "cd webview-ui/sid && npm run start",
+        "build:sidwebview": "cd webview-ui/sid && npm run build",
+        "test:sidwebview": "cd webview-ui/sid && npm run test",
+        "start:charswebview": "cd webview-ui/chars && npm run start",
+        "build:charswebview": "cd webview-ui/chars && npm run build",
+        "test:charswebview": "cd webview-ui/chars && npm run test",
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",

@@ -6,22 +6,21 @@ export class SIDWebview extends WebviewViewBase {
         super(
             context,
             'c64basicv2.view.sid',
-            'sid.html',
-            'sid.js',
+            'sid',
             'SID Register',
         );
     }
 
     override onMessageReceived(data: Message) {
-        switch (data.type) {
-            case 'string':
+        switch (data.command) {
+            case 'text':
             {
-                window.activeTextEditor?.insertSnippet(new SnippetString(data.value));
+                window.activeTextEditor?.insertSnippet(new SnippetString(data.text));
                 break;
             }
             case 'snippet':
             {
-                window.activeTextEditor?.insertSnippet(new SnippetString(data.value).appendPlaceholder("number", 1));
+                window.activeTextEditor?.insertSnippet(new SnippetString(data.text).appendPlaceholder("number", 1));
                 break;
             }
         }

@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 import { controlCharsObjects } from '../helpers/controlCharsHelper';
-import { SpecialCharacter } from "../views/SpecialCharacter";
+import { SpecialCharacter } from "../helpers/SpecialCharacter";
 
 export const annotationDecorationType = vscode.window.createTextEditorDecorationType({
     after: {
@@ -14,8 +13,8 @@ export const annotationDecorationType = vscode.window.createTextEditorDecoration
 
 const ctrlChars: SpecialCharacter[] = [];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function updateDecorations(activeEditor: vscode.TextEditor | undefined, context: vscode.ExtensionContext) {
-    const { extensionPath } = context;
     if (!activeEditor) {
         return;
     }
@@ -29,16 +28,10 @@ export function updateDecorations(activeEditor: vscode.TextEditor | undefined, c
         ctrlChars.forEach(c => {
             const containsCommand = line.indexOf(c.symbolic);
             if (line.trim().length > 0 && containsCommand > -1) {
-                const name = `uni${c.unicode.charCodeAt(0).toString(16).toUpperCase()}.svg`;
-                const icon = path.join(extensionPath, 'resources', 'chars', name);
-                const iconUri = vscode.Uri.file(icon);
-                const iconUriString = iconUri.toString();
                 const hoverMessage = new vscode.MarkdownString();
                 hoverMessage.appendMarkdown(`**${c.id} - ${c.symbolic}**`);
                 hoverMessage.appendMarkdown('\n\n');
                 hoverMessage.appendMarkdown(`*${c.description}*`);
-                hoverMessage.appendMarkdown('\n\n');
-                hoverMessage.appendMarkdown(`![svg](${iconUriString}|width=75)`);
                 const decoration = {
                     range: new vscode.Range(index, containsCommand, index, containsCommand + 5),
                     hoverMessage

@@ -237,7 +237,20 @@ for filename in ./bin/*.prg; do
 done
 ```
 
+To extract a prg from a d64 image disk and convert it to a text file:
+
+```bash
+c1541 diskname.d64 -read "file name" filename.prg
+petcat -2 -o filename.prg.txt -- filename.prg
+```
+
 Install *vice* to use *petcat*, *x64sc* and *c1541*.
+
+*IMPORTANT*
+If you use vice on *Ubuntu* remenber to install bin files (kernal, basic, etc.):
+- download the zip for Window
+- extract files
+- copy all folders to /usr/share/vice (leaving out bin)
 
 ## Release Notes
 

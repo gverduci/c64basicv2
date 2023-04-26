@@ -38,9 +38,8 @@ function ADSR() {
          */
         const drawADSR = (attack: number, decay: number, sustainLevel: number, release: number, sustain: number) => {
             const headlen = 6; // length of head in pixels
-            const bottomAreaADSR = 30;
             const bottomAreaGate = 30;
-            const bottomArea = bottomAreaADSR + bottomAreaGate;
+            const bottomArea = bottomAreaGate;
             const preGatePostRelease = 0.5; //s
             const maxs = preGatePostRelease + attack + decay + sustain + release + preGatePostRelease;
             const startx = 30;
@@ -105,67 +104,90 @@ function ADSR() {
                 ctx.lineWidth = .5;
                 ctx.font = "lighter 10px monospace";
 
+                // time axis
+                ctx.beginPath();
+                ctx.moveTo(startx - 2 * headlen, bottomy);
+                ctx.lineTo(maxWidth, bottomy);
+                ctx.stroke();
+
                 // attack
                 ctx.beginPath();
-                ctx.moveTo(basex, bottomy + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(basex, bottomy + bottomAreaADSR);
-                ctx.moveTo(basex, bottomy + bottomAreaADSR - headlen);
-                ctx.lineTo(attackp, bottomy + bottomAreaADSR - headlen);
+                ctx.moveTo(basex, bottomy - headlen);
+                ctx.lineTo(basex, bottomy + headlen);
                 ctx.stroke();
-                ctx.strokeText("A", (attackp - (attackp - basex) / 2) - 5, bottomy + bottomAreaADSR - 2 * headlen);
+                ctx.strokeText("A", (attackp - (attackp - basex) / 2) - headlen, bottomy + 2 * headlen);
 
                 // decay
                 ctx.beginPath();
-                ctx.moveTo(attackp, bottomy + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(attackp, bottomy + bottomAreaADSR);
-                ctx.moveTo(attackp, bottomy + bottomAreaADSR - headlen);
-                ctx.lineTo(decayp, bottomy + bottomAreaADSR - headlen);
+                ctx.moveTo(attackp, bottomy - headlen);
+                ctx.lineTo(attackp, bottomy + headlen);
                 ctx.stroke();
-                ctx.strokeText("D", (decayp - (decayp - attackp) / 2) - 5, bottomy + bottomAreaADSR - 2 * headlen);
+                ctx.strokeText("D", (decayp - (decayp - attackp) / 2) - headlen, bottomy + 2 * headlen);
 
                 // sustain
                 ctx.beginPath();
-                ctx.moveTo(decayp, bottomy + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(decayp, bottomy + bottomAreaADSR);
-                ctx.moveTo(decayp, bottomy + bottomAreaADSR - headlen);
-                ctx.lineTo(sustainx, bottomy + bottomAreaADSR - headlen);
+                ctx.moveTo(decayp, bottomy - headlen);
+                ctx.lineTo(decayp, bottomy + headlen);
                 ctx.stroke();
-                ctx.strokeText("S", (sustainx - (sustainx - decayp) / 2) - 5, bottomy + bottomAreaADSR - 2 * headlen);
+                ctx.strokeText("S", (sustainx - (sustainx - decayp) / 2) - headlen, bottomy + 2 * headlen);
 
                 // release
                 ctx.beginPath();
-                ctx.moveTo(sustainx, bottomy + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(sustainx, bottomy + bottomAreaADSR);
-                ctx.moveTo(sustainx, bottomy + bottomAreaADSR - headlen);
-                ctx.lineTo(releasex, bottomy + bottomAreaADSR - headlen);
-                ctx.moveTo(releasex, bottomy + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(releasex, bottomy + bottomAreaADSR);
+                ctx.moveTo(sustainx, bottomy - headlen);
+                ctx.lineTo(sustainx, bottomy + headlen);
+                ctx.moveTo(releasex, bottomy - headlen);
+                ctx.lineTo(releasex, bottomy + headlen);
                 ctx.stroke();
-                ctx.strokeText("R", (releasex - (releasex - sustainx) / 2) - 5, bottomy + bottomAreaADSR - 2 * headlen);
+                ctx.strokeText("R", (releasex - (releasex - sustainx) / 2) - headlen, bottomy + 2 * headlen);
+
+                // last part
+                ctx.beginPath();
+                ctx.moveTo(releasex, bottomy - headlen);
+                ctx.moveTo(releasex, bottomy + headlen);
+                ctx.stroke();
+                ctx.strokeText("time", releasex + 2, bottomy + 2 * headlen);
 
                 // gate
                 ctx.beginPath();
-                ctx.moveTo(basex, bottomy + bottomAreaGate + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(basex, bottomy + bottomAreaGate + bottomAreaADSR);
-                ctx.moveTo(basex, bottomy + bottomAreaGate + bottomAreaADSR - headlen);
-                ctx.lineTo(sustainx, bottomy + bottomAreaGate + bottomAreaADSR - headlen);
-                ctx.moveTo(sustainx, bottomy + bottomAreaGate + bottomAreaADSR - 2 * headlen);
-                ctx.lineTo(sustainx, bottomy + bottomAreaGate + bottomAreaADSR);
+                ctx.moveTo(basex, bottomy + bottomAreaGate - 2 * headlen);
+                ctx.lineTo(basex, bottomy + bottomAreaGate);
+                ctx.moveTo(basex, bottomy + bottomAreaGate - headlen);
+                ctx.lineTo(sustainx, bottomy + bottomAreaGate - headlen);
+                ctx.moveTo(sustainx, bottomy + bottomAreaGate - 2 * headlen);
+                ctx.lineTo(sustainx, bottomy + bottomAreaGate);
                 ctx.stroke();
-                ctx.strokeText("Gate", (sustainx - (sustainx - basex) / 2) - 5, bottomy + bottomAreaGate + bottomAreaADSR - 2 * headlen);
-
-                // Amplitude
+                ctx.strokeText("Gate", (sustainx - (sustainx - basex) / 2) - headlen, bottomy + bottomAreaGate + 1 * headlen);
+                
+                // amplitude axis
                 ctx.beginPath();
-                ctx.moveTo(startx - 2 * headlen, peaky);
-                ctx.lineTo(startx, peaky);
-                ctx.moveTo(startx - headlen, peaky);
-                ctx.lineTo(startx - headlen, bottomy);
-                ctx.moveTo(startx - 2 * headlen, bottomy);
-                ctx.lineTo(startx, bottomy);
+                ctx.moveTo(startx, 0);
+                ctx.lineTo(startx, bottomy + 2 * headlen);
                 ctx.stroke();
-                ctx.strokeText("Peak", startx + 1, peaky + 5);
-                ctx.strokeText("Ampl.", startx + 1, ((bottomy - peaky) / 2) + 5);
-                ctx.strokeText("Zero", startx + 1, bottomy - 5);
+
+                ctx.beginPath();
+                if (sustainy !== peaky){
+                    // peek
+                    ctx.moveTo(startx - headlen, peaky);
+                    ctx.lineTo(startx + headlen, peaky);
+                }
+                if (sustainy !== bottomy){
+                    // Sl
+                    ctx.moveTo(startx - headlen, sustainy);
+                    ctx.lineTo(startx + headlen, sustainy);
+                    ctx.stroke();
+                }
+                if (sustainy !== peaky){
+                    ctx.strokeText("Peak", startx + headlen, (peaky - headlen / 2) + headlen);
+                }
+                ctx.translate(startx - 2 * headlen, ((bottomy - peaky) / 2) + headlen - 35);
+                ctx.rotate(-Math.PI / 2);
+                ctx.translate(-startx + 2 * headlen, -((bottomy - peaky) / 2) - headlen + 35);
+                ctx.strokeText("amplitude", startx - 2 * headlen, ((bottomy - peaky) / 2) + headlen - 35);
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                if (sustainy !== bottomy){
+                    ctx.strokeText("Sl", startx + headlen, (sustainy - headlen / 2) + headlen);
+                }
+                ctx.stroke();
             }
         };
         if (canvasContext)
@@ -295,7 +317,7 @@ function ADSR() {
             <canvas ref={canvasRef} width="425" height="220"></canvas>
             <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
                 <div style={{ display: "grid" }}>
-                    <label htmlFor="attack">Attack time</label>
+                    <label htmlFor="attack">Attack time (A)</label>
                     <VSCodeDropdown id="attack" onChange={(e) => { handleAttackChange(e); }} value={attackSelected} style={{ height: "28px", width: "150px" }}>
                         {
                             attackValues.map(r => (<VSCodeOption key={`d${r.value}`} value={`${r.value}`}>{r.label}</VSCodeOption>))
@@ -303,7 +325,7 @@ function ADSR() {
                     </VSCodeDropdown>
                 </div>
                 <div style={{ marginLeft: "16px", display: "grid" }}>
-                    <label htmlFor="decay">Decay time</label>
+                    <label htmlFor="decay">Decay time (D)</label>
                     <VSCodeDropdown onChange={(e) => { handleDecayChange(e); }} value={decaySelected} style={{ height: "28px", width: "150px" }}>
                         {
                             decayValues.map(r => (<VSCodeOption key={`d${r.value}`} value={`${r.value}`}>{r.label}</VSCodeOption>))
@@ -317,7 +339,7 @@ function ADSR() {
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
                 <div style={{ display: "grid" }}>
-                    <label htmlFor="decay">Sustain level</label>
+                    <label htmlFor="decay">Sustain level (Sl)</label>
                     <VSCodeDropdown onChange={(e) => { handleSustainChange(e); }} value={sustainLevelSelected} style={{ height: "28px", width: "150px" }}>
                         {
                             sustainLevelValues.map(r => (<VSCodeOption key={`s${r.value}`} value={`${r.value}`}>{r.label}</VSCodeOption>))
@@ -325,7 +347,7 @@ function ADSR() {
                     </VSCodeDropdown>
                 </div>
                 <div style={{ marginLeft: "16px", display: "grid" }}>
-                    <label htmlFor="decay">Release time</label>
+                    <label htmlFor="decay">Release time (R)</label>
                     <VSCodeDropdown onChange={(e) => { handleReleaseChange(e); }} value={releaseSelected} style={{ height: "28px", width: "150px" }} >
                         {
                             releaseValues.map(r => (<VSCodeOption key={`r${r.value}`} value={`${r.value}`}>{r.label}</VSCodeOption>))
@@ -340,5 +362,14 @@ function ADSR() {
         </>
     );
 }
+
+
+/**
+ * https://archive.org/details/The_Commodore_64_Music_Book/page/n49/mode/2up
+ * https://archive.org/details/Compute_s_All_About_the_Commodore_64_Volume_Two/page/284/mode/2up
+ *                  A   D   S   R
+ * banjo effect     0   7   0   5           POKE 54277,7 : POKE 54278,5
+ * organ            2   0   15  5   4
+ */
 
 export default ADSR;

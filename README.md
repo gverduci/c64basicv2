@@ -4,7 +4,7 @@
 
 This extension helps you to write *Commodore 64 basic v2* programs (.prg or .bas extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers, commands, a control characters view, and a simple preview.
 
-Rules for snippets come from the following pages of C64-Wiki:
+Rules for snippets come from the following pages of [C64-Wiki](https://www.c64-wiki.com/):
 - [BASIC](https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_2.0_.28second_release.29_Commands) 
 - [Control character](https://www.c64-wiki.com/wiki/control_character) 
 
@@ -46,6 +46,7 @@ The provided features are:
 - Command: Automatic Proofreader, Convert, Convert and Run
 - Keyboard Shortcuts
 - Control character view in the Primary Sidebar 
+- Sid info view (address and ADSR calculator) in the Primary Sidebar  
 - Code preview
 
 ### Syntax highlighting
@@ -122,12 +123,21 @@ Needed settings:
 
 Hit F1, search "Convert and Run" then hit enter.
 
-### Control characters view on the Primary Sidebar 
+### CHARACTERS view on the Primary Sidebar 
 Using the Control characters view in the Primary Sidebar, you can visually add a control character:
 
 ![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlCharView.png)
 
-Using the first command ({}) on the line you can add the symbolic representation of the control character (ex: {wht}). Using the second command (abc) you can add the chr$ command.
+Click on the character to add in the code the corresponding symbol or click on the number to add the chr$ command.
+
+### SID REGISTER view (address and ADSR calculator) in the Primary Sidebar
+Using this view, you can show Sid registries and add the poke command directly in the code:
+
+![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_sidRegView.png)
+
+The ADSR section allow you to select the desired envelope and add the calculated value in the code:
+
+![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_sidADSRView)
 
 ### Preview
 Using the preview button on the editor Toolbar, you can show a panel containing your code formatted like the C64 screen. This view is useful for checking control characters.

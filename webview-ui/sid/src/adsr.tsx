@@ -84,6 +84,16 @@ function ADSR() {
                 // sustain line
                 ctx.beginPath();
                 ctx.moveTo(decayp, sustainy);
+                ctx.lineTo(decayp + (sustainx-decayp)/2 - 12, sustainy);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.setLineDash([3, 3]);
+                ctx.moveTo(decayp + (sustainx-decayp)/2 - 12, sustainy);
+                ctx.lineTo(decayp + (sustainx-decayp)/2 + 12, sustainy);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.setLineDash([]);
+                ctx.moveTo(decayp + (sustainx-decayp)/2 + 12, sustainy);
                 ctx.lineTo(sustainx, sustainy);
                 ctx.stroke();
 

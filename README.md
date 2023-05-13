@@ -123,28 +123,30 @@ Needed settings:
 
 Hit F1, search "Convert and Run" then hit enter.
 
-### CHARACTERS view on the Primary Sidebar 
-Using the Control characters view in the Primary Sidebar, you can visually add a control character:
+### CHARACTER view on the Primary Sidebar 
+Using the Control characters view, you can visually add a control character:
 
 ![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlCharView.png)
 
-Click on the character to add in the code the corresponding symbol or click on the number to add the chr$ command.
+Click on the character to add the corresponding symbol in the code, or click on the number to add the chr$ command.
+
+The font is "Pet Me 64", released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
 
 ### SID REGISTER view (address and ADSR calculator) in the Primary Sidebar
 Using this view, you can show Sid registries and add the poke command directly in the code:
 
 ![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_sidRegView.png)
 
-The ADSR section allow you to select the desired envelope and add the calculated value in the code:
+The ADSR section allows you to select the desired envelope and add the calculated value in the code:
 
 ![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_sidADSRView)
 
 ### Preview
-Using the preview button on the editor Toolbar, you can show a panel containing your code formatted like the C64 screen. This view is useful for checking control characters.
+Using the preview button on the editor Toolbar, you can show a panel containing your code formatted like the C64 screen. This view is good for checking control characters.
 
 ![c64basicv2 Preview](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_preview.png)
 
-The preview uses the "Pet Me 64" font released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
+The preview uses the "Pet Me 64" font, released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
 
 ### Diagnostic
 Check lines for errors and warnings. 

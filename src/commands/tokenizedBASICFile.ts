@@ -1,4 +1,4 @@
 export interface TokenizedBASICFile {
-	outputFile: string;
-	outputDir: string;
-  };
+    outputFile: string;
+    outputDir: string;
+}

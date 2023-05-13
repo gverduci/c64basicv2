@@ -55,19 +55,18 @@
 		],
 		"description": "The BASIC-Command DATA is used to store constant information in the program code, and is used with the BASIC-command READ. "
 	},
-	"def":{
+	"def": {
 		"prefix": "def",
 		"body": [
 			"def fn ${1:<function name>}(${2:<parameter name>})=${3:<mathematical expression>}",
 			"$0"
 		],
-		"description":"The BASIC-command DEF defines a function with exactly one single numeric argument which can be executed with FN afterwards."
+		"description": "The BASIC-command DEF defines a function with exactly one single numeric argument which can be executed with FN afterwards."
 	},
 	"dim": {
 		"prefix": "dim",
 		"body": [
 			"dim ${1:<variable>}(${2:<d1>})$0"
-			
 		],
 		"description": "The BASIC command DIM allocates space in array memory for a new array"
 	},
@@ -78,12 +77,12 @@
 		],
 		"description": "EXP is a mathematical function that evaluates the inverse natural LOG of the argument."
 	},
-	"fn":{
+	"fn": {
 		"prefix": "fn",
 		"body": [
 			"fn ${1:<function name>}(${2:<number>})$0"
 		],
-		"description":"The BASIC command FN executes a function which has been defined previously in the course of the program with the BASIC-command DEF."
+		"description": "The BASIC command FN executes a function which has been defined previously in the course of the program with the BASIC-command DEF."
 	},
 	"for": {
 		"prefix": "for",
@@ -385,404 +384,12 @@
 		],
 		"description": "WAIT is a keyword in the built-in BASIC interpreter, which waits for a given memory location to match specific bit constellations."
 	},
-	"{clr}": {
-		"prefix": "{clr}",
-		"body": [
-			"chr$(147)$0"
-		],
-		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen."
-	},
-	"{clear}": {
-		"prefix": "{clear}",
-		"body": [
-			"chr$(147)$0"
-		],
-		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen."
-	},
-	"{home}": {
-		"prefix": "{home}",
-		"body": [
-			"chr$(19)$0"
-		],
-		"description": "Home: Next character will be printed in the upper left-hand corner of the screen."
-	},
-	"{right}": {
-		"prefix": "{right}",
-		"body": [
-			"chr$(29)$0"
-		],
-		"description": "Advances the cursor one character position without printing anything."
-	},
-	"{left}": {
-		"prefix": "{left}",
-		"body": [
-			"chr$(157)$0"
-		],
-		"description": "Moves the cursor one character position backwards, without printing or deleting anything."
-	},
-	"{down}": {
-		"prefix": "{down}",
-		"body": [
-			"chr$(17)$0"
-		],
-		"description": "Cursor down: Next character will be printed in subsequent column one text line further down the screen."
-	},
-	"{up}": {
-		"prefix": "{up}",
-		"body": [
-			"chr$(145)$0"
-		],
-		"description": "Cursor up: Next character will be printed in subsequent column one text line further up the screen."
-	},
-	"{blk}": {
-		"prefix": "{blk}",
-		"body": [
-			"chr$(144)$0"
-		],
-		"description": "Changes the text color to white."
-	},
-	"{black}": {
-		"prefix": "{black}",
-		"body": [
-			"chr$(144)$0"
-		],
-		"description": "Changes the text color to white."
-	},
-	"{wht}": {
-		"prefix": "{wht}",
-		"body": [
-			"chr$(5)$0"
-		],
-		"description": "Changes the text color to white."
-	},
-	"{white}": {
-		"prefix": "{white}",
-		"body": [
-			"chr$(5)$0"
-		],
-		"description": "Changes the text color to white."
-	},
-	"{red}": {
-		"prefix": "{red}",
-		"body": [
-			"chr$(28)$0"
-		],
-		"description": "Changes the text color to red."
-	},
-	"{cyn}": {
-		"prefix": "{cyn}",
-		"body": [
-			"chr$(159)$0"
-		],
-		"description": "Changes the text color to cyan."
-	},
-	"{cyan}": {
-		"prefix": "{cyan}",
-		"body": [
-			"chr$(159)$0"
-		],
-		"description": "Changes the text color to cyan."
-	},
-	"{pur}": {
-		"prefix": "{pur}",
-		"body": [
-			"chr$(156)$0"
-		],
-		"description": "Changes the text color to purple."
-	},
-	"{purple}": {
-		"prefix": "{purple}",
-		"body": [
-			"chr$(156)$0"
-		],
-		"description": "Changes the text color to purple."
-	},
-	"{grn}": {
-		"prefix": "{grn}",
-		"body": [
-			"chr$(30)$0"
-		],
-		"description": "Changes the text color to green."
-	},
-	"{green}": {
-		"prefix": "{green}",
-		"body": [
-			"chr$(30)$0"
-		],
-		"description": "Changes the text color to green."
-	},
-	"{blu}": {
-		"prefix": "{blu}",
-		"body": [
-			"chr$(31)$0"
-		],
-		"description": "Changes the text color to blue."
-	},
-	"{blue}": {
-		"prefix": "{blue}",
-		"body": [
-			"chr$(31)$0"
-		],
-		"description": "Changes the text color to blue."
-	},
-	"{yel}": {
-		"prefix": "{yel}",
-		"body": [
-			"chr$(158)$0"
-		],
-		"description": "Changes the text color to yellow."
-	},
-	"{yellow}": {
-		"prefix": "{yellow}",
-		"body": [
-			"chr$(158)$0"
-		],
-		"description": "Changes the text color to yellow."
-	},
-	"{rvs on}": {
-		"prefix": "{rvs on}",
-		"body": [
-			"chr$(18)$0"
-		],
-		"description": "Control character: Reverse on: Selects reverse video text."
-	},
-	"{reverse on}": {
-		"prefix": "{reverse on}",
-		"body": [
-			"chr$(18)$0"
-		],
-		"description": "Control character: Reverse on: Selects reverse video text."
-	},
-	"{rvs off}": {
-		"prefix": "{rvs off}",
-		"body": [
-			"chr$(146)$0"
-		],
-		"description": "Control character: Reverse off: De-selects reverse video text."
-	},
-	"{reverse off}": {
-		"prefix": "{reverse off}",
-		"body": [
-			"chr$(146)$0"
-		],
-		"description": "Control character: Reverse off: De-selects reverse video text."
-	},
-	"{orange}": {
-		"prefix": "{orange}",
-		"body": [
-			"chr$(129)$0"
-		],
-		"description": "Changes the text color to orange."
-	},
-	"[<1>]": {
-		"prefix": "[<1>]",
-		"body": [
-			"chr$(129)$0"
-		],
-		"description": "Changes the text color to orange."
-	},
-	"{brown}": {
-		"prefix": "{brown}",
-		"body": [
-			"chr$(149)$0"
-		],
-		"description": "Changes the text color to brown."
-	},
-	"[<2>]": {
-		"prefix": "[<2>]",
-		"body": [
-			"chr$(149)$0"
-		],
-		"description": "Changes the text color to brown."
-	},
-	"{pink}": {
-		"prefix": "{pink}",
-		"body": [
-			"chr$(150)$0"
-		],
-		"description": "Changes the text color to pink."
-	},
-	"[<3>]": {
-		"prefix": "[<3>]",
-		"body": [
-			"chr$(150)$0"
-		],
-		"description": "Changes the text color to pink."
-	},
-	"{dark grey}": {
-		"prefix": "{dark grey}",
-		"body": [
-			"chr$(151)$0"
-		],
-		"description": "Changes the text color to darkgrey."
-	},
-	"[<4>]": {
-		"prefix": "[<4>]",
-		"body": [
-			"chr$(151)$0"
-		],
-		"description": "Changes the text color to pink."
-	},
-	"{grey}": {
-		"prefix": "{grey}",
-		"body": [
-			"chr$(152)$0"
-		],
-		"description": "Changes the text color to grey."
-	},
-	"[<5>]": {
-		"prefix": "[<5>]",
-		"body": [
-			"chr$(152)$0"
-		],
-		"description": "Changes the text color to grey."
-	},
-	"{light green}": {
-		"prefix": "{light green}",
-		"body": [
-			"chr$(153)$0"
-		],
-		"description": "Changes the text color to lightgreen."
-	},
-	"[<6>]": {
-		"prefix": "[<6>]",
-		"body": [
-			"chr$(153)$0"
-		],
-		"description": "Changes the text color to lightgreen."
-	},
-	"{light blue}": {
-		"prefix": "{light blue}",
-		"body": [
-			"chr$(154)$0"
-		],
-		"description": "Changes the text color to lightblue."
-	},
-	"[<7>]": {
-		"prefix": "[<7>]",
-		"body": [
-			"chr$(154)$0"
-		],
-		"description": "Changes the text color to lightblue."
-	},
-	"{light grey}": {
-		"prefix": "{light grey}",
-		"body": [
-			"chr$(155)$0"
-		],
-		"description": "Changes the text color to lightgrey."
-	},
-	"[<8>]": {
-		"prefix": "[<8>]",
-		"body": [
-			"chr$(155)$0"
-		],
-		"description": "Changes the text color to lightgrey."
-	},
-	"{f1}": {
-		"prefix": "{f1}",
-		"body": [
-			"chr$(133)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f2}": {
-		"prefix": "{f2}",
-		"body": [
-			"chr$(137)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f3}": {
-		"prefix": "{f3}",
-		"body": [
-			"chr$(134)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f4}": {
-		"prefix": "{f4}",
-		"body": [
-			"chr$(138)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f5}": {
-		"prefix": "{f5}",
-		"body": [
-			"chr$(135)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f6}": {
-		"prefix": "{f6}",
-		"body": [
-			"chr$(139)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f7}": {
-		"prefix": "{f7}",
-		"body": [
-			"chr$(136)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{f8}": {
-		"prefix": "{f8}",
-		"body": [
-			"chr$(140)$0"
-		],
-		"description": "To use for input with GET"
-	},
-	"{del}": {
-		"prefix": "{del}",
-		"body": [
-			"chr$(20)$0"
-		],
-		"description": "Delete, or backspace; erases the previous character and moves the cursor one character position to the left."
-	},
-	"{inst}": {
-		"prefix": "{inst}",
-		"body": [
-			"chr$(148)$0"
-		],
-		"description": "Insert: Makes room for extra characters at the current cursor position, by pushing existing characters at that position further to the right."
-	},
-	"{run/stop}": {
-		"prefix": "{run/stop}",
-		"body": [
-			"chr$(3)$0"
-		],
-		"description": "Uset by GET query if RUN/STOP has been deactivated"
-	},
-	"{ctrl+i}": {
-		"prefix": "{ctrl+i}",
-		"body": [
-			"chr$(9)$0"
-		],
-		"description": "Enables changing the character set using the SHIFT + Commodore key combination."
-	},
 	"{return}": {
 		"prefix": "{return}",
 		"body": [
 			"chr$(13)$0"
 		],
 		"description": "Control character: return."
-	},
-	"{ctrl+n}": {
-		"prefix": "{ctrl+n}",
-		"body": [
-			"chr$(14)$0"
-		],
-		"description": "Select the lowercase/uppercase character set."
-	},
-	"{ctrl+/}": {
-		"prefix": "{ctrl+/}",
-		"body": [
-			"chr$(149)$0"
-		],
-		"description": "Select the uppercase/semigraphics character set."
 	},
 	"{space}": {
 		"prefix": "{space}",
@@ -791,18 +398,1221 @@
 		],
 		"description": "Control character: Space."
 	},
-	"{shift return}": {
-		"prefix": "{shift return}",
-		"body": [
-			"chr$(141)$0"
-		],
-		"description": "Control character: new row."
-	},
 	"{pi}": {
 		"prefix": "{pi}",
 		"body": [
 			"chr$(126)$0"
 		],
 		"description": "Control character: PI."
+	},
+	"{CTRL-A}": {
+		"prefix": [
+			"{CTRL-A}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-A}$0"
+		]
+	},
+	"chr$(1)": {
+		"prefix": [
+			"{CTRL-A}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(1)$0"
+		]
+	},
+	"{CTRL-B}": {
+		"prefix": [
+			"{CTRL-B}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-B}$0"
+		]
+	},
+	"chr$(2)": {
+		"prefix": [
+			"{CTRL-B}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(2)$0"
+		]
+	},
+	"{stop}": {
+		"prefix": [
+			"{stop}"
+		],
+		"description": "-",
+		"body": [
+			"{stop}$0"
+		]
+	},
+	"chr$(3)": {
+		"prefix": [
+			"{stop}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(3)$0"
+		]
+	},
+	"{CTRL-D}": {
+		"prefix": [
+			"{CTRL-D}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-D}$0"
+		]
+	},
+	"chr$(4)": {
+		"prefix": [
+			"{CTRL-D}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(4)$0"
+		]
+	},
+	"{wht}": {
+		"prefix": [
+			"{wht}",
+			"{WHT}",
+			"{white}",
+			"{WHITE}"
+		],
+		"description": "Changes the text color to white.",
+		"body": [
+			"{wht}$0"
+		]
+	},
+	"chr$(5)": {
+		"prefix": [
+			"{wht}",
+			"{WHT}",
+			"{white}",
+			"{WHITE}"
+		],
+		"description": "Changes the text color to white.",
+		"body": [
+			"chr$(5)$0"
+		]
+	},
+	"{CTRL-F}": {
+		"prefix": [
+			"{CTRL-F}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-F}$0"
+		]
+	},
+	"chr$(6)": {
+		"prefix": [
+			"{CTRL-F}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(6)$0"
+		]
+	},
+	"{CTRL-G}": {
+		"prefix": [
+			"{CTRL-G}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-G}$0"
+		]
+	},
+	"chr$(7)": {
+		"prefix": [
+			"{CTRL-G}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(7)$0"
+		]
+	},
+	"{dish}": {
+		"prefix": [
+			"{dish}",
+			"{up/lo lock on}"
+		],
+		"description": "Disables changing the character set using the SHIFT + Commodore key combination.",
+		"body": [
+			"{dish}$0"
+		]
+	},
+	"chr$(8)": {
+		"prefix": [
+			"{dish}",
+			"{up/lo lock on}"
+		],
+		"description": "Disables changing the character set using the SHIFT + Commodore key combination.",
+		"body": [
+			"chr$(8)$0"
+		]
+	},
+	"{ensh}": {
+		"prefix": [
+			"{ensh}",
+			"{up/lo lock off}"
+		],
+		"description": "Enables changing the character set using the SHIFT + Commodore key combination.",
+		"body": [
+			"{ensh}$0"
+		]
+	},
+	"chr$(9)": {
+		"prefix": [
+			"{ensh}",
+			"{up/lo lock off}"
+		],
+		"description": "Enables changing the character set using the SHIFT + Commodore key combination.",
+		"body": [
+			"chr$(9)$0"
+		]
+	},
+	"{CTRL-K}": {
+		"prefix": [
+			"{CTRL-K}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-K}$0"
+		]
+	},
+	"chr$(11)": {
+		"prefix": [
+			"{CTRL-K}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(11)$0"
+		]
+	},
+	"{CTRL-L}": {
+		"prefix": [
+			"{CTRL-L}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-L}$0"
+		]
+	},
+	"chr$(12)": {
+		"prefix": [
+			"{CTRL-L}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(12)$0"
+		]
+	},
+	"{swlc}": {
+		"prefix": [
+			"{swlc}",
+			"{lower case}"
+		],
+		"description": "Select the lowercase/uppercase character set.",
+		"body": [
+			"{swlc}$0"
+		]
+	},
+	"chr$(14)": {
+		"prefix": [
+			"{swlc}",
+			"{lower case}"
+		],
+		"description": "Select the lowercase/uppercase character set.",
+		"body": [
+			"chr$(14)$0"
+		]
+	},
+	"{CTRL-O}": {
+		"prefix": [
+			"{CTRL-O}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-O}$0"
+		]
+	},
+	"chr$(15)": {
+		"prefix": [
+			"{CTRL-O}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(15)$0"
+		]
+	},
+	"{CTRL-P}": {
+		"prefix": [
+			"{CTRL-P}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-P}$0"
+		]
+	},
+	"chr$(16)": {
+		"prefix": [
+			"{CTRL-P}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(16)$0"
+		]
+	},
+	"{down}": {
+		"prefix": [
+			"{down}",
+			"{DOWN}",
+			"{DOWN}"
+		],
+		"description": "Cursor down: Next character will be printed in subsequent column one text line further down the screen.",
+		"body": [
+			"{down}$0"
+		]
+	},
+	"chr$(17)": {
+		"prefix": [
+			"{down}",
+			"{DOWN}",
+			"{DOWN}"
+		],
+		"description": "Cursor down: Next character will be printed in subsequent column one text line further down the screen.",
+		"body": [
+			"chr$(17)$0"
+		]
+	},
+	"{rvon}": {
+		"prefix": [
+			"{rvon}",
+			"{RVS ON}",
+			"{REVERSE ON}",
+			"{reverse on}",
+			"{RVSON}"
+		],
+		"description": "Reverse on: Selects reverse video text.",
+		"body": [
+			"{rvon}$0"
+		]
+	},
+	"chr$(18)": {
+		"prefix": [
+			"{rvon}",
+			"{RVS ON}",
+			"{REVERSE ON}",
+			"{reverse on}",
+			"{RVSON}"
+		],
+		"description": "Reverse on: Selects reverse video text.",
+		"body": [
+			"chr$(18)$0"
+		]
+	},
+	"{home}": {
+		"prefix": [
+			"{home}",
+			"{HOME}",
+			"{HOME}"
+		],
+		"description": "Home: Next character will be printed in the upper left-hand corner of the screen.",
+		"body": [
+			"{home}$0"
+		]
+	},
+	"chr$(19)": {
+		"prefix": [
+			"{home}",
+			"{HOME}",
+			"{HOME}"
+		],
+		"description": "Home: Next character will be printed in the upper left-hand corner of the screen.",
+		"body": [
+			"chr$(19)$0"
+		]
+	},
+	"{del}": {
+		"prefix": [
+			"{del}",
+			"{delete}",
+			"{DEL}"
+		],
+		"description": "Delete, or \"backspace\"; erases the previous character and moves the cursor one character position to the left.",
+		"body": [
+			"{del}$0"
+		]
+	},
+	"chr$(20)": {
+		"prefix": [
+			"{del}",
+			"{delete}",
+			"{DEL}"
+		],
+		"description": "Delete, or \"backspace\"; erases the previous character and moves the cursor one character position to the left.",
+		"body": [
+			"chr$(20)$0"
+		]
+	},
+	"{CTRL-U}": {
+		"prefix": [
+			"{CTRL-U}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-U}$0"
+		]
+	},
+	"chr$(21)": {
+		"prefix": [
+			"{CTRL-U}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(21)$0"
+		]
+	},
+	"{CTRL-V}": {
+		"prefix": [
+			"{CTRL-V}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-V}$0"
+		]
+	},
+	"chr$(22)": {
+		"prefix": [
+			"{CTRL-V}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(22)$0"
+		]
+	},
+	"{CTRL-W}": {
+		"prefix": [
+			"{CTRL-W}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-W}$0"
+		]
+	},
+	"chr$(23)": {
+		"prefix": [
+			"{CTRL-W}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(23)$0"
+		]
+	},
+	"{CTRL-X}": {
+		"prefix": [
+			"{CTRL-X}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-X}$0"
+		]
+	},
+	"chr$(24)": {
+		"prefix": [
+			"{CTRL-X}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(24)$0"
+		]
+	},
+	"{CTRL-Y}": {
+		"prefix": [
+			"{CTRL-Y}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-Y}$0"
+		]
+	},
+	"chr$(25)": {
+		"prefix": [
+			"{CTRL-Y}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(25)$0"
+		]
+	},
+	"{CTRL-Z}": {
+		"prefix": [
+			"{CTRL-Z}"
+		],
+		"description": "-",
+		"body": [
+			"{CTRL-Z}$0"
+		]
+	},
+	"chr$(26)": {
+		"prefix": [
+			"{CTRL-Z}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(26)$0"
+		]
+	},
+	"{esc}": {
+		"prefix": [
+			"{esc}"
+		],
+		"description": "-",
+		"body": [
+			"{esc}$0"
+		]
+	},
+	"chr$(27)": {
+		"prefix": [
+			"{esc}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(27)$0"
+		]
+	},
+	"{red}": {
+		"prefix": [
+			"{red}",
+			"{RED}",
+			"{RED}"
+		],
+		"description": "Changes the text color to red.",
+		"body": [
+			"{red}$0"
+		]
+	},
+	"chr$(28)": {
+		"prefix": [
+			"{red}",
+			"{RED}",
+			"{RED}"
+		],
+		"description": "Changes the text color to red.",
+		"body": [
+			"chr$(28)$0"
+		]
+	},
+	"{rght}": {
+		"prefix": [
+			"{rght}",
+			"{RIGHT}",
+			"{right}",
+			"{RIGHT}"
+		],
+		"description": "Advances the cursor one character position without printing anything.",
+		"body": [
+			"{rght}$0"
+		]
+	},
+	"chr$(29)": {
+		"prefix": [
+			"{rght}",
+			"{RIGHT}",
+			"{right}",
+			"{RIGHT}"
+		],
+		"description": "Advances the cursor one character position without printing anything.",
+		"body": [
+			"chr$(29)$0"
+		]
+	},
+	"{grn}": {
+		"prefix": [
+			"{grn}",
+			"{GRN}",
+			"{green}",
+			"{GREEN}"
+		],
+		"description": "Changes the text color to green.",
+		"body": [
+			"{grn}$0"
+		]
+	},
+	"chr$(30)": {
+		"prefix": [
+			"{grn}",
+			"{GRN}",
+			"{green}",
+			"{GREEN}"
+		],
+		"description": "Changes the text color to green.",
+		"body": [
+			"chr$(30)$0"
+		]
+	},
+	"{blu}": {
+		"prefix": [
+			"{blu}",
+			"{BLU}",
+			"{blue}",
+			"{BLUE}"
+		],
+		"description": "Changes the text color to blue.",
+		"body": [
+			"{blu}$0"
+		]
+	},
+	"chr$(31)": {
+		"prefix": [
+			"{blu}",
+			"{BLU}",
+			"{blue}",
+			"{BLUE}"
+		],
+		"description": "Changes the text color to blue.",
+		"body": [
+			"chr$(31)$0"
+		]
+	},
+	"{orng}": {
+		"prefix": [
+			"{orng}",
+			"{orange}",
+			"{orange}",
+			"{ORANGE}",
+			"[<1>]"
+		],
+		"description": "Changes the text color to orange.",
+		"body": [
+			"{orng}$0"
+		]
+	},
+	"chr$(129)": {
+		"prefix": [
+			"{orng}",
+			"{orange}",
+			"{orange}",
+			"{ORANGE}",
+			"[<1>]"
+		],
+		"description": "Changes the text color to orange.",
+		"body": [
+			"chr$(129)$0"
+		]
+	},
+	"{f1}": {
+		"prefix": [
+			"{f1}",
+			"{F1}",
+			"{F1}"
+		],
+		"description": "-",
+		"body": [
+			"{f1}$0"
+		]
+	},
+	"chr$(133)": {
+		"prefix": [
+			"{f1}",
+			"{F1}",
+			"{F1}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(133)$0"
+		]
+	},
+	"{f3}": {
+		"prefix": [
+			"{f3}",
+			"{F3}",
+			"{F3}"
+		],
+		"description": "-",
+		"body": [
+			"{f3}$0"
+		]
+	},
+	"chr$(134)": {
+		"prefix": [
+			"{f3}",
+			"{F3}",
+			"{F3}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(134)$0"
+		]
+	},
+	"{f5}": {
+		"prefix": [
+			"{f5}",
+			"{F5}",
+			"{r5}",
+			"{F5}"
+		],
+		"description": "-",
+		"body": [
+			"{f5}$0"
+		]
+	},
+	"chr$(135)": {
+		"prefix": [
+			"{f5}",
+			"{F5}",
+			"{r5}",
+			"{F5}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(135)$0"
+		]
+	},
+	"{f7}": {
+		"prefix": [
+			"{f7}",
+			"{F7}",
+			"{F7}"
+		],
+		"description": "-",
+		"body": [
+			"{f7}$0"
+		]
+	},
+	"chr$(136)": {
+		"prefix": [
+			"{f7}",
+			"{F7}",
+			"{F7}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(136)$0"
+		]
+	},
+	"{f2}": {
+		"prefix": [
+			"{f2}",
+			"{F2}",
+			"{F2}"
+		],
+		"description": "-",
+		"body": [
+			"{f2}$0"
+		]
+	},
+	"chr$(137)": {
+		"prefix": [
+			"{f2}",
+			"{F2}",
+			"{F2}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(137)$0"
+		]
+	},
+	"{f4}": {
+		"prefix": [
+			"{f4}",
+			"{F4}",
+			"{F4}"
+		],
+		"description": "-",
+		"body": [
+			"{f4}$0"
+		]
+	},
+	"chr$(138)": {
+		"prefix": [
+			"{f4}",
+			"{F4}",
+			"{F4}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(138)$0"
+		]
+	},
+	"{f6}": {
+		"prefix": [
+			"{f6}",
+			"{F6}",
+			"{F6}"
+		],
+		"description": "-",
+		"body": [
+			"{f6}$0"
+		]
+	},
+	"chr$(139)": {
+		"prefix": [
+			"{f6}",
+			"{F6}",
+			"{F6}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(139)$0"
+		]
+	},
+	"{f8}": {
+		"prefix": [
+			"{f8}",
+			"{F8}",
+			"{F8}"
+		],
+		"description": "-",
+		"body": [
+			"{f8}$0"
+		]
+	},
+	"chr$(140)": {
+		"prefix": [
+			"{f8}",
+			"{F8}",
+			"{F8}"
+		],
+		"description": "-",
+		"body": [
+			"chr$(140)$0"
+		]
+	},
+	"{sret}": {
+		"prefix": [
+			"{sret}",
+			"{shift return}"
+		],
+		"description": "Same action as Carriage return (13/$0D).",
+		"body": [
+			"{sret}$0"
+		]
+	},
+	"chr$(141)": {
+		"prefix": [
+			"{sret}",
+			"{shift return}"
+		],
+		"description": "Same action as Carriage return (13/$0D).",
+		"body": [
+			"chr$(141)$0"
+		]
+	},
+	"{swuc}": {
+		"prefix": [
+			"{swuc}",
+			"{upper case}"
+		],
+		"description": "Select the uppercase/semigraphics character set.",
+		"body": [
+			"{swuc}$0"
+		]
+	},
+	"chr$(142)": {
+		"prefix": [
+			"{swuc}",
+			"{upper case}"
+		],
+		"description": "Select the uppercase/semigraphics character set.",
+		"body": [
+			"chr$(142)$0"
+		]
+	},
+	"{blk}": {
+		"prefix": [
+			"{blk}",
+			"{BLK}",
+			"{black}",
+			"{BLACK}"
+		],
+		"description": "Changes the text color to black.",
+		"body": [
+			"{blk}$0"
+		]
+	},
+	"chr$(144)": {
+		"prefix": [
+			"{blk}",
+			"{BLK}",
+			"{black}",
+			"{BLACK}"
+		],
+		"description": "Changes the text color to black.",
+		"body": [
+			"chr$(144)$0"
+		]
+	},
+	"{up}": {
+		"prefix": [
+			"{up}",
+			"{UP}",
+			"{UP}"
+		],
+		"description": "Cursor up: Next character will be printed in subsequent column one text line further up the screen.",
+		"body": [
+			"{up}$0"
+		]
+	},
+	"chr$(145)": {
+		"prefix": [
+			"{up}",
+			"{UP}",
+			"{UP}"
+		],
+		"description": "Cursor up: Next character will be printed in subsequent column one text line further up the screen.",
+		"body": [
+			"chr$(145)$0"
+		]
+	},
+	"{rvof}": {
+		"prefix": [
+			"{rvof}",
+			"{RVS OFF}",
+			"{reverse off}",
+			"{RVSOFF}"
+		],
+		"description": "Reverse off: De-selects reverse video text.",
+		"body": [
+			"{rvof}$0"
+		]
+	},
+	"chr$(146)": {
+		"prefix": [
+			"{rvof}",
+			"{RVS OFF}",
+			"{reverse off}",
+			"{RVSOFF}"
+		],
+		"description": "Reverse off: De-selects reverse video text.",
+		"body": [
+			"chr$(146)$0"
+		]
+	},
+	"{clr}": {
+		"prefix": [
+			"{clr}",
+			"{CLR}",
+			"{clear}",
+			"{CLR}"
+		],
+		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen.",
+		"body": [
+			"{clr}$0"
+		]
+	},
+	"chr$(147)": {
+		"prefix": [
+			"{clr}",
+			"{CLR}",
+			"{clear}",
+			"{CLR}"
+		],
+		"description": "Clears screen of any text, and causes the next character to be printed at the upper left-hand corner of the text screen.",
+		"body": [
+			"chr$(147)$0"
+		]
+	},
+	"{inst}": {
+		"prefix": [
+			"{inst}",
+			"{insert}",
+			"{INST}"
+		],
+		"description": "Insert: Makes room for extra characters at the current cursor position, by \"pushing\" existing characters at that position further to the right.",
+		"body": [
+			"{inst}$0"
+		]
+	},
+	"chr$(148)": {
+		"prefix": [
+			"{inst}",
+			"{insert}",
+			"{INST}"
+		],
+		"description": "Insert: Makes room for extra characters at the current cursor position, by \"pushing\" existing characters at that position further to the right.",
+		"body": [
+			"chr$(148)$0"
+		]
+	},
+	"{brn}": {
+		"prefix": [
+			"{brn}",
+			"{BROWN}",
+			"{brown}",
+			"{BROWN}",
+			"[<2>]"
+		],
+		"description": "Changes the text color to brown.",
+		"body": [
+			"{brn}$0"
+		]
+	},
+	"chr$(149)": {
+		"prefix": [
+			"{brn}",
+			"{BROWN}",
+			"{brown}",
+			"{BROWN}",
+			"[<2>]"
+		],
+		"description": "Changes the text color to brown.",
+		"body": [
+			"chr$(149)$0"
+		]
+	},
+	"{lred}": {
+		"prefix": [
+			"{lred}",
+			"{LT.RED}",
+			"{pink}",
+			"{LIG.RED}",
+			"[<3>]"
+		],
+		"description": "Changes the text color to light red.",
+		"body": [
+			"{lred}$0"
+		]
+	},
+	"chr$(150)": {
+		"prefix": [
+			"{lred}",
+			"{LT.RED}",
+			"{pink}",
+			"{LIG.RED}",
+			"[<3>]"
+		],
+		"description": "Changes the text color to light red.",
+		"body": [
+			"chr$(150)$0"
+		]
+	},
+	"{gry1}": {
+		"prefix": [
+			"{gry1}",
+			"{GREY1}",
+			"{dark gray}",
+			"{GREY 1}",
+			"[<4>]"
+		],
+		"description": "Changes the text color to dark grey.",
+		"body": [
+			"{gry1}$0"
+		]
+	},
+	"chr$(151)": {
+		"prefix": [
+			"{gry1}",
+			"{GREY1}",
+			"{dark gray}",
+			"{GREY 1}",
+			"[<4>]"
+		],
+		"description": "Changes the text color to dark grey.",
+		"body": [
+			"chr$(151)$0"
+		]
+	},
+	"{gry2}": {
+		"prefix": [
+			"{gry2}",
+			"{GREY2}",
+			"{gray}",
+			"{GREY 2}",
+			"[<5>]"
+		],
+		"description": "Changes the text color to medium grey.",
+		"body": [
+			"{gry2}$0"
+		]
+	},
+	"chr$(152)": {
+		"prefix": [
+			"{gry2}",
+			"{GREY2}",
+			"{gray}",
+			"{GREY 2}",
+			"[<5>]"
+		],
+		"description": "Changes the text color to medium grey.",
+		"body": [
+			"chr$(152)$0"
+		]
+	},
+	"{lgrn}": {
+		"prefix": [
+			"{lgrn}",
+			"{lt green}",
+			"{light green}",
+			"{LIG.GREEN}",
+			"[<6>]"
+		],
+		"description": "Changes the text color to light green.",
+		"body": [
+			"{lgrn}$0"
+		]
+	},
+	"chr$(153)": {
+		"prefix": [
+			"{lgrn}",
+			"{lt green}",
+			"{light green}",
+			"{LIG.GREEN}",
+			"[<6>]"
+		],
+		"description": "Changes the text color to light green.",
+		"body": [
+			"chr$(153)$0"
+		]
+	},
+	"{lblu}": {
+		"prefix": [
+			"{lblu}",
+			"{LT.BLUE}",
+			"{light blue}",
+			"{LIG.BLUE}",
+			"[<7>]"
+		],
+		"description": "Changes the text color to light blue.",
+		"body": [
+			"{lblu}$0"
+		]
+	},
+	"chr$(154)": {
+		"prefix": [
+			"{lblu}",
+			"{LT.BLUE}",
+			"{light blue}",
+			"{LIG.BLUE}",
+			"[<7>]"
+		],
+		"description": "Changes the text color to light blue.",
+		"body": [
+			"chr$(154)$0"
+		]
+	},
+	"{gry3}": {
+		"prefix": [
+			"{gry3}",
+			"{GREY3}",
+			"{light gray}",
+			"{GREY 3}",
+			"[<8>]"
+		],
+		"description": "Changes the text color to light grey.",
+		"body": [
+			"{gry3}$0"
+		]
+	},
+	"chr$(155)": {
+		"prefix": [
+			"{gry3}",
+			"{GREY3}",
+			"{light gray}",
+			"{GREY 3}",
+			"[<8>]"
+		],
+		"description": "Changes the text color to light grey.",
+		"body": [
+			"chr$(155)$0"
+		]
+	},
+	"{pur}": {
+		"prefix": [
+			"{pur}",
+			"{PUR}",
+			"{purple}",
+			"{PURPLE}"
+		],
+		"description": "Changes the text color to purple.",
+		"body": [
+			"{pur}$0"
+		]
+	},
+	"chr$(156)": {
+		"prefix": [
+			"{pur}",
+			"{PUR}",
+			"{purple}",
+			"{PURPLE}"
+		],
+		"description": "Changes the text color to purple.",
+		"body": [
+			"chr$(156)$0"
+		]
+	},
+	"{left}": {
+		"prefix": [
+			"{left}",
+			"{LEFT}",
+			"{LEFT}"
+		],
+		"description": "Moves the cursor one character position backwards, without printing or deleting anything.",
+		"body": [
+			"{left}$0"
+		]
+	},
+	"chr$(157)": {
+		"prefix": [
+			"{left}",
+			"{LEFT}",
+			"{LEFT}"
+		],
+		"description": "Moves the cursor one character position backwards, without printing or deleting anything.",
+		"body": [
+			"chr$(157)$0"
+		]
+	},
+	"{yel}": {
+		"prefix": [
+			"{yel}",
+			"{YEL}",
+			"{yellow}",
+			"{YELLOW}"
+		],
+		"description": "Changes the text color to yellow.",
+		"body": [
+			"{yel}$0"
+		]
+	},
+	"chr$(158)": {
+		"prefix": [
+			"{yel}",
+			"{YEL}",
+			"{yellow}",
+			"{YELLOW}"
+		],
+		"description": "Changes the text color to yellow.",
+		"body": [
+			"chr$(158)$0"
+		]
+	},
+	"{cyn}": {
+		"prefix": [
+			"{cyn}",
+			"{cyan}",
+			"{CYAN}"
+		],
+		"description": "Changes the text color to cyan.",
+		"body": [
+			"{cyn}$0"
+		]
+	},
+	"chr$(159)": {
+		"prefix": [
+			"{cyn}",
+			"{cyan}",
+			"{CYAN}"
+		],
+		"description": "Changes the text color to cyan.",
+		"body": [
+			"chr$(159)$0"
+		]
 	}
 }

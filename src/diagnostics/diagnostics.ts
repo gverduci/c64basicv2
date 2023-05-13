@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 
 function createDiagnostic(doc: vscode.TextDocument, range: vscode.Range, code: string, message: string, severity: vscode.DiagnosticSeverity): vscode.Diagnostic {
-    const index = 0;
     const diagnostic = new vscode.Diagnostic(range, message, severity);
     diagnostic.code = code;
     return diagnostic;

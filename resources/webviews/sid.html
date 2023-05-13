@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#000000">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${cspSource}; script-src 'nonce-${nonce}';">
+    <link rel="stylesheet" type="text/css" href="${stylesUri}">
+    <title>SID Register</title>
+    <style>
+        .snippet {
+            text-decoration: underline;
+            color: #569cd6;
+        }
+
+        .string {
+            text-decoration: underline;
+            color: #569cd6;
+        }
+
+        .vscode-dark th,
+        .vscode-dark div.title {
+            background-color: #383838;
+        }
+
+        .vscode-light th,
+        .vscode-light div.title {
+            background-color: transparent;
+        }
+
+        .title {
+            margin-top: 16px;
+            min-width: 425px;
+            max-width: 425px;
+        }
+
+        .adCalc, .srCalc {
+            flex: 1 0 auto;
+            text-align: right;
+        }
+
+        .adsrRoot {
+            min-width: 425px;
+            max-width: 425px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .adsrCalcRoot {
+            min-width: 425px;
+            max-width: 425px;
+            display: flex;
+        }
+
+        .adCalc button,
+        .srCalc button {
+            height: 21px;
+        }
+        .adsrCalcRoot select {
+            height: 21px;
+            width: 145px;
+        }
+
+        table {
+            border: none;
+            border-collapse: collapse;
+            min-width: 425px;
+            max-width: 425px;
+        }
+
+        body {
+            padding-left: 8px;
+            padding-top: 8px;
+            min-width: 425px;
+            max-width: 425px;
+        }
+
+        img,
+        div {
+            max-width: 425px;
+        }
+
+        option {
+            font-family: monospace;
+        }
+        .note {
+            text-align: left;
+        }
+        .musicalNote td {
+            text-align: right;
+        }
+    </style>
+    <style>
+        div.piano {
+            box-sizing:border-box;
+        }
+
+        div.octaveSel {
+            display: flex;
+        }
+        div.octaveSel div:nth-of-type(1) {flex-grow: 1;}
+        div.octaveSel div:nth-of-type(2) {flex-grow: 4;}
+        div.octaveSel div:nth-of-type(3) {flex-grow: 1; text-align: right;}
+        div.octaveSel div select{
+            width: 100%;
+        }
+        div.piano{
+            height:18.875em;
+            margin:0em auto;
+            position:relative;
+            border:1px solid #160801;
+            border-radius:1em;
+            background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0));
+            box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+        }
+
+        div.piano li {
+            margin:0;
+            padding:0;
+            list-style:none;
+            position:relative;
+            float:left
+        }
+
+        div.piano ul .white {
+            height:5em;
+            width:4em;
+            z-index:1;
+            border-left:1px solid #bbb;
+            border-bottom:1px solid #bbb;
+            border-radius:0 0 5px 5px;
+            box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+            background:linear-gradient(to bottom,#eee 0%,#fff 100%);
+            color: black;
+            text-align: center;
+            padding-top: 40%;
+        }
+
+        div.piano ul .white:active {
+            border-top:1px solid #777;
+            border-left:1px solid #999;
+            border-bottom:1px solid #999;
+            box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+            background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
+        }
+
+        div.piano .black {
+            height:4em;
+            width:2em;
+            margin:0 0 0 -1em;
+            z-index:2;
+            border:1px solid #000;
+            border-radius:0 0 3px 3px;
+            box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+            background:linear-gradient(45deg,#222 0%,#555 100%);
+            color: white;
+            text-align: center;
+            padding-top: 20%;
+        }
+
+        div.piano .black:active {
+            box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+            background:linear-gradient(to right,#444 0%,#222 100%)
+        }
+
+        div.piano .c, div.piano .d,div.piano .e,div.piano .g,div.piano .a,div.piano .h {
+            margin:0 0 0 -1em
+        }
+        div.piano .f {
+            margin:0 0 0 -1em
+        }
+
+        div.piano ul li:first-child {
+            border-radius:5px 0 5px 5px
+        }
+
+        div.piano ul li:last-child {
+            border-radius:0 5px 5px 5px
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script defer="defer" nonce="${nonce}" src="${scriptUri}"></script>
+    <table>
+        <tbody>
+            <tr>
+                <th colspan="3">
+                    <div style="display: flex;">
+                        <div>Addr&nbsp;</div>
+                        <div class="string" data="s=54272">S=54272</div>
+                    </div>
+                </th>
+                <th colspan="6">Data</th>
+                <th>Name</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>128</th>
+                <th>64</th>
+                <th>32</th>
+                <th>16</th>
+                <th>8</th>
+                <th>4</th>
+                <th>2</th>
+                <th>1</th>
+                <th>Voice 1</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s,">s+0</div>
+                </th>
+                <td>F7</td>
+                <td>F6</td>
+                <td>F5</td>
+                <td>F4</td>
+                <td>F3</td>
+                <td>F2</td>
+                <td>F1</td>
+                <td>F0</td>
+                <td>Freq.lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+1,">s+1</div>
+                </th>
+                <td>F15</td>
+                <td>F14</td>
+                <td>F13</td>
+                <td>F12</td>
+                <td>F11</td>
+                <td>F10</td>
+                <td>F9</td>
+                <td>F8</td>
+                <td>Freq.hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+2,">s+2</div>
+                </th>
+                <td>PW7</td>
+                <td>PW6</td>
+                <td>PW5</td>
+                <td>PW4</td>
+                <td>PW3</td>
+                <td>PW2</td>
+                <td>PW1</td>
+                <td>PW0</td>
+                <td>PW lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+3,">s+3</div>
+                </th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>PW11</td>
+                <td>PW10</td>
+                <td>PW9</td>
+                <td>PW8</td>
+                <td>PW hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+4,">s+4</div>
+                </th>
+                <td>
+                    <div class="string" data="poke s+4,128">Noise</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+4,64">Square</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+4,32">STooth</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+4,16">Triang</div>
+                </td>
+                <td>Test</td>
+                <td>Ring</td>
+                <td>Sync</td>
+                <td>Gate</td>
+                <td>Control</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <div class="string" data="poke s+4,129">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+4,65">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+4,33">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+4,17">+Gate</div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+5,">s+5</div>
+                </th>
+                <td>ATK3</td>
+                <td>ATK2</td>
+                <td>ATK1</td>
+                <td>ATK0</td>
+                <td>DC3</td>
+                <td>DC2</td>
+                <td>DC1</td>
+                <td>DC0</td>
+                <td>Att/Dec</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+6,">s+6</div>
+                </th>
+                <td>STN3</td>
+                <td>STN2</td>
+                <td>STN1</td>
+                <td>STN0</td>
+                <td>RIS3</td>
+                <td>RIS2</td>
+                <td>RIS1</td>
+                <td>RIS0</td>
+                <td>Sus/Rel</td>
+                <td>wo</td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Voice 2</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+7,">s+7</div>
+                </th>
+                <td>F7</td>
+                <td>F6</td>
+                <td>F5</td>
+                <td>F4</td>
+                <td>F3</td>
+                <td>F2</td>
+                <td>F1</td>
+                <td>F0</td>
+                <td>F.lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+8,">s+8</div>
+                </th>
+                <td>F15</td>
+                <td>F14</td>
+                <td>F13</td>
+                <td>F12</td>
+                <td>F11</td>
+                <td>F10</td>
+                <td>F9</td>
+                <td>F8</td>
+                <td>F.hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+9,">s+9</div>
+                </th>
+                <td>PW7</td>
+                <td>PW6</td>
+                <td>PW5</td>
+                <td>PW4</td>
+                <td>PW3</td>
+                <td>PW2</td>
+                <td>PW1</td>
+                <td>PW0</td>
+                <td>PW lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+10,">s+10</div>
+                </th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>PW11</td>
+                <td>PW10</td>
+                <td>PW9</td>
+                <td>PW8</td>
+                <td>PW hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+11,">s+11</div>
+                </th>
+                <td>
+                    <div class="string" data="poke s+11,128">Noise</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+11,64">Square</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+11,32">STooth</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+11,16">Triang</div>
+                </td>
+                <td>Test</td>
+                <td>Ring</td>
+                <td>Sync</td>
+                <td>Gate</td>
+                <td>Control</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <div class="string" data="poke s+11,129">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+11,65">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+11,33">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+11,17">+Gate</div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+12,">s+12</div>
+                </th>
+                <td>ATK3</td>
+                <td>ATK2</td>
+                <td>ATK1</td>
+                <td>ATK0</td>
+                <td>DC3</td>
+                <td>DC2</td>
+                <td>DC1</td>
+                <td>DC0</td>
+                <td>Att/Dec</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+13,">s+13</div>
+                </th>
+                <td>STN3</td>
+                <td>STN2</td>
+                <td>STN1</td>
+                <td>STN0</td>
+                <td>RIS3</td>
+                <td>RIS2</td>
+                <td>RIS1</td>
+                <td>RIS0</td>
+                <td>Sus/Rel</td>
+                <td>wo</td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Voice 3</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+14,">s+14</div>
+                </th>
+                <td>F7</td>
+                <td>F6</td>
+                <td>F5</td>
+                <td>F4</td>
+                <td>F3</td>
+                <td>F2</td>
+                <td>F1</td>
+                <td>F0</td>
+                <td>F.lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+15,">s+15</div>
+                </th>
+                <td>F15</td>
+                <td>F14</td>
+                <td>F13</td>
+                <td>F12</td>
+                <td>F11</td>
+                <td>F10</td>
+                <td>F9</td>
+                <td>F8</td>
+                <td>F.hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+16,">s+16</div>
+                </th>
+                <td>PW7</td>
+                <td>PW6</td>
+                <td>PW5</td>
+                <td>PW4</td>
+                <td>PW3</td>
+                <td>PW2</td>
+                <td>PW1</td>
+                <td>PW0</td>
+                <td>PW lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+17,">s+17</div>
+                </th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>PW11</td>
+                <td>PW10</td>
+                <td>PW9</td>
+                <td>PW8</td>
+                <td>PW hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+18,">s+18</div>
+                </th>
+                <td>
+                    <div class="string" data="poke s+18,128">Noise</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+18,64">Square</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+18,32">STooth</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+18,16">Triang</div>
+                </td>
+                <td>Test</td>
+                <td>Ring</td>
+                <td>Sync</td>
+                <td>Gate</td>
+                <td>Control</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <div class="string" data="poke s+18,129">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+18,65">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+18,33">+Gate</div>
+                </td>
+                <td>
+                    <div class="string" data="poke s+18,17">+Gate</div>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+19,">s+19</div>
+                </th>
+                <td>ATK3</td>
+                <td>ATK2</td>
+                <td>ATK1</td>
+                <td>ATK0</td>
+                <td>DC3</td>
+                <td>DC2</td>
+                <td>DC1</td>
+                <td>DC0</td>
+                <td>Att/Dec</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+20,">s+20</div>
+                </th>
+                <td>STN3</td>
+                <td>STN2</td>
+                <td>STN1</td>
+                <td>STN0</td>
+                <td>RIS3</td>
+                <td>RIS2</td>
+                <td>RIS1</td>
+                <td>RIS0</td>
+                <td>Sus/Rel</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Filter</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+21,">s+21</div>
+                </th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>FC2</td>
+                <td>FC1</td>
+                <td>FC0</td>
+                <td>FC.lo</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+22,">s+22</div>
+                </th>
+                <td>FC10</td>
+                <td>FC9</td>
+                <td>FC8</td>
+                <td>FC7</td>
+                <td>FC6</td>
+                <td>FC5</td>
+                <td>FC4</td>
+                <td>FC3</td>
+                <td>FC.hi</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+23,">s+23</div>
+                </th>
+                <td>RES3</td>
+                <td>RES2</td>
+                <td>RES1</td>
+                <td>RES0</td>
+                <td>FiltEX</td>
+                <td>Filt 3</td>
+                <td>Filt 2</td>
+                <td>Filt 1</td>
+                <td>RES/Filt</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="snippet" data="poke s+24,">s+24</div>
+                </th>
+                <td>3OFF</td>
+                <td>HP</td>
+                <td>BP</td>
+                <td>LP</td>
+                <td>VOL3</td>
+                <td>VOL2</td>
+                <td>VOL1</td>
+                <td>VOL0</td>
+                <td>Mode/Vol</td>
+                <td>wo</td>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Misc</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="string" data="peek s+25">s+25</div>
+                </th>
+                <td>PX7</td>
+                <td>PX6</td>
+                <td>PX5</td>
+                <td>PX4</td>
+                <td>PX3</td>
+                <td>PX2</td>
+                <td>PX1</td>
+                <td>PX0</td>
+                <td>POTX</td>
+                <td>ro</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="string" data="peek s+26">s+26</div>
+                </th>
+                <td>PY7</td>
+                <td>PY6</td>
+                <td>PY5</td>
+                <td>PY4</td>
+                <td>PY3</td>
+                <td>PY2</td>
+                <td>PY1</td>
+                <td>PY0</td>
+                <td>POTY</td>
+                <td>ro</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="string" data="peek s+27">s+27</div>
+                </th>
+                <td>07</td>
+                <td>06</td>
+                <td>05</td>
+                <td>04</td>
+                <td>03</td>
+                <td>02</td>
+                <td>01</td>
+                <td>00</td>
+                <td>OSC3/Rand</td>
+                <td>ro</td>
+            </tr>
+            <tr>
+                <th>
+                    <div class="string" data="peek s+28">s+28</div>
+                </th>
+                <td>E7</td>
+                <td>E6</td>
+                <td>E5</td>
+                <td>E4</td>
+                <td>E3</td>
+                <td>E2</td>
+                <td>E1</td>
+                <td>E0</td>
+                <td>ENV3</td>
+                <td>ro</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="title"><strong>Attack (A)-Decay (D) / Sustain (S)-Release (R)</strong></div>
+    <canvas id="canvas" width="425" height="220"></canvas>
+    <div class="adsrRoot">
+        <div class="adsrCalcRoot">
+            <div>
+                <select class="adsrHi attack">
+                    <option value="0" attack="0.002">&nbsp;0 (0000) - A:&nbsp;&nbsp;&nbsp;2ms</option>
+                    <option value="1" attack="0.008">&nbsp;1 (0001) - A:&nbsp;&nbsp;&nbsp;8ms</option>
+                    <option value="2" attack="0.016">&nbsp;2 (0010) - A:&nbsp;&nbsp;16ms</option>
+                    <option value="3" attack="0.024">&nbsp;3 (0011) - A:&nbsp;&nbsp;24ms</option>
+                    <option value="4" attack="0.038">&nbsp;4 (0100) - A:&nbsp;&nbsp;38ms</option>
+                    <option value="5" attack="0.056">&nbsp;5 (0101) - A:&nbsp;&nbsp;56ms</option>
+                    <option value="6" attack="0.068">&nbsp;6 (0110) - A:&nbsp;&nbsp;68ms</option>
+                    <option value="7" attack="0.080">&nbsp;7 (0111) - A:&nbsp;&nbsp;80ms</option>
+                    <option value="8" attack="0.100">&nbsp;8 (1000) - A: 100ms</option>
+                    <option value="9" attack="0.250">&nbsp;9 (1001) - A: 250ms</option>
+                    <option value="10" attack="0.500" selected>10 (1010) - A:&nbsp;&nbsp;0.5s</option>
+                    <option value="11" attack="0.800">11 (1011) - A:&nbsp;&nbsp;0.8s</option>
+                    <option value="12" attack="1.000">12 (1100) - A:&nbsp;&nbsp;&nbsp;&nbsp;1s</option>
+                    <option value="13" attack="3.000">13 (1101) - A:&nbsp;&nbsp;&nbsp;&nbsp;3s</option>
+                    <option value="14" attack="5.000">14 (1110) - A:&nbsp;&nbsp;&nbsp;&nbsp;5s</option>
+                    <option value="15" attack="8.000">15 (1111) - A:&nbsp;&nbsp;&nbsp;&nbsp;8s</option>
+                </select>
+                <select class="adsrLow decay">
+                    <option value="0" decrel="0.006">&nbsp;0 (0000) - D:&nbsp;&nbsp;&nbsp;6ms</option>
+                    <option value="1" decrel="0.024">&nbsp;1 (0001) - D:&nbsp;&nbsp;24ms</option>
+                    <option value="2" decrel="0.048">&nbsp;2 (0010) - D:&nbsp;&nbsp;48ms</option>
+                    <option value="3" decrel="0.072">&nbsp;3 (0011) - D:&nbsp;&nbsp;72ms</option>
+                    <option value="4" decrel="0.114">&nbsp;4 (0100) - D:114ms</option>
+                    <option value="5" decrel="0.168">&nbsp;5 (0101) - D: 168ms</option>
+                    <option value="6" decrel="0.204">&nbsp;6 (0110) - D: 204ms</option>
+                    <option value="7" decrel="0.240">&nbsp;7 (0111) - D: 240ms</option>
+                    <option value="8" decrel="0.300">&nbsp;8 (1000) - D: 300ms</option>
+                    <option value="9" decrel="0.750" selected>&nbsp;9 (1001) - D: 750ms</option>
+                    <option value="10" decrel="1.500">10 (1010) - D:&nbsp;&nbsp;1.5s</option>
+                    <option value="11" decrel="2.400">11 (1011) - D:&nbsp;&nbsp;2.4s</option>
+                    <option value="12" decrel="3.000">12 (1100) - D:&nbsp;&nbsp;3.0s</option>
+                    <option value="13" decrel="9.000">13 (1101) - D:&nbsp;&nbsp;9.0s</option>
+                    <option value="14" decrel="15.00">14 (1110) - D: 15.0s</option>
+                    <option value="15" decrel="24.00">15 (1111) - D: 24.0s</option>
+                </select>
+            </div>
+            <div class="adCalc"><button class="adBtn">copy value</button></div>
+        </div>
+        <div class="adsrCalcRoot">
+
+            <div>
+                <select class="adsrHi sustain">
+                    <option value="0" sustain="0">&nbsp;0 (0000) - S:&nbsp;&nbsp;0</option>
+                    <option value="1" sustain="1">&nbsp;1 (0001) - S:&nbsp;&nbsp;1</option>
+                    <option value="2" sustain="2">&nbsp;2 (0010) - S:&nbsp;&nbsp;2</option>
+                    <option value="3" sustain="3">&nbsp;3 (0011) - S:&nbsp;&nbsp;3</option>
+                    <option value="4" sustain="4">&nbsp;4 (0100) - S:&nbsp;&nbsp;4</option>
+                    <option value="5" sustain="5">&nbsp;5 (0101) - S:&nbsp;&nbsp;5</option>
+                    <option value="6" sustain="6">&nbsp;6 (0110) - S:&nbsp;&nbsp;6</option>
+                    <option value="7" sustain="7" selected>&nbsp;7 (0111) - S:&nbsp;&nbsp;7</option>
+                    <option value="8" sustain="8">&nbsp;8 (1000) - S:&nbsp;&nbsp;8</option>
+                    <option value="9" sustain="9">&nbsp;9 (1001) - S:&nbsp;&nbsp;9</option>
+                    <option value="10" sustain="10">10 (1010) - S: 10</option>
+                    <option value="11" sustain="11">11 (1011) - S: 11</option>
+                    <option value="12" sustain="12">12 (1100) - S: 12</option>
+                    <option value="13" sustain="13">13 (1101) - S: 13</option>
+                    <option value="14" sustain="14">14 (1110) - S: 14</option>
+                    <option value="15" sustain="15">15 (1111) - S: 15</option>
+                </select>
+                <select class="adsrLow release">
+                    <option value="0" decrel="0.006">&nbsp;0 (0000) - R:&nbsp;&nbsp;&nbsp;6ms</option>
+                    <option value="1" decrel="0.024">&nbsp;1 (0001) - R:&nbsp;&nbsp;24ms</option>
+                    <option value="2" decrel="0.048">&nbsp;2 (0010) - R:&nbsp;&nbsp;48ms</option>
+                    <option value="3" decrel="0.072">&nbsp;3 (0011) - R:&nbsp;&nbsp;72ms</option>
+                    <option value="4" decrel="0.114">&nbsp;4 (0100) - R:114ms</option>
+                    <option value="5" decrel="0.168">&nbsp;5 (0101) - R: 168ms</option>
+                    <option value="6" decrel="0.204">&nbsp;6 (0110) - R: 204ms</option>
+                    <option value="7" decrel="0.240">&nbsp;7 (0111) - R: 240ms</option>
+                    <option value="8" decrel="0.300">&nbsp;8 (1000) - R: 300ms</option>
+                    <option value="9" decrel="0.750">&nbsp;9 (1001) - R: 750ms</option>
+                    <option value="10" decrel="1.500" selected>10 (1010) - R:&nbsp;&nbsp;1.5s</option>
+                    <option value="11" decrel="2.400">11 (1011) - R:&nbsp;&nbsp;2.4s</option>
+                    <option value="12" decrel="3.000">12 (1100) - R:&nbsp;&nbsp;3.0s</option>
+                    <option value="13" decrel="9.000">13 (1101) - R:&nbsp;&nbsp;9.0s</option>
+                    <option value="14" decrel="15.00">14 (1110) - R: 15.0s</option>
+                    <option value="15" decrel="24.00">15 (1111) - R: 24.0s</option>
+                </select>
+            </div>
+            <div class="srCalc"><button class="srBtn">copy value</button></div>
+        </div>
+    </div>
+    <div>The output of Voice will remain at the selected SUSTAIN amplitude (0..15) as long as the Gate bit remains set
+    </div>
+    <div class="title"><strong>Musical note - PAL (Italian Manual)</strong></div>
+    <table class="musicalNote">
+        <tbody>
+            <tr>
+                <th colspan="2"></th>
+                <th colspan="3">Octave 0</th>
+                <th colspan="3">Octave 1</th>
+                <th colspan="3">Octave 2</th>
+                <th colspan="3">Octave 3</th>
+            </tr>
+            <tr>
+                <th colspan="2">Note</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+            </tr>
+            <div class="string" data="poke s+4,129"></div>
+            <tr><th class="note">C</th> <th class="note">do</th>   <td>278</td><td><div class="string" data="1">1</div></td><td><div class="string" data="22">22</div></td> <td>557</td> <td>2</td><td>45</td> <td>1114</td><td>4</td><td>90</td> <td>2228</td><td>8</td>  <td>180</td></tr>
+            <tr><th class="note">C#</th><th class="note">do#</th>  <td>295</td><td><div class="string" data="1">1</div></td><td><div class="string" data="39">39</div></td> <td>590</td> <td>2</td><td>78</td> <td>1180</td><td>4</td><td>156</td><td>2360</td><td>9</td>  <td>56</td></tr>
+            <tr><th class="note">D</th> <th class="note">re</th>   <td>313</td><td><div class="string" data="1">1</div></td><td><div class="string" data="57">57</div></td> <td>625</td> <td>2</td><td>113</td><td>1250</td><td>4</td><td>226</td><td>2500</td><td>9</td>  <td>196</td></tr>
+            <tr><th class="note">D#</th><th class="note">re#</th>  <td>331</td><td><div class="string" data="1">1</div></td><td><div class="string" data="75">75</div></td> <td>662</td> <td>2</td><td>150</td><td>1325</td><td>5</td><td>45</td> <td>2649</td><td>10</td> <td>89</td></tr>
+            <tr><th class="note">E</th> <th class="note">mi</th>   <td>351</td><td><div class="string" data="1">1</div></td><td><div class="string" data="95">95</div></td> <td>702</td> <td>2</td><td>190</td><td>1403</td><td>5</td><td>123</td><td>2807</td><td>10</td> <td>247</td></tr>
+            <tr><th class="note">F</th> <th class="note">fa</th>   <td>372</td><td><div class="string" data="1">1</div></td><td><div class="string" data="116">116</div></td><td>743</td> <td>2</td><td>231</td><td>1487</td><td>5</td><td>207</td><td>2974</td><td>11</td> <td>158</td></tr>
+            <tr><th class="note">F#</th><th class="note">fa#</th>  <td>394</td><td><div class="string" data="1">1</div></td><td><div class="string" data="138">138</div></td><td>788</td> <td>3</td><td>20</td> <td>1575</td><td>6</td><td>39</td> <td>3150</td><td>12</td> <td>78</td></tr>
+            <tr><th class="note">G</th> <th class="note">sol</th>  <td>417</td><td><div class="string" data="1">1</div></td><td><div class="string" data="161">161</div></td><td>834</td> <td>3</td><td>66</td> <td>1669</td><td>6</td><td>133</td><td>3338</td><td>13</td> <td>10</td></tr>
+            <tr><th class="note">G#</th><th class="note">sol#</th> <td>442</td><td><div class="string" data="1">1</div></td><td><div class="string" data="186">186</div></td><td>884</td> <td>3</td><td>116</td><td>1768</td><td>6</td><td>232</td><td>3536</td><td>13</td> <td>208</td></tr>
+            <tr><th class="note">A</th> <th class="note">la</th>   <td>468</td><td><div class="string" data="1">1</div></td><td><div class="string" data="212">212</div></td><td>937</td> <td>3</td><td>169</td><td>1873</td><td>7</td><td>81</td> <td>3746</td><td>14</td> <td>162</td></tr>
+            <tr><th class="note">A#</th><th class="note">la#</th>  <td>496</td><td><div class="string" data="1">1</div></td><td><div class="string" data="240">240</div></td><td>992</td> <td>3</td><td>224</td><td>1985</td><td>7</td><td>193</td><td>3969</td><td>15</td> <td>129</td></tr>
+            <tr><th class="note">H</th> <th class="note">si</th>   <td>526</td><td><div class="string" data="2">2</div></td><td><div class="string" data="14">14</div></td> <td>1051</td><td>4</td><td>27</td> <td>2103</td><td>8</td><td>55</td> <td>4205</td><td>16</td> <td>109</td></tr>
+            <tr>
+                <th colspan="2"></th>
+                <th colspan="3">Octave 4</th>
+                <th colspan="3">Octave 5</th>
+                <th colspan="3">Octave 6</th>
+                <th colspan="3">Octave 7</th>
+            </tr>
+            <tr>
+                <th colspan="2"></th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+                <th>Dec</th>
+                <th>Hi</th>
+                <th>Lo</th>
+            </tr>
+            <tr><th class="note">C</th> <th class="note">do</th>  <td>4455</td><td>17</td><td>103</td><td>8911</td> <td>34</td><td>207</td><td>17821</td><td>69</td> <td>157</td><td>35643</td><td>139</td><td>59</td></tr>
+            <tr><th class="note">C#</th><th class="note">do#</th> <td>4720</td><td>18</td><td>112</td><td>9441</td> <td>36</td><td>225</td><td>18881</td><td>73</td> <td>193</td><td>37762</td><td>147</td><td>130</td></tr>
+            <tr><th class="note">D</th> <th class="note">re</th>  <td>5001</td><td>19</td><td>137</td><td>10002</td><td>39</td><td>18</td> <td>20004</td><td>78</td> <td>36</td> <td>40008</td><td>156</td><td>72</td></tr>
+            <tr><th class="note">D#</th><th class="note">re#</th> <td>5298</td><td>20</td><td>178</td><td>10597</td><td>41</td><td>101</td><td>21193</td><td>82</td> <td>201</td><td>42387</td><td>165</td><td>147</td></tr>
+            <tr><th class="note">E</th> <th class="note">mi</th>  <td>5613</td><td>21</td><td>237</td><td>11227</td><td>43</td><td>219</td><td>22454</td><td>87</td> <td>182</td><td>44907</td><td>175</td><td>107</td></tr>
+            <tr><th class="note">F</th> <th class="note">fa</th>  <td>5947</td><td>23</td><td>59</td> <td>11894</td><td>46</td><td>118</td><td>23789</td><td>92</td> <td>237</td><td>47578</td><td>185</td><td>218</td></tr>
+            <tr><th class="note">F#</th><th class="note">fa#</th> <td>6301</td><td>24</td><td>157</td><td>12602</td><td>49</td><td>58</td> <td>25203</td><td>98</td> <td>115</td><td>50407</td><td>196</td><td>231</td></tr>
+            <tr><th class="note">G</th> <th class="note">sol</th> <td>6676</td><td>26</td><td>20</td> <td>13351</td><td>52</td><td>39</td> <td>26702</td><td>104</td><td>78</td> <td>53404</td><td>208</td><td>156</td></tr>
+            <tr><th class="note">G#</th><th class="note">sol#</th><td>7072</td><td>27</td><td>160</td><td>14145</td><td>55</td><td>65</td> <td>28290</td><td>110</td><td>130</td><td>56580</td><td>221</td><td>4</td></tr>
+            <tr><th class="note">A</th> <th class="note">la</th>  <td>7493</td><td>29</td><td>69</td> <td>14986</td><td>58</td><td>138</td><td>29972</td><td>117</td><td>20</td> <td>59944</td><td>234</td><td>40</td></tr>
+            <tr><th class="note">A#</th><th class="note">la#</th> <td>7939</td><td>31</td><td>3</td>  <td>15877</td><td>62</td><td>5</td>  <td>31754</td><td>124</td><td>10</td> <td>63508</td><td>248</td><td>20</td></tr>
+            <tr><th class="note">H</th> <th class="note">si</th>  <td>8411</td><td>32</td><td>219</td><td>16821</td><td>65</td><td>181</td><td>33642</td><td>131</td><td>106</td><td>-</td>    <td>-</td>  <td>-</td></tr>
+        </tbody>
+    </table>
+    <div class="piano">
+        <div class="octaveSel">
+            <div>&lt;</div>
+            <div><select class="octave">
+                <option value="0">Octave 0</option>
+                <option value="1">Octave 1</option>
+                <option value="2">Octave 2</option>
+                <option value="3">Octave 3</option>
+                <option value="4">Octave 4</option>
+                <option value="5">Octave 5</option>
+                <option value="6">Octave 6</option>
+                <option value="7">Octave 7</option>
+            </select></div>
+            <div>&gt;</div>
+        </div>
+        <ul class="set">
+             <li class="white c">C</li>
+            <li class="black cs">C#</li>
+             <li class="white d">D</li>
+            <li class="black ds">D#</li>
+             <li class="white e">E</li>
+             <li class="white f">F</li>
+            <li class="black fs">F#</li>
+             <li class="white g">G</li>
+            <li class="black gs">G#</li>
+             <li class="white a">A</li>
+            <li class="black as">A#</li>
+             <li class="white h">H</li>
+        </ul>
+    </div>
+</body>
+
+</html>

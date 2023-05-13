@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.6.14",
+    "version": "0.6.15",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -34,10 +34,34 @@
         "onCommand:c64basicv2.automaticProofreader",
         "onCommand:c64basicv2.convert",
         "onCommand:c64basicv2.convert-run",
+        "onCommand:c64basicv2.commands.openPreview",
+        "onCommand:c64basicv2.commands.refreshPreview",
         "onStartupFinished"
     ],
     "main": "./out/extension.js",
     "contributes": {
+        "colors": [
+            {
+                "id": "c64.screen.border",
+                "description": "Screen Border Color",
+                "defaults": {
+                "dark": "#6076c5",
+                "light": "#6076c5",
+                "highContrast": "#6076c5",
+                "highContrastLght": "#6076c5"
+                }
+            },
+            {
+                "id": "c64.screen.inside",
+                "description": "Screen Border Color",
+                "defaults": {
+                "dark": "#20398d",
+                "light": "#20398d",
+                "highContrast": "#20398d",
+                "highContrastLght": "#20398d"
+                }
+            }
+        ],
         "themes": [
             {
                 "id": "Visual Studio Dark - c64basicv2",
@@ -115,6 +139,11 @@
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "Enable diagnostics for c64 basic v2 text files."
+                },
+                "c64basicv2.showCtrlCharacterInfo": {
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Enable control character info on mouse hover."
                 }
             }
         },
@@ -130,7 +159,7 @@
             {
                 "command": "c64basicv2.convert-run",
                 "key": "f5",
-                "when": "editorLangId = c64basicv2 || resourceLangId == c64basicv2"
+                "when": "editorLangId == c64basicv2 || resourceLangId == c64basicv2"
             },
             {
                 "command": "c64basicv2.convert",
@@ -158,10 +187,67 @@
                 "command": "c64basicv2.convert-run",
                 "title": "c64basicv2: Convert and Run",
                 "category": "c64basicv2"
+            },
+            {
+                "command": "c64basicv2.commands.openPreview",
+                "title": "C64 Open Preview",
+                "category": "c64basicv2",
+                "icon": "$(open-preview)"
+            },
+            {
+                "command": "c64basicv2.commands.refreshPreview",
+                "title": "Refresh Preview",
+                "category": "c64basicv2"
             }
-        ]
+
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "c64basicv2.commands.openPreview",
+                    "when": "editorLangId == c64basicv2",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "c64basicv2",
+                    "title": "c64 basic v2",
+                    "icon": "icons/c64-light.png"
+                }
+            ]
+        },
+        "views": {
+            "c64basicv2": [
+                {
+					"type": "webview",
+					"id": "c64basicv2.view.chars",
+					"name": "Control characters",
+					"contextualTitle": "c64basicv2",
+					"icon": "$(add)",
+					"visibility": "visible"
+				},
+                {
+					"type": "webview",
+					"id": "c64basicv2.view.sid",
+					"name": "SID Register",
+					"contextualTitle": "c64basicv2",
+					"icon": "$(add)",
+					"visibility": "visible"
+				}
+            ]
+        }
     },
     "scripts": {
+        "install:all": "npm install && cd webview-ui/sid && npm install && cd ../chars && npm install",
+        "start:sidwebview": "cd webview-ui/sid && npm run start",
+        "build:sidwebview": "cd webview-ui/sid && npm run build && cd ../..",
+        "test:sidwebview": "cd webview-ui/sid && npm run test",
+        "start:charswebview": "cd webview-ui/chars && npm run start",
+        "build:charswebview": "cd webview-ui/chars && npm run build && cd ../..",
+        "test:charswebview": "cd webview-ui/chars && npm run test",
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",

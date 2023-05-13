@@ -243,10 +243,10 @@
     "scripts": {
         "install:all": "npm install && cd webview-ui/sid && npm install && cd ../chars && npm install",
         "start:sidwebview": "cd webview-ui/sid && npm run start",
-        "build:sidwebview": "cd webview-ui/sid && npm run build",
+        "build:sidwebview": "cd webview-ui/sid && npm run build && cd ../..",
         "test:sidwebview": "cd webview-ui/sid && npm run test",
         "start:charswebview": "cd webview-ui/chars && npm run start",
-        "build:charswebview": "cd webview-ui/chars && npm run build",
+        "build:charswebview": "cd webview-ui/chars && npm run build && cd ../..",
         "test:charswebview": "cd webview-ui/chars && npm run test",
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",

@@ -12,6 +12,14 @@ out/test/**
 src/**
 
 # Ignore all webview-ui files except the build directory
+webview-ui/common/src/**
+webview-ui/common/public/**
+webview-ui/common/scripts/**
+webview-ui/common/index.html
+webview-ui/common/README.md
+webview-ui/common/package.json
+webview-ui/common/package-lock.json
+webview-ui/common/node_modules/**
 webview-ui/sid/src/**
 webview-ui/sid/public/**
 webview-ui/sid/scripts/**

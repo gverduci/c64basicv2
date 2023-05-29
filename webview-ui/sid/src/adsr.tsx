@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { vscode } from "./utilities/vscode";
 import { VSCodeButton, VSCodeDropdown, VSCodeOption } from "@vscode/webview-ui-toolkit/react";
 import { useRef } from 'react';
-import Title from './common/Title';
+import Title from "webview-common/build/Title"
 
 function ADSR() {
     const [attack, setAttack] = useState<number>(0.500);
@@ -324,7 +324,7 @@ function ADSR() {
     return (
         <>
             <Title text="Attack (A)-Decay (D) / Sustain (S)-Release (R)" />
-            <canvas ref={canvasRef} width="425" height="220"></canvas>
+            <canvas ref={canvasRef} width="360" height="220"></canvas>
             <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
                 <div style={{ display: "grid" }}>
                     <label htmlFor="attack">Attack time (A)</label>
@@ -344,7 +344,9 @@ function ADSR() {
                 </div>
                 <div style={{ marginLeft: "16px", display: "grid" }}>
                     <label htmlFor="ADButton">&nbsp;</label>
-                    <VSCodeButton id="ADButton" onClick={handleADClick}>&gt;</VSCodeButton>
+                    <VSCodeButton id="ADButton" onClick={handleADClick} appearance="primary">
+                        <span className="codicon codicon-chevron-right"></span>
+                    </VSCodeButton>
                 </div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
@@ -366,7 +368,9 @@ function ADSR() {
                 </div>
                 <div style={{ marginLeft: "16px", display: "grid" }}>
                     <label htmlFor="SRButton">&nbsp;</label>
-                    <VSCodeButton id="SRButton" onClick={handleSRClick}>&gt;</VSCodeButton>
+                    <VSCodeButton id="SRButton" onClick={handleSRClick} appearance="primary">
+                        <span className="codicon codicon-chevron-right"></span>
+                    </VSCodeButton>
                 </div>
             </div>
         </>

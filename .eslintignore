@@ -1,0 +1,9 @@
+**/*.js
+out
+node_modules
+webview-ui/common/node_modules/**
+webview-ui/common/build/**
+webview-ui/sid/node_modules/**
+webview-ui/sid/build/**
+webview-ui/chars/node_modules/**
+webview-ui/chars/build/**

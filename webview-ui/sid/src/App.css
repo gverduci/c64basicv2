@@ -1,3 +1,5 @@
+@import "../node_modules/@vscode/codicons/dist/codicon.css";
+
 main {
   display: flex;
   flex-direction: column;
@@ -7,5 +9,29 @@ main {
 }
 
 main > * {
-  margin: 1rem 0;
+  margin: .25rem 0;
+}
+
+h5 {
+  font-style: italic;
+}
+
+button.control {
+  padding: 0;
+}
+.checkline {
+  position: relative;
+  grid-area: 1 / 1 / span 2 / auto;
+  color: var(--vscode-textLink-foreground);
+}
+.checkline::after {
+  content: "";
+  position: absolute;
+  border-left: 0.1rem solid currentcolor;
+  width: 0px;
+  top: 1.3rem;
+  bottom: -2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.3;
 }

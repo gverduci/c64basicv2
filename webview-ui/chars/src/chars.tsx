@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { vscode } from "./utilities/vscode";
-import { VSCodeDataGrid, VSCodeDataGridRow, VSCodeDataGridCell, VSCodePanels, VSCodePanelTab, VSCodePanelView } from "@vscode/webview-ui-toolkit/react";
-
+import { VSCodeDataGridRow, VSCodeDataGridCell, VSCodeDataGrid } from "@vscode/webview-ui-toolkit/react";
+import Subtitle from "webview-common/build/Subtitle"
 interface ICharObjectItem {
     description: string;
     id: number;
@@ -63,7 +63,7 @@ function Chars() {
 
     return (
         <>
-            <p>Click to copy control character</p>
+            <Subtitle text="click to copy control character"/>
             <VSCodeDataGrid gridTemplateColumns="20px 30px">
                 {chars && chars.map((char: ICharObject) => {
                     let label = char.item.symbolic;
@@ -79,7 +79,7 @@ function Chars() {
                                 {char.item.id}
                             </VSCodeDataGridCell>
                             <VSCodeDataGridCell grid-column="3" style={{ paddingLeft: 0, whiteSpace: "nowrap" }}>
-                                <div style={{ display: "grid" }}><div> {label}</div><div style={{ fontSize: "10px" }}>{char.item.description}</div></div>
+                                <div style={{ display: "grid" }}><div> {label}</div><div style={{ fontSize: "x-small", whiteSpace:"normal" }}>{char.item.description}</div></div>
                             </VSCodeDataGridCell>
                         </VSCodeDataGridRow>
                     )

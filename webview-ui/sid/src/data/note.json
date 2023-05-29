@@ -1,7 +1,8 @@
-{
-    "pal": {
+[
+    {
+        "system":"pal",
         "info": "Musical note - PAL (Italian Manual)",
-        "note": [
+        "notes": [
             {
                 "note": "C",
                 "synonym": "do",
@@ -525,13 +526,18 @@
                     "hi": 131,
                     "lo": 106
                 },{
-                    "octave": 7
+                    "octave": 7,
+                    "dec": 0,
+                    "hi": 0,
+                    "lo": 0
                 }]
             }
             
         ]
     },
-    "ntsc": {
-        "info": "Musical note - NTSC"
+    {
+        "system": "ntsc",
+        "info": "Musical note - NTSC",
+        "notes": []
     }
-}
+]

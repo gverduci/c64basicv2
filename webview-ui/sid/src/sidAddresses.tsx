@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 import { vscode } from "./utilities/vscode";
 import { VSCodeDataGrid, VSCodeDataGridRow, VSCodeDataGridCell, VSCodePanels, VSCodePanelTab, VSCodePanelView } from "@vscode/webview-ui-toolkit/react";
-import Title from './common/Title';
+import Title from "webview-common/build/Title"
+import Subtitle from "webview-common/build/Subtitle"
 
 interface IbitObj {
     name: string,
@@ -54,7 +55,7 @@ const misc = [
 ];
 
 const TabVoiceGrid: FC<IRegisterVoiceProps> = ({ registers, voiceNumber, handleAddressClick, handleAddressAndValueClick }): ReactElement =>
-(<VSCodeDataGrid gridTemplateColumns="60px 320px">
+(<VSCodeDataGrid gridTemplateColumns="60px 280px">
     <VSCodeDataGridRow row-type="header">
         <VSCodeDataGridCell cell-type="columnheader" grid-column="1">reg.</VSCodeDataGridCell>
         <VSCodeDataGridCell cell-type="columnheader" grid-column="2">bits</VSCodeDataGridCell>
@@ -65,14 +66,14 @@ const TabVoiceGrid: FC<IRegisterVoiceProps> = ({ registers, voiceNumber, handleA
             address = address + (voiceNumber - 1) * 7
         return (
             <VSCodeDataGridRow>
-                <VSCodeDataGridCell cell-type="columnheader" grid-column="1" style={{ cursor: "pointer" }} className="clickable" onClick={() => handleAddressClick(`poke s+${address},`)}>{`s+${address}`}</VSCodeDataGridCell>
+                <VSCodeDataGridCell cell-type="columnheader" grid-column="1" style={{ cursor: "pointer", color: "var(--button-primary-background)"}} className="clickable" onClick={() => handleAddressClick(`poke s+${address},`)}>{`s+${address}`}</VSCodeDataGridCell>
                 <VSCodeDataGridCell grid-column="2">
                     {row.bits.map((b, index) => (
                         <div style={{ display: "table" }}>
                             <div style={{ display: "table-cell", minWidth: "30px" }}>{b.bit}</div>
                             {b.names.map((n, index) => {
                                 if (n.value !== "")
-                                    return (<div style={{ display: "table-cell", paddingRight: "8px", cursor: "pointer" }} onClick={() => handleAddressAndValueClick(`poke s+${address},${n.value}`)}>{n.name}</div>)
+                                    return (<div style={{ display: "table-cell", paddingRight: "8px", cursor: "pointer", color: "var(--button-primary-background)" }} onClick={() => handleAddressAndValueClick(`poke s+${address},${n.value}`)}>{n.name}</div>)
                                 return (<div style={{ display: "table-cell", paddingRight: "8px" }}>{n.name}</div>)
                             })}
                         </div>
@@ -113,6 +114,7 @@ function SidAddresses() {
             <Title text="Sid Addresses">
                 <span style={{ margin: 0, cursor: "pointer" }} onClick={() => handleAddressBaseClick("s=54272")}>(s=54272)</span>
             </Title>
+            <Subtitle text="click on registry, or on bits, to copy the corresponding poke command" />
             <VSCodePanels>
                 <VSCodePanelTab id="tab-1">Voice 1</VSCodePanelTab>
                 <VSCodePanelTab id="tab-2">Voice 2</VSCodePanelTab>

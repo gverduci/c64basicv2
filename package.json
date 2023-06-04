@@ -231,7 +231,7 @@
                 {
                     "type": "webview",
                     "id": "c64basicv2.view.sid",
-                    "name": "SID Register",
+                    "name": "SID",
                     "contextualTitle": "c64basicv2",
                     "icon": "$(add)",
                     "visibility": "visible"

@@ -8,7 +8,7 @@ export class SIDWebview extends WebviewViewBase {
             context,
             'c64basicv2.view.sid',
             'sid',
-            'SID Register',
+            'SID',
         );
     }
 

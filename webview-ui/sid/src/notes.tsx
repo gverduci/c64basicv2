@@ -1,4 +1,10 @@
-import React, { FC, ReactElement, useState } from "react";
+import React, {
+  FC,
+  ReactElement,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { vscode } from "./utilities/vscode";
 import {
   VSCodeDataGrid,
@@ -9,12 +15,13 @@ import {
   VSCodePanelView,
   VSCodeButton,
 } from "@vscode/webview-ui-toolkit/react";
-import Title from "webview-common/build/Title"
-import Subtitle from "webview-common/build/Subtitle"
+import Title from "webview-common/build/Title";
+import Subtitle from "webview-common/build/Subtitle";
 import { INoteSystem, INote } from "./models/note";
 import note from "./data/note.json";
 import { VSCodeDropdown } from "@vscode/webview-ui-toolkit/react";
 import { VSCodeOption } from "@vscode/webview-ui-toolkit/react";
+import { Tabs } from "@microsoft/fast-foundation";
 
 import "./App.css";
 import StepperSection from "./common/StepperSection";
@@ -23,21 +30,26 @@ interface IButtonNote {
   noMargin?: boolean;
   note: string;
   octave: number;
+  keyButton: string;
   onClick: () => any;
 }
 
 interface IButtonLabel {
   note: string;
   octave: number;
+  keyButton: string;
   onClick: () => any;
 }
 
-interface INoteView extends INote {
+interface INoteView {
+  note: string;
   octave: number;
+  keyButton: string;
   onClick: () => any;
 }
 
 interface INoteSystemView extends INoteSystem {
+  currentSystem: string;
   setCurrentNoteValues: (hi: number, lo: number) => any;
 }
 
@@ -47,7 +59,13 @@ interface ICurrentNote {
   dr: number;
 }
 
-const NoteWhite: FC<IButtonNote> = ({ noMargin, note, octave, onClick }) => (
+const NoteWhite: FC<IButtonNote> = ({
+  noMargin,
+  note,
+  octave,
+  keyButton,
+  onClick,
+}) => (
   <button
     onClick={onClick}
     style={{
@@ -56,19 +74,27 @@ const NoteWhite: FC<IButtonNote> = ({ noMargin, note, octave, onClick }) => (
       alignItems: "end",
       zIndex: 99,
       color: "#000000",
-      background: "#FFFFFF",
       width: "40px",
       height: "100px",
       border: "1px solid black",
       marginLeft: noMargin ? "0" : "-15px",
-      fontSize:"0.75rem"
+      fontSize: "0.75rem",
     }}
+    className="noteButtonWhite"
   >
-    <span>{`${note}${octave}`}</span>
+    <span
+      style={{ whiteSpace: "pre" }}
+    >{`${note}${octave}\n(${keyButton})`}</span>
   </button>
 );
 
-const NoteBlack: FC<IButtonNote> = ({ noMargin, note, octave, onClick }) => (
+const NoteBlack: FC<IButtonNote> = ({
+  noMargin,
+  note,
+  octave,
+  keyButton,
+  onClick,
+}) => (
   <button
     onClick={onClick}
     style={{
@@ -77,108 +103,270 @@ const NoteBlack: FC<IButtonNote> = ({ noMargin, note, octave, onClick }) => (
       alignItems: "end",
       zIndex: 100,
       color: "#FFFFFF",
-      background: "#000000",
       width: "30px",
       height: "60px",
       marginLeft: noMargin ? "0" : "-15px",
-      fontSize:"0.75rem"
+      fontSize: "0.75rem",
     }}
+    className="noteButtonBlack"
   >
-    <span>{`${note}${octave}`}</span>
+    <span
+      style={{ whiteSpace: "pre" }}
+    >{`${note}${octave}\n(${keyButton})`}</span>
   </button>
 );
 
-const NoteC: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} noMargin note={note} octave={octave} />
+const NoteC: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    noMargin
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteCSharp: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteBlack onClick={onClick} note={note} octave={octave} />
+const NoteCSharp: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteBlack
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteD: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} note={note} octave={octave} />
+const NoteD: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteDSharp: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteBlack onClick={onClick} note={note} octave={octave} />
+const NoteDSharp: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteBlack
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteE: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} note={note} octave={octave} />
+const NoteE: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteF: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} noMargin note={note} octave={octave} />
+const NoteF: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    noMargin
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteFSharp: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteBlack onClick={onClick} note={note} octave={octave} />
+const NoteFSharp: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteBlack
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteG: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} note={note} octave={octave} />
+const NoteG: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteGSharp: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteBlack onClick={onClick} note={note} octave={octave} />
+const NoteGSharp: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteBlack
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteA: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} note={note} octave={octave} />
+const NoteA: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteASharp: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteBlack onClick={onClick} note={note} octave={octave} />
+const NoteASharp: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteBlack
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
-const NoteH: FC<IButtonLabel> = ({ note, octave, onClick }) => (
-  <NoteWhite onClick={onClick} note={note} octave={octave} />
+const NoteH: FC<IButtonLabel> = ({ note, octave, keyButton, onClick }) => (
+  <NoteWhite
+    onClick={onClick}
+    note={note}
+    octave={octave}
+    keyButton={keyButton}
+  />
 );
 
-const Note: FC<INoteView> = ({ note, octave, onClick }) => {
+const Note: FC<INoteView> = ({ note, octave, keyButton, onClick }) => {
   switch (note) {
     case "C":
-      return <NoteC onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteC
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "C#":
-      return <NoteCSharp onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteCSharp
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "D":
-      return <NoteD onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteD
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "D#":
-      return <NoteDSharp onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteDSharp
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "E":
-      return <NoteE onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteE
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "F":
-      return <NoteF onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteF
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "F#":
-      return <NoteFSharp onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteFSharp
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "G":
-      return <NoteG onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteG
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "G#":
-      return <NoteGSharp onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteGSharp
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "A":
-      return <NoteA onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteA
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "A#":
-      return <NoteASharp onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteASharp
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     case "H":
-      return <NoteH onClick={onClick} note={note} octave={octave} />;
+      return (
+        <NoteH
+          onClick={onClick}
+          note={note}
+          octave={octave}
+          keyButton={keyButton}
+        />
+      );
     default:
       return null;
   }
 };
 
-const System: FC<INoteSystemView> = ({
-  notes,
-  info,
-  system,
-  setCurrentNoteValues,
-}): ReactElement => {
-  const [startNote, setStartNote] = useState(4 * 12);
-
+const generateNotesWindow = (notes: INote[], startNote: number) => {
   // 8  octave 0..7
   // 12 notes 0..11
   // 0  1   2  3   4  5  6   7  8   9  10  11
   // 0      1      2  3      4      5      6
   // C, C#, D, D#, E, F, F#, G, G#, A, A#, B
+  //    2      3         5      6      7
+  // q      w      e  r      t      y      u
+  const keysBlack = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  const keysWhite = ["q", "w", "e", "r", "t", "y", "u"];
+  const keys: string[] = [];
+  const notesWin: INote[] = [];
   const startOctave: number = Math.floor(startNote / 12);
   const firstNote: number = startNote % 12;
-  const notesWin: INote[] = [];
   let noteIndex: number = firstNote;
   let octaveIndex: number = startOctave;
   if (notes.length > 0) {
+    let indexKeyW = 0;
+    let indexKeyB = 0;
     while (notesWin.length < 12) {
       const curr: INote = { ...notes[noteIndex], values: [] };
       if (octaveIndex < 8) {
-        curr.values.push(notes[noteIndex].values[octaveIndex]);
+        const note = notes[noteIndex];
+        curr.values.push(note.values[octaveIndex]);
+        if (note.note.indexOf("#") > -1) {
+          keys.push(keysBlack[indexKeyB]);
+          indexKeyB = indexKeyB + 1;
+        } else {
+          keys.push(keysWhite[indexKeyW]);
+          if (
+            note.note === "E" ||
+            note.note === "H" ||
+            (indexKeyB === 0 && indexKeyW === 0)
+          )
+            indexKeyB = indexKeyB + 1;
+          indexKeyW = indexKeyW + 1;
+        }
       } else {
         curr.values.push({
           octave: octaveIndex,
@@ -195,6 +383,20 @@ const System: FC<INoteSystemView> = ({
       noteIndex = noteIndex + 1;
     }
   }
+  return { keys, notesWin };
+};
+
+const OCTAVE_INIT = 4;
+
+const System: FC<INoteSystemView> = ({
+  notes,
+  info,
+  system,
+  currentSystem,
+  setCurrentNoteValues,
+}): ReactElement => {
+  const [startNote, setStartNote] = useState(OCTAVE_INIT * 12);
+  const { keys, notesWin } = generateNotesWindow(notes, startNote);
 
   const handleIncr = (newStartNote: number) => {
     if (newStartNote < 0) setStartNote(0);
@@ -202,9 +404,32 @@ const System: FC<INoteSystemView> = ({
     else setStartNote(newStartNote);
   };
 
-  const handleClick = (note: INote) => {
-    setCurrentNoteValues(note.values[0].hi, note.values[0].lo);
-  };
+  const handleClick = useCallback(
+    (note: INote) => {
+      setCurrentNoteValues(note.values[0].hi, note.values[0].lo);
+    },
+    [setCurrentNoteValues],
+  );
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      const { key } = e;
+      const noteIndex = keys.indexOf(key);
+
+      if (noteIndex > -1 && currentSystem === system) {
+        // handleClick call only for current tab (system)
+        handleClick(notesWin[noteIndex]);
+        console.log(`${key} - ${notesWin[noteIndex].note}`);
+      }
+    };
+
+    // this event is added for each panel ("pal" and "ntsc"),
+    // so onKeyDown will be called 2 times for each key pressed
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [notesWin, keys, currentSystem, system, handleClick]);
 
   return (
     <div style={{ display: "block" }}>
@@ -212,45 +437,86 @@ const System: FC<INoteSystemView> = ({
       <div
         style={{ background: "#cacaca", display: "flex", paddingLeft: "15px" }}
       >
-        {notesWin.map((n) => (
+        {notesWin.map((n, i) => (
           <Note
             note={n.note}
-            synonym={n.synonym}
-            values={n.values}
             octave={n.values[0].octave}
+            keyButton={keys && keys.length > 0 ? keys[i] : ""}
             onClick={() => {
               handleClick(n);
             }}
           />
         ))}
       </div>
-      <div><VSCodeButton id="pause" onClick={() => handleClick({note: "", synonym: "", values: [{octave:0, dec:0, hi:0, lo:0}]})}>pause</VSCodeButton></div>
-      <div style={{ marginTop: "4px", display: "flex", flexFlow:"nowrap" }}>
-          <VSCodeButton id="decOct" onClick={() => handleIncr(startNote - 12)}>
-            <span
-              className="codicon codicon-fold-down"
-              style={{ rotate: "90deg" }}
-            ></span>octave
-            {/*⟪*/}
-          </VSCodeButton>
+      <div style={{ marginTop: "4px", display: "flex", flexFlow: "nowrap" }}>
+        <VSCodeButton
+          id="decOct"
+          appearance="secondary"
+          onClick={() => handleIncr(startNote - 12)}
+        >
+          <span
+            className="codicon codicon-fold-down"
+            style={{ rotate: "90deg" }}
+          ></span>
+          octave
+        </VSCodeButton>
+        <VSCodeButton
+          id="decNote"
+          appearance="secondary"
+          onClick={() => handleIncr(startNote - 1)}
+        >
+          <span className="codicon codicon-chevron-left"></span>note
+        </VSCodeButton>
+        <VSCodeButton
+          id="incNote"
+          appearance="secondary"
+          onClick={() => handleIncr(startNote + 1)}
+        >
+          note
+          <span className="codicon codicon-chevron-right"></span>
+          {/*⟩*/}
+        </VSCodeButton>
+        <VSCodeButton
+          id="incOct"
+          appearance="secondary"
+          onClick={() => handleIncr(startNote + 12)}
+        >
+          octave
+          <span
+            className="codicon codicon-fold-down"
+            style={{ rotate: "-90deg" }}
+          ></span>
+        </VSCodeButton>
+      </div>
+      <div style={{ marginTop: "4px", display: "flex", flexFlow: "nowrap" }}>
+        <div>
           <VSCodeButton
-            id="decNote"
-            onClick={() => handleIncr(startNote - 1)}
+            id="pause"
+            onClick={() =>
+              handleClick({
+                note: "",
+                synonym: "",
+                values: [{ octave: 0, dec: 0, hi: 0, lo: 0 }],
+              })
+            }
           >
-            <span className="codicon codicon-chevron-left"></span>note
-            {/*⟨*/}
+            pause
           </VSCodeButton>
-          <VSCodeButton id="incNote" onClick={() => handleIncr(startNote + 1)}>note
-            <span className="codicon codicon-chevron-right"></span>
-            {/*⟩*/}
+        </div>
+        <div>
+          <VSCodeButton
+            id="end"
+            onClick={() =>
+              handleClick({
+                note: "",
+                synonym: "",
+                values: [{ octave: 0, dec: -1, hi: -1, lo: -1 }],
+              })
+            }
+          >
+            end
           </VSCodeButton>
-          <VSCodeButton id="incOct" onClick={() => handleIncr(startNote + 12)}>octave
-            <span
-              className="codicon codicon-fold-down"
-              style={{ rotate: "-90deg" }}
-            ></span>
-            {/*⟫*/}
-          </VSCodeButton>
+        </div>
       </div>
     </div>
   );
@@ -293,23 +559,24 @@ const bpmJiffies = [
   { mm: 56, w: 256, h: 128, q: 64, e: 32, s: 16, t32: 8, t64: 4 },
 ];
 
-const tempoBpm = [
-  {tempo:"Larghissimo", min:0, max:20},
-  {tempo:"Grave", min:21, max:40},
-  {tempo:"Lento", min:41, max:45},
-  {tempo:"Largo", min:46, max:50},
-  {tempo:"Adagio", min:51, max:60},
-  {tempo:"Adagietto", min:61, max:70},
-  {tempo:"Andante", min:71, max:85},
-  {tempo:"Moderato", min:86, max:97},
-  {tempo:"Allegretto", min:98, max:109},
-  {tempo:"Allegro", min:110, max:132},
-  {tempo:"Vivace", min:133, max:140},
-  {tempo:"Presto", min:141, max:177},
-  {tempo:"Prestissimo", min:178, max:240},
-  {tempo:"Prestissimo", min:241, max:10000},
-];
+const DEFAULT_BPM = 112;
 
+const tempoBpm = [
+  { tempo: "Larghissimo", min: 0, max: 20 },
+  { tempo: "Grave", min: 21, max: 40 },
+  { tempo: "Lento", min: 41, max: 45 },
+  { tempo: "Largo", min: 46, max: 50 },
+  { tempo: "Adagio", min: 51, max: 60 },
+  { tempo: "Adagietto", min: 61, max: 70 },
+  { tempo: "Andante", min: 71, max: 85 },
+  { tempo: "Moderato", min: 86, max: 97 },
+  { tempo: "Allegretto", min: 98, max: 109 },
+  { tempo: "Allegro", min: 110, max: 132 },
+  { tempo: "Vivace", min: 133, max: 140 },
+  { tempo: "Presto", min: 141, max: 177 },
+  { tempo: "Prestissimo", min: 178, max: 240 },
+  { tempo: "Prestissimo", min: 241, max: 10000 },
+];
 
 const getDataValue = (currentNoteValues: ICurrentNote[]) => {
   return currentNoteValues.reduce((acc, curr, i) => {
@@ -323,12 +590,17 @@ const getDataValue = (currentNoteValues: ICurrentNote[]) => {
 
 const Notes: FC = () => {
   const noteSystems: INoteSystem[] = note;
-  const [bpm, setBpm] = useState("112");
-  const [jiffies, setJiffies] = useState([128, 64, 32, 16, 8, 2, 1]);
-  const [currentJiffie, setCurrentJiffie] = useState(128);
+  const [bpm, setBpm] = useState(`${DEFAULT_BPM}`);
+  const [currentJiffie, setCurrentJiffie] = useState(
+    (bpmJiffies.find((x) => x.mm === DEFAULT_BPM) || { w: 128 }).w,
+  );
+  const [jiffies, setJiffies] = useState(
+    Object.values(bpmJiffies.find((x) => x.mm === DEFAULT_BPM) || {}).slice(1),
+  );
   const [currentNoteValues, setCurrentNoteValues] = useState<ICurrentNote[]>(
     [],
   );
+  const [currentSystem, setCurrentSystem] = useState("pal");
 
   const handleAdd = () => {
     const value = getDataValue(currentNoteValues);
@@ -361,14 +633,24 @@ const Notes: FC = () => {
   };
 
   const handleCurrentNote = (hi: number, lo: number, dr: number) => {
-    const newValues = [...currentNoteValues, { hi, lo, dr }];
+    const newValues = [
+      ...currentNoteValues,
+      { hi, lo, dr: hi === -1 && lo === -1 ? -1 : dr },
+    ];
     setCurrentNoteValues(newValues);
+  };
+
+  const handleOnChangeTab = (evt: Event | React.FormEvent<HTMLElement>) => {
+    const element = evt.target as Tabs;
+    setCurrentSystem(element.activeid);
+    handleClr();
   };
 
   return (
     <>
       <Title text="Notes" />
       <Subtitle text="follow these steps to generate the data for a melody" />
+
       <StepperSection title="Bpm" subtitle="select a bpm value" description="">
         <VSCodeDropdown
           id="bpm"
@@ -378,208 +660,137 @@ const Notes: FC = () => {
           value={`${bpm}`}
           style={{ height: "28px", width: "150px" }}
         >
-          {bpmJiffies.map((t) => { 
-            const tempo = tempoBpm.find(x=> t.mm>=x.min && t.mm<=x.max);
+          {bpmJiffies.map((t) => {
+            const tempo = tempoBpm.find((x) => t.mm >= x.min && t.mm <= x.max);
             return (
-            <VSCodeOption key={`${t.mm}`} value={`${t.mm}`}>
-              {`${t.mm}${tempo ? ` - ${tempo.tempo}` : ""}`}
-            </VSCodeOption>
-          )})}
+              <VSCodeOption key={`${t.mm}`} value={`${t.mm}`}>
+                {`${t.mm}${tempo ? ` - ${tempo.tempo}` : ""}`}
+              </VSCodeOption>
+            );
+          })}
         </VSCodeDropdown>
       </StepperSection>
 
-      <StepperSection title="Duration" subtitle={`select a note duration (dr) for bpm ${bpm}`} description="Note durations in terms of time units (jiffies). One jiffy lasts about 1/60 second. Loop on the system variable TI for the duration. 'All about the Commodore 64 - vol. 2' - Chamberlain, Craig">
-        <div style={{display:"block"}}>
+      <StepperSection
+        title="Duration"
+        subtitle={`select a note duration (dr) for bpm ${bpm}`}
+        description="Note durations in terms of time units (jiffies). One jiffy lasts about 1/60 second. Loop on the system variable TI for the duration. 'All about the Commodore 64 - vol. 2' - Chamberlain, Craig"
+      >
+        <div style={{ display: "block" }}>
           <VSCodeDataGrid>
             <VSCodeDataGridRow gridTemplateColumns="40px 40px 40px 40px 40px 40px 40px">
-                {jiffies.map((j, i) => {
+              {jiffies.map((j, i) => {
                 if (j)
-                    return (
+                  return (
                     <VSCodeDataGridCell
-                        grid-column={i + 1}
-                        onClick={() => handleJiffie(j)}
+                      grid-column={i + 1}
+                      onClick={() => handleJiffie(j)}
                     >
-                        <span
+                      <span
                         style={{
-                            textAlign: "center",
-                            fontSize: "large",
-                            fontWeight: j === currentJiffie ? 700 : 400,
-                            color:
-                              j === currentJiffie
-                                  ? "var(--button-primary-background)"
-                                  : "inherit",
+                          textAlign: "center",
+                          fontSize: "large",
+                          fontWeight: j === currentJiffie ? 700 : 400,
+                          color:
+                            j === currentJiffie
+                              ? "var(--button-primary-background)"
+                              : "inherit",
                         }}
-                        >
+                      >
                         {String.fromCodePoint(119133 + i)}
-                        </span>
+                      </span>
                     </VSCodeDataGridCell>
-                    );
+                  );
                 return null;
-                })}
+              })}
             </VSCodeDataGridRow>
-        </VSCodeDataGrid>
-        <div>Ex: <pre style={{fontSize: "0.75rem"}}>81 if ti &lt; tm+dr then 81;tm = ti</pre></div>
+          </VSCodeDataGrid>
+          <div>
+            Ex:{" "}
+            <pre style={{ fontSize: "0.75rem" }}>
+              81 if ti &lt; tm+dr then 81;tm = ti
+            </pre>
+          </div>
         </div>
       </StepperSection>
 
-      {/* <Subtitle text="Duration (jiffies)" />
-      <div style={{ display: "grid" }}>
-        <label htmlFor="tempo">select a M.M. value</label>
-        <VSCodeDropdown
-          id="tempo"
-          onChange={(e) => {
-            handleTempo(e);
-          }}
-          value={`${tempo}`}
-          style={{ height: "28px", width: "150px" }}
-        >
-          {tempoJiffies.map((t) => (
-            <VSCodeOption key={`${t.mm}`} value={`${t.mm}`}>
-              {t.mm}
-            </VSCodeOption>
-          ))}
-        </VSCodeDropdown>
-        <div>select a duration for M.M. {tempo}</div>
-        <VSCodeDataGrid>
-          <VSCodeDataGridRow gridTemplateColumns="40px 40px 40px 40px 40px 40px 40px">
-            {jiffies.map((j, i) => {
-              if (j)
-                return (
-                  <VSCodeDataGridCell
-                    grid-column={i + 1}
-                    onClick={() => handleJiffie(j)}
-                  >
-                    <span
-                      style={{
-                        textAlign: "center",
-                        fontSize: "large",
-                        fontWeight: j === currentJiffie ? 700 : 400,
-                        color:
-                          j === currentJiffie
-                            ? "var(--button-primary-background)"
-                            : "inherit",
-                      }}
-                    >
-                      {String.fromCodePoint(119133 + i)}
-                    </span>
-                  </VSCodeDataGridCell>
-                );
-              return null;
-            })}
-          </VSCodeDataGridRow>
-        </VSCodeDataGrid>
-      </div> */}
-
-    <StepperSection title="Notes" subtitle="compose a melody" description="Using the keyboard you select the Frequency low byte (lo), max:the Frequency high byte (hi) for each note">
-        <VSCodePanels>
-            {noteSystems.map((s) => (
+      <StepperSection
+        title="Notes"
+        subtitle="compose a melody"
+        description="Using the keyboard you select the Frequency low byte (lo), max:the Frequency high byte (hi) for each note"
+      >
+        <VSCodePanels activeid={currentSystem} onChange={handleOnChangeTab}>
+          {noteSystems.map((s) => (
             <VSCodePanelTab id={s.system}>{s.system}</VSCodePanelTab>
-            ))}
-            {noteSystems.map((s) => (
+          ))}
+          {noteSystems.map((s) => (
             <VSCodePanelView id={s.system}>
-                <System
+              <System
                 system={s.system}
+                currentSystem={currentSystem}
                 notes={s.notes}
                 info={s.info}
                 setCurrentNoteValues={(hi, lo) =>
-                    handleCurrentNote(hi, lo, currentJiffie)
+                  handleCurrentNote(hi, lo, currentJiffie)
                 }
-                />
+              />
             </VSCodePanelView>
-            ))}
+          ))}
         </VSCodePanels>
-    </StepperSection>
+      </StepperSection>
 
-    <StepperSection title="Notes" subtitle="add generated data" description="">
+      <StepperSection title="Data" subtitle="add generated data" description="">
         <div>
-            <div style={{ paddingLeft: "7px", paddingRight: "7px", width: "100%" }}>
-                <span style={{ fontFamily: "monospace", whiteSpace: "pre" }}>
-                    {getDataValue(currentNoteValues)}
-                </span>
+          <div
+            style={{ paddingLeft: "7px", paddingRight: "7px", width: "100%" }}
+          >
+            <span style={{ fontFamily: "monospace", whiteSpace: "pre" }}>
+              {getDataValue(currentNoteValues)}
+            </span>
+          </div>
+          {currentNoteValues.length > 0 && (
+            <div style={{ marginTop: "4px", display: "flex", width: "300px" }}>
+              <div style={{ flex: "1" }}>
+                <VSCodeButton
+                  id="del"
+                  onClick={handleDel}
+                  appearance="icon"
+                  aria-label="delete"
+                >
+                  <span slot="start" className="codicon codicon-discard"></span>
+                </VSCodeButton>
+                <VSCodeButton
+                  id="clr"
+                  onClick={handleClr}
+                  appearance="icon"
+                  aria-label="clear"
+                >
+                  <span
+                    slot="start"
+                    className="codicon codicon-clear-all"
+                  ></span>
+                </VSCodeButton>
+              </div>
+              <div>
+                <VSCodeButton id="add" onClick={handleAdd} appearance="primary">
+                  Add code
+                  <span className="codicon codicon-chevron-right"></span>
+                </VSCodeButton>
+              </div>
             </div>
-            {currentNoteValues.length > 0 && (
-                <div style={{ marginTop: "4px", display: "flex", width: "300px" }}>
-                    <div style={{ flex: "1" }}>
-                        <VSCodeButton
-                          id="del"
-                          onClick={handleDel}
-                          appearance="icon"
-                          aria-label="delete"
-                        >
-                          <span slot="start" className="codicon codicon-discard"></span>
-                        </VSCodeButton>
-                        <VSCodeButton
-                          id="clr"
-                          onClick={handleClr}
-                          appearance="icon"
-                          aria-label="clear"
-                        >
-                          <span slot="start" className="codicon codicon-clear-all"></span>
-                        </VSCodeButton>
-                    </div>
-                    <div>
-                        <VSCodeButton id="add" onClick={handleAdd} appearance="primary">
-                        Add code<span className="codicon codicon-chevron-right"></span>
-                        </VSCodeButton>
-                    </div>
-                </div>
-            )}
-            {currentNoteValues.length === 0 && (<div style={{color:"var(--vscode-input-placeholderForeground)", fontStyle:"italic"}}>data hi,lo,dr,...</div>)}
-        </div>
-    </StepperSection>
-
-      {/* <Subtitle text="Notes" />
-      <div>compose a melody</div>
-      <VSCodePanels>
-        {noteSystems.map((s) => (
-          <VSCodePanelTab id={s.system}>{s.system}</VSCodePanelTab>
-        ))}
-        {noteSystems.map((s) => (
-          <VSCodePanelView id={s.system}>
-            <System
-              system={s.system}
-              notes={s.notes}
-              info={s.info}
-              setCurrentNoteValues={(hi, lo) =>
-                handleCurrentNote(hi, lo, currentJiffie)
-              }
-            />
-          </VSCodePanelView>
-        ))}
-      </VSCodePanels>
-      <div>add generated data</div>
-      <div style={{ paddingLeft: "7px", paddingRight: "7px", width: "380px" }}>
-        <span style={{ fontFamily: "monospace", whiteSpace: "pre" }}>
-          {getDataValue(currentNoteValues)}
-        </span>
-      </div>
-      {currentNoteValues.length > 0 && (
-        <div style={{ marginTop: "4px", display: "flex", width: "380px" }}>
-          <div style={{ flex: "1" }}>
-            <VSCodeButton
-              id="del"
-              onClick={handleDel}
-              appearance="icon"
-              aria-label="delete"
+          )}
+          {currentNoteValues.length === 0 && (
+            <div
+              style={{
+                color: "var(--vscode-input-placeholderForeground)",
+                fontStyle: "italic",
+              }}
             >
-              <span slot="start" className="codicon codicon-discard"></span>
-            </VSCodeButton>
-            <VSCodeButton
-              id="clr"
-              onClick={handleClr}
-              appearance="icon"
-              aria-label="clear"
-            >
-              <span slot="start" className="codicon codicon-clear-all"></span>
-            </VSCodeButton>
-          </div>
-          <div>
-            <VSCodeButton id="add" onClick={handleAdd} appearance="primary">
-              Add code &gt;
-            </VSCodeButton>
-          </div>
+              data hi,lo,dr,...
+            </div>
+          )}
         </div>
-      )} */}
+      </StepperSection>
     </>
   );
 };

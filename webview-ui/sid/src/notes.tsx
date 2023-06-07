@@ -594,6 +594,7 @@ const Notes: FC = () => {
   const [currentJiffie, setCurrentJiffie] = useState(
     (bpmJiffies.find((x) => x.mm === DEFAULT_BPM) || { w: 128 }).w,
   );
+  const [currentJiffieIdx, setCurrentJiffieIdx] = useState(0);
   const [jiffies, setJiffies] = useState(
     Object.values(bpmJiffies.find((x) => x.mm === DEFAULT_BPM) || {}).slice(1),
   );
@@ -622,14 +623,15 @@ const Notes: FC = () => {
     setBpm(element.value);
     const jiffiesObj = bpmJiffies.find((r) => `${r.mm}` === element.value);
     setJiffies(jiffiesObj ? Object.values(jiffiesObj).slice(1) : []);
-    vscode.postMessage({
-      command: "text",
-      text: currentNoteValues,
-    });
+    setCurrentJiffie(jiffiesObj ? jiffiesObj.w : 128);
+    setCurrentJiffieIdx(0);
   };
 
-  const handleJiffie = (j: number) => {
-    if (j) setCurrentJiffie(j);
+  const handleJiffie = (jiffie: number, index: number) => {
+    if (jiffie) {
+      setCurrentJiffie(jiffie);
+      setCurrentJiffieIdx(index);
+    };
   };
 
   const handleCurrentNote = (hi: number, lo: number, dr: number) => {
@@ -678,26 +680,85 @@ const Notes: FC = () => {
       >
         <div style={{ display: "block" }}>
           <VSCodeDataGrid>
-            <VSCodeDataGridRow gridTemplateColumns="40px 40px 40px 40px 40px 40px 40px">
-              {jiffies.map((j, i) => {
-                if (j)
+            <VSCodeDataGridRow gridTemplateColumns="50px 50px 50px 50px 50px 50px 50px">
+              {jiffies.map((jiffie, i) => {
+                if (jiffie)
                   return (
                     <VSCodeDataGridCell
                       grid-column={i + 1}
-                      onClick={() => handleJiffie(j)}
+                      onClick={() => handleJiffie(jiffie, i)}
                     >
                       <span
                         style={{
                           textAlign: "center",
                           fontSize: "large",
-                          fontWeight: j === currentJiffie ? 700 : 400,
+                          fontWeight: i === currentJiffieIdx ? 700 : 400,
                           color:
-                            j === currentJiffie
+                            i === currentJiffieIdx
                               ? "var(--button-primary-background)"
                               : "inherit",
                         }}
                       >
                         {String.fromCodePoint(119133 + i)}
+                      </span>
+                    </VSCodeDataGridCell>
+                  );
+                return null;
+              })}
+            </VSCodeDataGridRow>
+            <VSCodeDataGridRow gridTemplateColumns="50px 50px 50px 50px 50px 50px 50px">
+              {jiffies.map((jiffie, i) => {
+                const half = Math.floor(jiffie / 2);
+                const dottedJiffie = jiffie % 2 === 0 ? jiffie + half : 0;
+                if (dottedJiffie)
+                  return (
+                    <VSCodeDataGridCell
+                      grid-column={i + 1}
+                      onClick={() => handleJiffie(dottedJiffie, i + 10)}
+                    >
+                      <span
+                        style={{
+                          textAlign: "center",
+                          fontSize: "large",
+                          fontWeight:
+                            i + 10 === currentJiffieIdx ? 700 : 400,
+                          color:
+                            i + 10 === currentJiffieIdx
+                                ? "var(--button-primary-background)"
+                                : "inherit",
+                        }}
+                      >
+                        {`${String.fromCodePoint(119133 + i)}.`}
+                      </span>
+                    </VSCodeDataGridCell>
+                  );
+                return null;
+              })}
+            </VSCodeDataGridRow>
+            <VSCodeDataGridRow gridTemplateColumns="50px 50px 50px 50px 50px 50px 50px">
+              {jiffies.map((jiffie, i) => {
+                const half = Math.floor(jiffie / 2);
+                const halfHalf = Math.floor(half / 2);
+                const dDottedJiffie = jiffie % 2 === 0 && half % 2 === 0 ? jiffie + half + halfHalf : 0;
+                if (dDottedJiffie)
+                  return (
+                    <VSCodeDataGridCell
+                      grid-column={i + 1}
+                      onClick={() => handleJiffie(dDottedJiffie, i + 20)}
+                    >
+                      <span
+                        style={{
+                          textAlign: "center",
+                          fontSize: "large",
+                          fontWeight:
+                            i + 20 === currentJiffieIdx ? 700 : 400,
+                          color:
+                            i + 20 === currentJiffieIdx
+                                ? "var(--button-primary-background)"
+                                : "inherit",
+                        }}
+                      >
+                        {`${String.fromCodePoint(119133 + i)}..`}
                       </span>
                     </VSCodeDataGridCell>
                   );

@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import SidAddresses from "./sidAddresses";
 import ADSR from "./adsr";
-import Notes from "./notes";
+import Notes from "./notes/notes";
 
 function App() {
   return (

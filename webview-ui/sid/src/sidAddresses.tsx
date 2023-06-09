@@ -300,7 +300,12 @@ function SidAddresses() {
     <>
       <Title text="Sid Addresses">
         <span
-          style={{ margin: 0, cursor: "pointer" }}
+          style={{
+            margin: 0,
+            cursor: "pointer",
+            color: "var(--button-primary-background)",
+          }}
+          className="clickable"
           onClick={() => handleAddressBaseClick("s=54272")}
         >
           (s=54272)

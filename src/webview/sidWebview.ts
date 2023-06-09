@@ -27,7 +27,8 @@ export class SIDWebview extends WebviewViewBase {
         }
     }
     override async getTemplateHtml(webview: Webview, scriptUri: Uri, stylesUri: Uri, nonce: string): Promise<string> {
-        const codiconsUri = getUri(webview, this.context.extensionUri, ['node_modules', '@vscode/codicons', 'dist', 'codicon.css']);
+        const codiconsUri = getUri(webview, this.context.extensionUri, ['webview-ui', 'sid', 'node_modules', '@vscode/codicons', 'dist', 'codicon.css']);
+        const codiconsFontUri = getUri(webview, this.context.extensionUri, ['webview-ui', 'sid', 'node_modules', '@vscode/codicons', 'dist', 'codicon.ttf']);
         return /*html*/ `
         <!DOCTYPE html>
         <html lang="en">
@@ -37,8 +38,14 @@ export class SIDWebview extends WebviewViewBase {
             <meta name="theme-color" content="#000000">
             <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource}; style-src ${webview.cspSource} 'unsafe-inline'; script-src 'nonce-${nonce}';">
             <link rel="stylesheet" type="text/css" href="${stylesUri}">
-            <link rel="stylesheet" type="text/css" href="${codiconsUri}"/>
             <title>${this.title}</title>
+            <style>
+              @font-face {
+                font-family: 'codicon';
+                src: URL('${codiconsFontUri}') format('truetype');
+                }
+            </style>
+            <link rel="stylesheet" type="text/css" href="${codiconsUri}"/>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>

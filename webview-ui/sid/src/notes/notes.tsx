@@ -16,6 +16,8 @@ import { VSCodeDropdown } from "@vscode/webview-ui-toolkit/react";
 import { VSCodeOption } from "@vscode/webview-ui-toolkit/react";
 import { Tabs } from "@microsoft/fast-foundation";
 import "../App.css";
+import "../../node_modules/@vscode/codicons/dist/codicon.css";
+import "../../node_modules/@vscode/codicons/dist/codicon.ttf";
 import StepperSection from "../common/StepperSection";
 import { ICurrentNote } from "./models/viewModels";
 import System from "./system";
@@ -127,7 +129,7 @@ const Notes: FC = () => {
                 fontSize: "0.75rem",
                 cursor: "pointer",
                 color: "var(--button-primary-background)",
-                whiteSpace: "pre-line"
+                whiteSpace: "pre-line",
               }}
               className="clickable"
               onClick={() => {
@@ -136,7 +138,9 @@ const Notes: FC = () => {
                   text: "81 if ti < tm+dr then 81\n82 tm = ti",
                 });
               }}
-            >81 if ti &lt; tm+dr then 81{"\n"}82 tm = ti</pre>
+            >
+              81 if ti &lt; tm+dr then 81{"\n"}82 tm = ti
+            </pre>
           </div>
         </div>
       </StepperSection>

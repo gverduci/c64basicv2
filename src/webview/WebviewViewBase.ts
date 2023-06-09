@@ -40,7 +40,8 @@ export abstract class WebviewViewBase implements WebviewViewProvider, Disposable
             Uri.joinPath(this.context.extensionUri, "out"), 
             Uri.joinPath(this.context.extensionUri, "webview-ui", this.webviewId, "build"), 
             Uri.joinPath(this.context.extensionUri, "resources"), 
-            Uri.joinPath(this.context.extensionUri, "node_modules", "@vscode/codicons", "dist")];
+            Uri.joinPath(this.context.extensionUri, "node_modules", "@vscode/codicons", "dist"),
+            Uri.joinPath(this.context.extensionUri, "webview-ui", this.webviewId, "node_modules", "@vscode/codicons", "dist")];
             
         webviewView.webview.options = {
             enableCommandUris: true,

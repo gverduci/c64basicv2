@@ -251,7 +251,7 @@
         "build:all": "cd webview-ui/common && npm run build && cd ../sid && npm run build && cd ../chars && npm run build && cd ../..",
         "test:charswebview": "cd webview-ui/chars && npm run test",
         "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
+        "compile": "npm run build:all && tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
         "lint": "npx eslint .",

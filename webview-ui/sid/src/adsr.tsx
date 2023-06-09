@@ -7,6 +7,8 @@ import {
 } from "@vscode/webview-ui-toolkit/react";
 import { useRef } from "react";
 import Title from "webview-common/build/Title";
+import "../node_modules/@vscode/codicons/dist/codicon.css";
+import '../node_modules/@vscode/codicons/dist/codicon.ttf';
 
 function ADSR() {
   const [attack, setAttack] = useState<number>(0.5);

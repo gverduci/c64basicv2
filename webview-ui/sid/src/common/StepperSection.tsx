@@ -1,4 +1,6 @@
 import React, { FC, ReactElement } from "react";
+import "../../node_modules/@vscode/codicons/dist/codicon.css";
+import "../../node_modules/@vscode/codicons/dist/codicon.ttf";
 
 export interface IStepperSectionParams {
   title: string;

@@ -1,5 +1,3 @@
-@import "../node_modules/@vscode/codicons/dist/codicon.css";
-
 main {
   display: flex;
   flex-direction: column;

@@ -3,6 +3,8 @@ import { INote } from "./models/models";
 import { FC, ReactElement, useCallback, useEffect, useState } from "react";
 import { INoteSystemView } from "./models/viewModels";
 import Key from "./key";
+import "../../node_modules/@vscode/codicons/dist/codicon.css";
+import "../../node_modules/@vscode/codicons/dist/codicon.ttf";
 
 const generateNotesWindow = (notes: INote[], startNote: number) => {
   // 8  octave 0..7
@@ -130,7 +132,7 @@ const System: FC<INoteSystemView> = ({
         >
           <span
             className="codicon codicon-fold-down"
-            style={{ rotate: "90deg" }}
+            style={{ transform:"rotate(90deg)" }}
           ></span>
           octave
         </VSCodeButton>
@@ -158,7 +160,7 @@ const System: FC<INoteSystemView> = ({
           octave
           <span
             className="codicon codicon-fold-down"
-            style={{ rotate: "-90deg" }}
+            style={{ transform:"rotate(-90deg)" }}
           ></span>
         </VSCodeButton>
       </div>

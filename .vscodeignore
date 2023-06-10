@@ -12,6 +12,15 @@ out/test/**
 src/**
 
 # Ignore all webview-ui files except the build directory
+webview-ui/common/src/**
+webview-ui/common/public/**
+webview-ui/common/scripts/**
+webview-ui/common/index.html
+webview-ui/common/README.md
+webview-ui/common/package.json
+webview-ui/common/package-lock.json
+webview-ui/common/node_modules/**
+!webview-ui/common/node_modules/@vscode/codicons/dist
 webview-ui/sid/src/**
 webview-ui/sid/public/**
 webview-ui/sid/scripts/**
@@ -20,6 +29,7 @@ webview-ui/sid/README.md
 webview-ui/sid/package.json
 webview-ui/sid/package-lock.json
 webview-ui/sid/node_modules/**
+!webview-ui/sid/node_modules/@vscode/codicons/dist
 webview-ui/chars/src/**
 webview-ui/chars/public/**
 webview-ui/chars/scripts/**
@@ -28,6 +38,7 @@ webview-ui/chars/README.md
 webview-ui/chars/package.json
 webview-ui/chars/package-lock.json
 webview-ui/chars/node_modules/**
+!webview-ui/chars/node_modules/@vscode/codicons/dist
 
 # Ignore Misc
 .yarnrc

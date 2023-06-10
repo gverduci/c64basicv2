@@ -1,0 +1,16 @@
+[
+  { "tempo": "Larghissimo", "min": 0, "max": 20 },
+  { "tempo": "Grave", "min": 21, "max": 40 },
+  { "tempo": "Lento", "min": 41, "max": 45 },
+  { "tempo": "Largo", "min": 46, "max": 50 },
+  { "tempo": "Adagio", "min": 51, "max": 60 },
+  { "tempo": "Adagietto", "min": 61, "max": 70 },
+  { "tempo": "Andante", "min": 71, "max": 85 },
+  { "tempo": "Moderato", "min": 86, "max": 97 },
+  { "tempo": "Allegretto", "min": 98, "max": 109 },
+  { "tempo": "Allegro", "min": 110, "max": 132 },
+  { "tempo": "Vivace", "min": 133, "max": 140 },
+  { "tempo": "Presto", "min": 141, "max": 177 },
+  { "tempo": "Prestissimo", "min": 178, "max": 240 },
+  { "tempo": "Prestissimo", "min": 241, "max": 10000 }
+]

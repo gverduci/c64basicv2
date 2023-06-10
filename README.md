@@ -1,8 +1,8 @@
 ![c64basicv2 logo](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_logo.png)
 
 # **** COMMODORE 64 BASIC V2 **** (c64basicv2) Visual Studio Code Extension
-
-This extension helps you to write *Commodore 64 basic v2* programs (.prg or .bas extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers, commands, a control characters view, and a simple preview.
+## Introduction
+This extension helps you to write *Commodore 64 basic v2* programs (.prg or .bas extension). It provides you: syntax highlighting, snippets, file icons, a theme, tasks, rulers, commands, different views in the Primary Sidebar, and a simple preview.
 
 Rules for snippets come from the following pages of [C64-Wiki](https://www.c64-wiki.com/):
 - [BASIC](https://www.c64-wiki.com/wiki/BASIC#Overview_of_BASIC_Version_2.0_.28second_release.29_Commands) 
@@ -16,8 +16,8 @@ You might follow this process to develop your program:
         \src -> source programs
 
 2. write the program;
-3. test it with [Vice](https://vice-emu.sourceforge.io/) using the "Convert and Run" command;
-4. create a d64 image using the "created64.sh" script (see next sections of this README);
+3. test it with [Vice](https://vice-emu.sourceforge.io/) using the "Convert and Run" (F5) command;
+4. create a d64 image using the "created64.sh" script (see [Other usefull info and script](#other-usefull-info-and-script) sections of this README);
 5. use this d64 image with a sd2iec device;
 6. run it on the real c64 hardware.
 
@@ -37,17 +37,18 @@ npx yo c64basicv2
 
 The provided features are:
 
-- Syntax highlighting
-- Snippets for the main commands and control characters
+- [Syntax highlighting](#syntax-highlighting)
+- [Snippets for the main commands](#snippets)
+- [Snippets for control characters](#snippets-for-control-characters)
 - File icons
 - Theme
 - Rulers: 40th and 80th column
 - Tasks: suggested in this README
-- Command: Automatic Proofreader, Convert, Convert and Run
 - Keyboard Shortcuts
+- Command: Automatic Proofreader, Convert, Convert and Run
 - Control character view in the Primary Sidebar 
-- Sid info view (address and ADSR calculator) in the Primary Sidebar  
-- Code preview
+- Sid info view (address, ADSR calculator and notes) in the Primary Sidebar  
+- [Code preview](#code-preview)
 
 ### Syntax highlighting
 An example of syntax highlighting is:
@@ -65,9 +66,9 @@ Control characters in c64 basic are special characters like this:
 
 ![c64basicv2 logo](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/clrCtrlChar.png)
 
-Books and old magazines represent special characters using the symbolic syntax: {ctrl character name}. For example, the previous character is written with this syntax: {clr}.
+Books and old magazines represent special characters using a symbolic syntax: {ctrl character name}. For example, the previous character is written with this syntax: {clr}.
 
-If you use this control character in a print statement (print "{clr}"), c64 clears the screen.
+If you use this control character in a print statement (print "{clr}"), C64 clears the screen.
 
 You can find the list of control characters on this page: [Control character](https://www.c64-wiki.com/wiki/control_character).
 
@@ -126,22 +127,27 @@ Hit F1, search "Convert and Run" then hit enter.
 ### CHARACTER view on the Primary Sidebar 
 Using the Control characters view, you can visually add a control character:
 
-![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_ctrlCharView.png)
+![c64basicv2 Control Characters View](images/c64basicv2_ctrlCharView.png)
 
 Click on the character to add the corresponding symbol in the code, or click on the number to add the chr$ command.
 
 The font is "Pet Me 64", released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
 
-### SID REGISTER view (address and ADSR calculator) in the Primary Sidebar
-Using this view, you can show Sid registries and add the poke command directly in the code:
+### SID view (address, ADSR calculator and notes) in the Primary Sidebar
+Using this view, you can
+- (first section) show Sid registries and add the poke command directly in the code:
 
-![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_sidRegView.png)
+![c64basicv2 Sid Registries](images/c64basicv2_sidRegView.png)
 
-The ADSR section allows you to select the desired envelope and add the calculated value in the code:
+- (section ADSR) select the desired envelope and add the calculated value in the code:
 
-![c64basicv2 Control Characters View](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_sidADSRView)
+![c64basicv2 ADSR](images/c64basicv2_sidADSRView.png)
 
-### Preview
+- (section Notes) generate data for a melody:
+
+![c64basicv2 Notes](images/c64basicv2_sidNotesView.png)
+
+### Code Preview
 Using the preview button on the editor Toolbar, you can show a panel containing your code formatted like the C64 screen. This view is good for checking control characters.
 
 ![c64basicv2 Preview](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_preview.png)

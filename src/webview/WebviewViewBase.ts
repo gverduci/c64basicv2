@@ -36,7 +36,13 @@ export abstract class WebviewViewBase implements WebviewViewProvider, Disposable
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async resolveWebviewView(webviewView: WebviewView, context: WebviewViewResolveContext<unknown>, token: CancellationToken): Promise<void> {
         this._view = webviewView;
-        const localResourceRoots = [Uri.joinPath(this.context.extensionUri, "out"), Uri.joinPath(this.context.extensionUri, "webview-ui", this.webviewId, "build"), Uri.joinPath(this.context.extensionUri, "resources")];
+        const localResourceRoots = [
+            Uri.joinPath(this.context.extensionUri, "out"), 
+            Uri.joinPath(this.context.extensionUri, "webview-ui", this.webviewId, "build"), 
+            Uri.joinPath(this.context.extensionUri, "resources"), 
+            Uri.joinPath(this.context.extensionUri, "node_modules", "@vscode/codicons", "dist"),
+            Uri.joinPath(this.context.extensionUri, "webview-ui", this.webviewId, "node_modules", "@vscode/codicons", "dist")];
+            
         webviewView.webview.options = {
             enableCommandUris: true,
             enableScripts: true,

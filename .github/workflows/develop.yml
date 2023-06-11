@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        # with:
+        #   token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - run: npm run install:all
       - run: npm run build:sidwebview
       - run: npm run build:charswebview

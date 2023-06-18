@@ -9,18 +9,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
         # with:
         #   token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - name: Version
         run: |
+          git config user.name 'GitHub Actions [bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           LATEST_TAG=$(git describe --tags --abbrev=0) || exit 1
           NEW_COMMITS=$(git rev-list --count "${LATEST_TAG}"..) || exit 1
           [ "${NEW_COMMITS}" -gt 0 ] || exit 0
-          git config user.name 'GitHub Actions [bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          npm run install:all:ci
-          npm version patch
+          npm version patch -m "Auto increment patch version %s [skip ci]" --force
           git push --tags
+          npm run install:all:ci
       - name: Package extension
         uses: lannonbr/vsce-action@3.0.0
         with:

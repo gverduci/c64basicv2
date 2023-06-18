@@ -12,11 +12,9 @@ jobs:
         # with:
         #   token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - run: |
-          echo "Checking data on: `date`"
           LATEST_TAG=$(git describe --tags --abbrev=0) || exit 1
           NEW_COMMITS=$(git rev-list --count "${LATEST_TAG}"..) || exit 1
           [ "${NEW_COMMITS}" -gt 0 ] || exit 0
-          echo "New update available"
           git config user.name 'GitHub Actions [bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           npm run install:all:ci

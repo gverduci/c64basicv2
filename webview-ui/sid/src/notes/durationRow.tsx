@@ -67,6 +67,7 @@ const Duration: FC<IDurationView> = ({ bpm, defaultBpm, handleJiffie }) => {
     setJiffies(jiffiesObj ? Object.values(jiffiesObj).slice(1) : []);
     setCurrentJiffieIdx(0);
     handleJiffie(jiffiesObj ? jiffiesObj.w : 128);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bpm]);
 
   return (

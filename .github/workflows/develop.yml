@@ -23,6 +23,8 @@ jobs:
           npm version patch -m "Auto increment patch version %s [skip ci]" --force
           git push --tags
           npm run install:all
+          packageJsonVersion=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
+          echo "PKGVERSION=$packageJsonVersion" >> $GITHUB_ENV
       - name: Package extension
         uses: lannonbr/vsce-action@3.0.0
         with:
@@ -32,6 +34,7 @@ jobs:
         with:
           files: ./*.vsix
           draft: true
+          name: $PKGVERSION
       # - uses: lannonbr/vsce-action@3.0.0
       #   with:
       #     args: "publish -p $VSCE_TOKEN"

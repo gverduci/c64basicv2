@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.6.46",
+    "version": "0.6.47",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"

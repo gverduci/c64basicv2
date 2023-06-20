@@ -26,7 +26,7 @@ jobs:
           git push --tags
           npm run install:all
           packageJsonVersion=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
-          echo "pkgVersion=$packageJsonVersion" >> $GITHUB_ENV
+          echo "pkgVersion=$packageJsonVersion" >> $GITHUB_OUTPUT
       - name: Package extension
         uses: lannonbr/vsce-action@3.0.0
         with:
@@ -36,6 +36,7 @@ jobs:
         with:
           files: ./*.vsix
           draft: true
+          prerelease: true
           name: ${{ steps.versionSet.outputs.pkgVersion }}
           tag_name: ${{ steps.versionSet.outputs.pkgVersion }}
       # - uses: lannonbr/vsce-action@3.0.0

@@ -1,0 +1,1072 @@
+[
+    {
+        "system":"pal",
+        "info": "Musical notes - PAL (Italian Manual)",
+        "notes": [
+            {
+                "note": "C",
+                "synonym": "do",
+                "values": [{
+                    "octave": 0,
+                    "dec": 278,
+                    "hi": 1,
+                    "lo": 22
+                },{
+                    "octave": 1,
+                    "dec": 557,
+                    "hi": 2,
+                    "lo": 45
+                },{
+                    "octave": 2,
+                    "dec": 1114,
+                    "hi": 4,
+                    "lo": 90
+                },{
+                    "octave": 3,
+                    "dec": 2228,
+                    "hi": 8,
+                    "lo": 180
+                },{
+                    "octave": 4,
+                    "dec": 4455,
+                    "hi": 17,
+                    "lo": 103
+                },{
+                    "octave": 5,
+                    "dec": 8911,
+                    "hi": 34,
+                    "lo": 207
+                },{
+                    "octave": 6,
+                    "dec": 17821,
+                    "hi": 69,
+                    "lo": 157
+                },{
+                    "octave": 7,
+                    "dec": 35643,
+                    "hi": 139,
+                    "lo": 59
+                }]
+            },{
+                "note": "C#",
+                "synonym": "do#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 295,
+                    "hi": 1,
+                    "lo": 39
+                },{
+                    "octave": 1,
+                    "dec": 590,
+                    "hi": 2,
+                    "lo": 78
+                },{
+                    "octave": 2,
+                    "dec": 1180,
+                    "hi": 4,
+                    "lo": 156
+                },{
+                    "octave": 3,
+                    "dec": 2360,
+                    "hi": 9,
+                    "lo": 56
+                },{
+                    "octave": 4,
+                    "dec": 4720,
+                    "hi": 18,
+                    "lo": 112
+                },{
+                    "octave": 5,
+                    "dec": 9441,
+                    "hi": 36,
+                    "lo": 225
+                },{
+                    "octave": 6,
+                    "dec": 18881,
+                    "hi": 73,
+                    "lo": 193
+                },{
+                    "octave": 7,
+                    "dec": 37762,
+                    "hi": 147,
+                    "lo": 130
+                }]
+            },{
+                "note": "D",
+                "synonym": "re",
+                "values": [{
+                    "octave": 0,
+                    "dec": 313,
+                    "hi": 1,
+                    "lo": 57
+                },{
+                    "octave": 1,
+                    "dec": 625,
+                    "hi": 2,
+                    "lo": 113
+                },{
+                    "octave": 2,
+                    "dec": 1250,
+                    "hi": 4,
+                    "lo": 226
+                },{
+                    "octave": 3,
+                    "dec": 2500,
+                    "hi": 9,
+                    "lo": 196
+                },{
+                    "octave": 4,
+                    "dec": 5001,
+                    "hi": 19,
+                    "lo": 137
+                },{
+                    "octave": 5,
+                    "dec": 10002,
+                    "hi": 39,
+                    "lo": 18
+                },{
+                    "octave": 6,
+                    "dec": 20004,
+                    "hi": 78,
+                    "lo": 36
+                },{
+                    "octave": 7,
+                    "dec": 40008,
+                    "hi": 156,
+                    "lo": 72
+                }]
+            },{
+                "note": "D#",
+                "synonym": "re#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 331,
+                    "hi": 1,
+                    "lo": 75
+                },{
+                    "octave": 1,
+                    "dec": 662,
+                    "hi": 2,
+                    "lo": 150
+                },{
+                    "octave": 2,
+                    "dec": 1325,
+                    "hi": 5,
+                    "lo": 45
+                },{
+                    "octave": 3,
+                    "dec": 2649,
+                    "hi": 10,
+                    "lo": 89
+                },{
+                    "octave": 4,
+                    "dec": 5298,
+                    "hi": 20,
+                    "lo": 178
+                },{
+                    "octave": 5,
+                    "dec": 10597,
+                    "hi": 41,
+                    "lo": 101
+                },{
+                    "octave": 6,
+                    "dec": 21193,
+                    "hi": 82,
+                    "lo": 201
+                },{
+                    "octave": 7,
+                    "dec": 42387,
+                    "hi": 165,
+                    "lo": 147
+                }]
+            },{
+                "note": "E",
+                "synonym": "mi",
+                "values": [{
+                    "octave": 0,
+                    "dec": 351,
+                    "hi": 1,
+                    "lo": 95
+                },{
+                    "octave": 1,
+                    "dec": 702,
+                    "hi": 2,
+                    "lo": 190
+                },{
+                    "octave": 2,
+                    "dec": 1403,
+                    "hi": 5,
+                    "lo": 123
+                },{
+                    "octave": 3,
+                    "dec": 2807,
+                    "hi": 10,
+                    "lo": 247
+                },{
+                    "octave": 4,
+                    "dec": 5613,
+                    "hi": 21,
+                    "lo": 237
+                },{
+                    "octave": 5,
+                    "dec": 11227,
+                    "hi": 43,
+                    "lo": 219
+                },{
+                    "octave": 6,
+                    "dec": 22454,
+                    "hi": 87,
+                    "lo": 182
+                },{
+                    "octave": 7,
+                    "dec": 44907,
+                    "hi": 175,
+                    "lo": 107
+                }]
+            },{
+                "note": "F",
+                "synonym": "fa",
+                "values": [{
+                    "octave": 0,
+                    "dec": 372,
+                    "hi": 1,
+                    "lo": 116
+                },{
+                    "octave": 1,
+                    "dec": 743,
+                    "hi": 2,
+                    "lo": 231
+                },{
+                    "octave": 2,
+                    "dec": 1487,
+                    "hi": 5,
+                    "lo": 207
+                },{
+                    "octave": 3,
+                    "dec": 2974,
+                    "hi": 11,
+                    "lo": 158
+                },{
+                    "octave": 4,
+                    "dec": 5947,
+                    "hi": 23,
+                    "lo": 59
+                },{
+                    "octave": 5,
+                    "dec": 11894,
+                    "hi": 43,
+                    "lo": 118
+                },{
+                    "octave": 6,
+                    "dec": 23789,
+                    "hi": 92,
+                    "lo": 237
+                },{
+                    "octave": 7,
+                    "dec": 47578,
+                    "hi": 185,
+                    "lo": 218
+                }]
+            },{
+                "note": "F#",
+                "synonym": "fa#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 394,
+                    "hi": 1,
+                    "lo": 138
+                },{
+                    "octave": 1,
+                    "dec": 788,
+                    "hi": 3,
+                    "lo": 20
+                },{
+                    "octave": 2,
+                    "dec": 1575,
+                    "hi": 6,
+                    "lo": 39
+                },{
+                    "octave": 3,
+                    "dec": 3150,
+                    "hi": 12,
+                    "lo": 78
+                },{
+                    "octave": 4,
+                    "dec": 6301,
+                    "hi": 24,
+                    "lo": 157
+                },{
+                    "octave": 5,
+                    "dec": 12602,
+                    "hi": 49,
+                    "lo": 58
+                },{
+                    "octave": 6,
+                    "dec": 25203,
+                    "hi": 98,
+                    "lo": 115
+                },{
+                    "octave": 7,
+                    "dec": 50407,
+                    "hi": 196,
+                    "lo": 231
+                }]
+            },{
+                "note": "G",
+                "synonym": "sol",
+                "values": [{
+                    "octave": 0,
+                    "dec": 417,
+                    "hi": 1,
+                    "lo": 161
+                },{
+                    "octave": 1,
+                    "dec": 834,
+                    "hi": 3,
+                    "lo": 66
+                },{
+                    "octave": 2,
+                    "dec": 1669,
+                    "hi": 6,
+                    "lo": 133
+                },{
+                    "octave": 3,
+                    "dec": 3338,
+                    "hi": 13,
+                    "lo": 10
+                },{
+                    "octave": 4,
+                    "dec": 6676,
+                    "hi": 26,
+                    "lo": 20
+                },{
+                    "octave": 5,
+                    "dec": 13351,
+                    "hi": 52,
+                    "lo": 39
+                },{
+                    "octave": 6,
+                    "dec": 26702,
+                    "hi": 104,
+                    "lo": 78
+                },{
+                    "octave": 7,
+                    "dec": 53404,
+                    "hi": 208,
+                    "lo": 156
+                }]
+            },{
+                "note": "G#",
+                "synonym": "sol#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 442,
+                    "hi": 1,
+                    "lo": 186
+                },{
+                    "octave": 1,
+                    "dec": 884,
+                    "hi": 3,
+                    "lo": 116
+                },{
+                    "octave": 2,
+                    "dec": 1768,
+                    "hi": 6,
+                    "lo": 232
+                },{
+                    "octave": 3,
+                    "dec": 3536,
+                    "hi": 13,
+                    "lo": 208
+                },{
+                    "octave": 4,
+                    "dec": 7072,
+                    "hi": 27,
+                    "lo": 160
+                },{
+                    "octave": 5,
+                    "dec": 14145,
+                    "hi": 55,
+                    "lo": 65
+                },{
+                    "octave": 6,
+                    "dec": 28290,
+                    "hi": 110,
+                    "lo": 130
+                },{
+                    "octave": 7,
+                    "dec": 56580,
+                    "hi": 221,
+                    "lo": 4
+                }]
+            },{
+                "note": "A",
+                "synonym": "la",
+                "values": [{
+                    "octave": 0,
+                    "dec": 468,
+                    "hi": 1,
+                    "lo": 212
+                },{
+                    "octave": 1,
+                    "dec": 937,
+                    "hi": 3,
+                    "lo": 169
+                },{
+                    "octave": 2,
+                    "dec": 1873,
+                    "hi": 7,
+                    "lo": 81
+                },{
+                    "octave": 3,
+                    "dec": 3746,
+                    "hi": 14,
+                    "lo": 162
+                },{
+                    "octave": 4,
+                    "dec": 7493,
+                    "hi": 29,
+                    "lo": 69
+                },{
+                    "octave": 5,
+                    "dec": 14986,
+                    "hi": 58,
+                    "lo": 138
+                },{
+                    "octave": 6,
+                    "dec": 29972,
+                    "hi": 117,
+                    "lo": 20
+                },{
+                    "octave": 7,
+                    "dec": 59944,
+                    "hi": 234,
+                    "lo": 40
+                }]
+            },{
+                "note": "A#",
+                "synonym": "la#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 496,
+                    "hi": 1,
+                    "lo": 240
+                },{
+                    "octave": 1,
+                    "dec": 992,
+                    "hi": 3,
+                    "lo": 224
+                },{
+                    "octave": 2,
+                    "dec": 1985,
+                    "hi": 7,
+                    "lo": 193
+                },{
+                    "octave": 3,
+                    "dec": 3969,
+                    "hi": 15,
+                    "lo": 129
+                },{
+                    "octave": 4,
+                    "dec": 7939,
+                    "hi": 31,
+                    "lo": 3
+                },{
+                    "octave": 5,
+                    "dec": 15877,
+                    "hi": 62,
+                    "lo": 5
+                },{
+                    "octave": 6,
+                    "dec": 31754,
+                    "hi": 124,
+                    "lo": 10
+                },{
+                    "octave": 7,
+                    "dec": 63508,
+                    "hi": 248,
+                    "lo": 20
+                }]
+            },{
+                "note": "H",
+                "synonym": "si",
+                "values": [{
+                    "octave": 0,
+                    "dec": 526,
+                    "hi": 2,
+                    "lo": 14
+                },{
+                    "octave": 1,
+                    "dec": 1051,
+                    "hi": 4,
+                    "lo": 27
+                },{
+                    "octave": 2,
+                    "dec": 2103,
+                    "hi": 8,
+                    "lo": 55
+                },{
+                    "octave": 3,
+                    "dec": 4205,
+                    "hi": 16,
+                    "lo": 109
+                },{
+                    "octave": 4,
+                    "dec": 8411,
+                    "hi": 32,
+                    "lo": 219
+                },{
+                    "octave": 5,
+                    "dec": 16821,
+                    "hi": 65,
+                    "lo": 181
+                },{
+                    "octave": 6,
+                    "dec": 33642,
+                    "hi": 131,
+                    "lo": 106
+                },{
+                    "octave": 7,
+                    "dec": 0,
+                    "hi": 0,
+                    "lo": 0
+                }]
+            }
+        ]
+    },
+    {
+        "system": "ntsc",
+        "info": "Musical notes - NTSC (USA Manual)",
+        "notes": [
+            {
+                "note": "C",
+                "synonym": "do",
+                "values": [{
+                    "octave": 0,
+                    "dec": 268,
+                    "hi": 1,
+                    "lo": 12
+                },{
+                    "octave": 1,
+                    "dec": 536,
+                    "hi": 2,
+                    "lo": 24
+                },{
+                    "octave": 2,
+                    "dec": 1072,
+                    "hi": 4,
+                    "lo": 48
+                },{
+                    "octave": 3,
+                    "dec": 2145,
+                    "hi": 8,
+                    "lo": 97
+                },{
+                    "octave": 4,
+                    "dec": 4291,
+                    "hi": 16,
+                    "lo": 195
+                },{
+                    "octave": 5,
+                    "dec": 8583,
+                    "hi": 33,
+                    "lo": 135
+                },{
+                    "octave": 6,
+                    "dec": 17167,
+                    "hi": 67,
+                    "lo": 15
+                },{
+                    "octave": 7,
+                    "dec": 34334,
+                    "hi": 134,
+                    "lo": 30
+                }]
+            },{
+                "note": "C#",
+                "synonym": "do#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 284,
+                    "hi": 1,
+                    "lo": 28
+                },{
+                    "octave": 1,
+                    "dec": 568,
+                    "hi": 2,
+                    "lo": 56
+                },{
+                    "octave": 2,
+                    "dec": 1136,
+                    "hi": 4,
+                    "lo": 112
+                },{
+                    "octave": 3,
+                    "dec": 2273,
+                    "hi": 8,
+                    "lo": 225
+                },{
+                    "octave": 4,
+                    "dec": 4547,
+                    "hi": 17,
+                    "lo": 195
+                },{
+                    "octave": 5,
+                    "dec": 9094,
+                    "hi": 35,
+                    "lo": 134
+                },{
+                    "octave": 6,
+                    "dec": 18188,
+                    "hi": 71,
+                    "lo": 12
+                },{
+                    "octave": 7,
+                    "dec": 36376,
+                    "hi": 142,
+                    "lo": 24
+                }]
+            },{
+                "note": "D",
+                "synonym": "re",
+                "values": [{
+                    "octave": 0,
+                    "dec": 301,
+                    "hi": 1,
+                    "lo": 45
+                },{
+                    "octave": 1,
+                    "dec": 602,
+                    "hi": 2,
+                    "lo": 125
+                },{
+                    "octave": 2,
+                    "dec": 1204,
+                    "hi": 4,
+                    "lo": 180
+                },{
+                    "octave": 3,
+                    "dec": 2408,
+                    "hi": 9,
+                    "lo": 104
+                },{
+                    "octave": 4,
+                    "dec": 4817,
+                    "hi": 18,
+                    "lo": 209
+                },{
+                    "octave": 5,
+                    "dec": 9634,
+                    "hi": 37,
+                    "lo": 162
+                },{
+                    "octave": 6,
+                    "dec": 19269,
+                    "hi": 75,
+                    "lo": 69
+                },{
+                    "octave": 7,
+                    "dec": 38539,
+                    "hi": 150,
+                    "lo": 139
+                }]
+            },{
+                "note": "D#",
+                "synonym": "re#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 318,
+                    "hi": 1,
+                    "lo": 62
+                },{
+                    "octave": 1,
+                    "dec": 637,
+                    "hi": 2,
+                    "lo": 125
+                },{
+                    "octave": 2,
+                    "dec": 1275,
+                    "hi": 4,
+                    "lo": 251
+                },{
+                    "octave": 3,
+                    "dec": 2551,
+                    "hi": 9,
+                    "lo": 247
+                },{
+                    "octave": 4,
+                    "dec": 5103,
+                    "hi": 19,
+                    "lo": 239
+                },{
+                    "octave": 5,
+                    "dec": 10207,
+                    "hi": 39,
+                    "lo": 223
+                },{
+                    "octave": 6,
+                    "dec": 20415,
+                    "hi": 79,
+                    "lo": 191
+                },{
+                    "octave": 7,
+                    "dec": 40830,
+                    "hi": 159,
+                    "lo": 126
+                }]
+            },{
+                "note": "E",
+                "synonym": "mi",
+                "values": [{
+                    "octave": 0,
+                    "dec": 337,
+                    "hi": 1,
+                    "lo": 81
+                },{
+                    "octave": 1,
+                    "dec": 675,
+                    "hi": 2,
+                    "lo": 163
+                },{
+                    "octave": 2,
+                    "dec": 1351,
+                    "hi": 5,
+                    "lo": 71
+                },{
+                    "octave": 3,
+                    "dec": 2703,
+                    "hi": 10,
+                    "lo": 143
+                },{
+                    "octave": 4,
+                    "dec": 5407,
+                    "hi": 21,
+                    "lo": 31
+                },{
+                    "octave": 5,
+                    "dec": 10814,
+                    "hi": 42,
+                    "lo": 62
+                },{
+                    "octave": 6,
+                    "dec": 21629,
+                    "hi": 84,
+                    "lo": 125
+                },{
+                    "octave": 7,
+                    "dec": 43258,
+                    "hi": 168,
+                    "lo": 250
+                }]
+            },{
+                "note": "F",
+                "synonym": "fa",
+                "values": [{
+                    "octave": 0,
+                    "dec": 358,
+                    "hi": 1,
+                    "lo": 102
+                },{
+                    "octave": 1,
+                    "dec": 716,
+                    "hi": 2,
+                    "lo": 204
+                },{
+                    "octave": 2,
+                    "dec": 1432,
+                    "hi": 5,
+                    "lo": 152
+                },{
+                    "octave": 3,
+                    "dec": 2864,
+                    "hi": 11,
+                    "lo": 48
+                },{
+                    "octave": 4,
+                    "dec": 5728,
+                    "hi": 22,
+                    "lo": 96
+                },{
+                    "octave": 5,
+                    "dec": 11457,
+                    "hi": 44,
+                    "lo": 193
+                },{
+                    "octave": 6,
+                    "dec": 22915,
+                    "hi": 89,
+                    "lo": 131
+                },{
+                    "octave": 7,
+                    "dec": 45830,
+                    "hi": 179,
+                    "lo": 6
+                }]
+            },{
+                "note": "F#",
+                "synonym": "fa#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 379,
+                    "hi": 1,
+                    "lo": 123
+                },{
+                    "octave": 1,
+                    "dec": 758,
+                    "hi": 2,
+                    "lo": 246
+                },{
+                    "octave": 2,
+                    "dec": 1517,
+                    "hi": 5,
+                    "lo": 237
+                },{
+                    "octave": 3,
+                    "dec": 3034,
+                    "hi": 11,
+                    "lo": 218
+                },{
+                    "octave": 4,
+                    "dec": 6069,
+                    "hi": 23,
+                    "lo": 181
+                },{
+                    "octave": 5,
+                    "dec": 12139,
+                    "hi": 47,
+                    "lo": 107
+                },{
+                    "octave": 6,
+                    "dec": 24278,
+                    "hi": 94,
+                    "lo": 214
+                },{
+                    "octave": 7,
+                    "dec": 48556,
+                    "hi": 189,
+                    "lo": 172
+                }]
+            },{
+                "note": "G",
+                "synonym": "sol",
+                "values": [{
+                    "octave": 0,
+                    "dec": 401,
+                    "hi": 1,
+                    "lo": 145
+                },{
+                    "octave": 1,
+                    "dec": 803,
+                    "hi": 3,
+                    "lo": 35
+                },{
+                    "octave": 2,
+                    "dec": 1607,
+                    "hi": 6,
+                    "lo": 71
+                },{
+                    "octave": 3,
+                    "dec": 3215,
+                    "hi": 12,
+                    "lo": 143
+                },{
+                    "octave": 4,
+                    "dec": 6430,
+                    "hi": 25,
+                    "lo": 30
+                },{
+                    "octave": 5,
+                    "dec": 12860,
+                    "hi": 50,
+                    "lo": 60
+                },{
+                    "octave": 6,
+                    "dec": 25721,
+                    "hi": 100,
+                    "lo": 121
+                },{
+                    "octave": 7,
+                    "dec": 51443,
+                    "hi": 200,
+                    "lo": 243
+                }]
+            },{
+                "note": "G#",
+                "synonym": "sol#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 425,
+                    "hi": 1,
+                    "lo": 169
+                },{
+                    "octave": 1,
+                    "dec": 851,
+                    "hi": 3,
+                    "lo": 83
+                },{
+                    "octave": 2,
+                    "dec": 1703,
+                    "hi": 6,
+                    "lo": 167
+                },{
+                    "octave": 3,
+                    "dec": 3406,
+                    "hi": 13,
+                    "lo": 78
+                },{
+                    "octave": 4,
+                    "dec": 6812,
+                    "hi": 26,
+                    "lo": 156
+                },{
+                    "octave": 5,
+                    "dec": 13625,
+                    "hi": 53,
+                    "lo": 57
+                },{
+                    "octave": 6,
+                    "dec": 27251,
+                    "hi": 106,
+                    "lo": 115
+                },{
+                    "octave": 7,
+                    "dec": 54502,
+                    "hi": 212,
+                    "lo": 230
+                }]
+            },{
+                "note": "A",
+                "synonym": "la",
+                "values": [{
+                    "octave": 0,
+                    "dec": 451,
+                    "hi": 1,
+                    "lo": 195
+                },{
+                    "octave": 1,
+                    "dec": 902,
+                    "hi": 3,
+                    "lo": 134
+                },{
+                    "octave": 2,
+                    "dec": 1804,
+                    "hi": 7,
+                    "lo": 12
+                },{
+                    "octave": 3,
+                    "dec": 3608,
+                    "hi": 14,
+                    "lo": 24
+                },{
+                    "octave": 4,
+                    "dec": 7217,
+                    "hi": 28,
+                    "lo": 49
+                },{
+                    "octave": 5,
+                    "dec": 14435,
+                    "hi": 56,
+                    "lo": 99
+                },{
+                    "octave": 6,
+                    "dec": 28871,
+                    "hi": 112,
+                    "lo": 199
+                },{
+                    "octave": 7,
+                    "dec": 57743,
+                    "hi": 225,
+                    "lo": 143
+                }]
+            },{
+                "note": "A#",
+                "synonym": "la#",
+                "values": [{
+                    "octave": 0,
+                    "dec": 477,
+                    "hi": 1,
+                    "lo": 221
+                },{
+                    "octave": 1,
+                    "dec": 955,
+                    "hi": 3,
+                    "lo": 187
+                },{
+                    "octave": 2,
+                    "dec": 1911,
+                    "hi": 7,
+                    "lo": 119
+                },{
+                    "octave": 3,
+                    "dec": 3823,
+                    "hi": 14,
+                    "lo": 239
+                },{
+                    "octave": 4,
+                    "dec": 7647,
+                    "hi": 29,
+                    "lo": 223
+                },{
+                    "octave": 5,
+                    "dec": 15294,
+                    "hi": 59,
+                    "lo": 190
+                },{
+                    "octave": 6,
+                    "dec": 30588,
+                    "hi": 119,
+                    "lo": 124
+                },{
+                    "octave": 7,
+                    "dec": 61176,
+                    "hi": 238,
+                    "lo": 248
+                }]
+            },{
+                "note": "H",
+                "synonym": "si",
+                "values": [{
+                    "octave": 0,
+                    "dec": 506,
+                    "hi": 1,
+                    "lo": 250
+                },{
+                    "octave": 1,
+                    "dec": 1012,
+                    "hi": 3,
+                    "lo": 244
+                },{
+                    "octave": 2,
+                    "dec": 2025,
+                    "hi": 7,
+                    "lo": 233
+                },{
+                    "octave": 3,
+                    "dec": 4050,
+                    "hi": 15,
+                    "lo": 210
+                },{
+                    "octave": 4,
+                    "dec": 8101,
+                    "hi": 31,
+                    "lo": 165
+                },{
+                    "octave": 5,
+                    "dec": 16203,
+                    "hi": 63,
+                    "lo": 75
+                },{
+                    "octave": 6,
+                    "dec": 32407,
+                    "hi": 126,
+                    "lo": 151
+                },{
+                    "octave": 7,
+                    "dec": 64814,
+                    "hi": 253,
+                    "lo": 46
+                }]
+            }
+        ]
+    }
+]

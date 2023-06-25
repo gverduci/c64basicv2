@@ -1,0 +1,46 @@
+on:  
+  push:
+    branches:
+      - 'develop'
+
+name: Deploy Extension
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+        # with:
+        #   token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      - name: Version
+        id: versionSet
+        run: |
+          git config user.name 'GitHub Actions [bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          LATEST_TAG=$(git describe --tags --abbrev=0) || exit 1
+          NEW_COMMITS=$(git rev-list --count "${LATEST_TAG}"..) || exit 1
+          [ "${NEW_COMMITS}" -gt 0 ] || exit 0
+          npm version patch -m "Auto increment patch version %s [skip ci]" --force
+          git push
+          git push --tags
+          npm run install:all
+          packageJsonVersion=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
+          echo "pkgVersion=$packageJsonVersion" >> $GITHUB_OUTPUT
+      - name: Package extension
+        uses: lannonbr/vsce-action@3.0.0
+        with:
+          args: "package"
+      - name: Github Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./*.vsix
+          draft: true
+          prerelease: true
+          name: ${{ steps.versionSet.outputs.pkgVersion }}
+          tag_name: ${{ steps.versionSet.outputs.pkgVersion }}
+      # - uses: lannonbr/vsce-action@3.0.0
+      #   with:
+      #     args: "publish -p $VSCE_TOKEN"
+      #   env:
+      #     VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}

@@ -4,7 +4,7 @@
     "description": "Syntax highlighting and snippets for COMMODORE 64 BASIC V2",
     "publisher": "gverduci",
     "author": "gverduci",
-    "version": "0.6.14",
+    "version": "0.7.1",
     "license": "BSD-3-Clause License",
     "engines": {
         "vscode": "^1.66.0"
@@ -34,10 +34,34 @@
         "onCommand:c64basicv2.automaticProofreader",
         "onCommand:c64basicv2.convert",
         "onCommand:c64basicv2.convert-run",
+        "onCommand:c64basicv2.commands.openPreview",
+        "onCommand:c64basicv2.commands.refreshPreview",
         "onStartupFinished"
     ],
     "main": "./out/extension.js",
     "contributes": {
+        "colors": [
+            {
+                "id": "c64.screen.border",
+                "description": "Screen Border Color",
+                "defaults": {
+                    "dark": "#6076c5",
+                    "light": "#6076c5",
+                    "highContrast": "#6076c5",
+                    "highContrastLght": "#6076c5"
+                }
+            },
+            {
+                "id": "c64.screen.inside",
+                "description": "Screen Border Color",
+                "defaults": {
+                    "dark": "#20398d",
+                    "light": "#20398d",
+                    "highContrast": "#20398d",
+                    "highContrastLght": "#20398d"
+                }
+            }
+        ],
         "themes": [
             {
                 "id": "Visual Studio Dark - c64basicv2",
@@ -115,6 +139,11 @@
                     "type": "boolean",
                     "default": false,
                     "markdownDescription": "Enable diagnostics for c64 basic v2 text files."
+                },
+                "c64basicv2.showCtrlCharacterInfo": {
+                    "type": "boolean",
+                    "default": false,
+                    "markdownDescription": "Enable control character info on mouse hover."
                 }
             }
         },
@@ -130,7 +159,7 @@
             {
                 "command": "c64basicv2.convert-run",
                 "key": "f5",
-                "when": "editorLangId = c64basicv2 || resourceLangId == c64basicv2"
+                "when": "editorLangId == c64basicv2 || resourceLangId == c64basicv2"
             },
             {
                 "command": "c64basicv2.convert",
@@ -158,30 +187,97 @@
                 "command": "c64basicv2.convert-run",
                 "title": "c64basicv2: Convert and Run",
                 "category": "c64basicv2"
+            },
+            {
+                "command": "c64basicv2.commands.openPreview",
+                "title": "C64 Open Preview",
+                "category": "c64basicv2",
+                "icon": "$(open-preview)"
+            },
+            {
+                "command": "c64basicv2.commands.refreshPreview",
+                "title": "Refresh Preview",
+                "category": "c64basicv2"
             }
-        ]
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "c64basicv2.commands.openPreview",
+                    "when": "editorLangId == c64basicv2",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "c64basicv2",
+                    "title": "c64 basic v2",
+                    "icon": "icons/c64-light.png"
+                }
+            ]
+        },
+        "views": {
+            "c64basicv2": [
+                {
+                    "type": "webview",
+                    "id": "c64basicv2.view.chars",
+                    "name": "Control characters",
+                    "contextualTitle": "c64basicv2",
+                    "icon": "$(add)",
+                    "visibility": "visible"
+                },
+                {
+                    "type": "webview",
+                    "id": "c64basicv2.view.sid",
+                    "name": "SID",
+                    "contextualTitle": "c64basicv2",
+                    "icon": "$(add)",
+                    "visibility": "visible"
+                }
+            ]
+        }
     },
     "scripts": {
+        "install:all": "npm install && cd webview-ui/common && npm install && cd ../sid && npm install && cd ../chars && npm install && cd ../..",
+        "install:all:ci": "npm ci && cd webview-ui/common && npm ci && cd ../sid && npm ci && cd ../chars && npm ci && cd ../..",
+        "start:sidwebview": "cd webview-ui/sid && npm run start",
+        "build:commonwebview": "cd webview-ui/common && npm run build && cd ../..",
+        "test:commonwebview": "cd webview-ui/common && npm run test",
+        "build:sidwebview": "cd webview-ui/sid && npm run build && cd ../..",
+        "test:sidwebview": "cd webview-ui/sid && npm run test",
+        "start:charswebview": "cd webview-ui/chars && npm run start",
+        "build:charswebview": "cd webview-ui/chars && npm run build && cd ../..",
+        "build:all": "cd webview-ui/common && npm run build && cd ../sid && npm run build && cd ../chars && npm run build && cd ../..",
+        "test:charswebview": "cd webview-ui/chars && npm run test",
         "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
+        "compile": "npm run build:all && tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "lint": "eslint src --ext ts",
+        "lint": "npx eslint .",
         "test": "node ./out/test/runTest.js",
         "package": "npx vsce package",
-        "publish": "npx vsce publish"
+        "publish": "npx vsce publish",
+        "prepare": "npx husky install",
+        "pre-commit": "npm run lint && npm run test"
     },
     "devDependencies": {
-        "@types/vscode": "^1.66.0",
         "@types/glob": "^7.2.0",
         "@types/mocha": "^9.1.0",
         "@types/node": "14.x",
-        "@typescript-eslint/eslint-plugin": "^5.16.0",
-        "@typescript-eslint/parser": "^5.16.0",
-        "eslint": "^8.11.0",
+        "@types/vscode": "^1.66.0",
+        "@typescript-eslint/eslint-plugin": "^5.59.6",
+        "@typescript-eslint/parser": "^5.59.6",
+        "@vscode/codicons": "^0.0.33",
+        "@vscode/test-electron": "^2.1.3",
+        "eslint": "^8.40.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-react": "^7.32.2",
         "glob": "^7.2.0",
+        "husky": "^8.0.3",
         "mocha": "^9.2.2",
-        "typescript": "^4.5.5",
-        "@vscode/test-electron": "^2.1.3"
+        "prettier": "2.8.8",
+        "typescript": "^4.5.5"
     }
 }

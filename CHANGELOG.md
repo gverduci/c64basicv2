@@ -1,6 +1,10 @@
 # Change Log
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
+## [0.7.1] - 25/06/2023
+
+- [SID View] Added SID view in the Primary Sidebar: registry, ADSR, notes
+- [Character View] Added Character view on the Primary Sidebar: symbolic syntax, chr$ command
 
 ## [0.6.8] - 01/05/2022
 

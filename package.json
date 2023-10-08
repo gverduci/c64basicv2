@@ -235,6 +235,14 @@
                     "contextualTitle": "c64basicv2",
                     "icon": "$(add)",
                     "visibility": "visible"
+                },
+                {
+                    "type": "webview",
+                    "id": "c64basicv2.view.vic",
+                    "name": "VIC",
+                    "contextualTitle": "c64basicv2",
+                    "icon": "$(add)",
+                    "visibility": "visible"
                 }
             ]
         }

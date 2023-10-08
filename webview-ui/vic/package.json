@@ -1,23 +1,19 @@
 {
-  "name": "webview-common",
-  "version": "0.2.0",
+  "name": "sid",
+  "version": "0.1.0",
   "private": true,
-  "main": "build/index.js",
-  "typings": "build/index.d.ts",
   "scripts": {
     "start": "EXTEND_ESLINT=true react-scripts start",
-    "buildOrig": "react-scripts build",
-    "buildOld": "node ./scripts/build-react-no-split.js",
-    "build": "npm run copy-files && tsc",
+    "build": "node ./scripts/build-react-no-split.js",
     "test": "EXTEND_ESLINT=true react-scripts test",
     "eject": "react-scripts eject",
-    "copy-files": "mkdir -p ./build && cp ./src/index.css ./build/index.css"
+    "lint": "eslint --ext .ts,.tsx src/"
   },
   "dependencies": {
     "@vscode/webview-ui-toolkit": "^1.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@vscode/codicons": "^0.0.33"
+    "webview-common": "file:../common"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "7.21.0",
@@ -25,6 +21,8 @@
     "@types/react": "^18.0.32",
     "@types/react-dom": "^18.0.11",
     "@types/vscode-webview": "^1.57.1",
+    "@vscode/codicons": "^0.0.33",
+    "eslint-plugin-jest": "^27.4.0",
     "react-scripts": "5.0.1",
     "rewire": "^6.0.0",
     "typescript": "^4.5.5"

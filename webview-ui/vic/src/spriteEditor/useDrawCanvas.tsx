@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import "../../node_modules/@vscode/codicons/dist/codicon.css";
 import "../../node_modules/@vscode/codicons/dist/codicon.ttf";
 import { useRef } from "react";
+// import { Draw, DrawArea, Erase, Init, Runner } from "./commandDrawCanvas";
+
+//const runner = new Runner();
 
 const WIDTH = 16;
 const HEIGHT = 16;
@@ -11,7 +14,8 @@ const colorMap: { [id: number]: string } = {
   2: "#9F4E44",
   3: "#6D5412",
 };
-const modes: string[] = ["DRAW", "ERASE", "MOVE"];
+const modes: string[] = ["INIT", "DRAW", "ERASE", "MOVE"];
+
 function useDrawCanvas(
   numberOfColumns: number,
   numberOfLines: number,
@@ -23,14 +27,18 @@ function useDrawCanvas(
   const [canvasWidth, setCanvasWidth] = useState(0);
   const [canvasHeight, setCanvasHeight] = useState(0);
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
-  const [newPixel, setNewPixel] = useState<{
+  const [newEventSetPixel, setNewEventSetPixel] = useState<{
     line: number;
     column: number;
     value: number;
   } | null>(null);
-
+  const [newEventMove, setNewEventMove] = useState<{
+    line: number;
+    column: number;
+  } | null>(null);
+  
   const [mode, setMode] = useState<string>(modes[0]);
-
+  
   useEffect(() => {
     /**
      *
@@ -80,7 +88,12 @@ function useDrawCanvas(
         return;
       }
       const newLocation = { x: event.offsetX, y: event.offsetY };
-      // TODO move
+      const line = Math.floor(newLocation.y / HEIGHT);
+      const column = Math.floor(newLocation.x / WIDTH);
+      setNewEventMove({
+        line,
+        column
+      });
       setLastClick(new Date().toISOString());
     };
     const drawPixel = (event: any) => {
@@ -88,10 +101,13 @@ function useDrawCanvas(
         return;
       }
       const newLocation = { x: event.offsetX, y: event.offsetY };
-      setNewPixel({
-        line: Math.floor(newLocation.y / HEIGHT),
-        column: Math.floor(newLocation.x / WIDTH),
-        value: event.buttons === 5 || event.ctrlKey || mode === "ERASE" ? 0 : 1,
+      const line = Math.floor(newLocation.y / HEIGHT);
+      const column = Math.floor(newLocation.x / WIDTH);
+      const value = event.buttons === 5 || event.ctrlKey || mode === "ERASE" ? 0 : 1;
+      setNewEventSetPixel({
+        line,
+        column,
+        value
       });
       setLastClick(new Date().toISOString());
     };
@@ -144,7 +160,8 @@ function useDrawCanvas(
     pixelWidth: WIDTH,
     pixelHeight: HEIGHT,
     colorMap,
-    newPixel,
+    newEventSetPixel,
+    newEventMove,
     modes,
     mode,
     setMode,

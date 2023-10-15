@@ -9,6 +9,7 @@ export interface IArea {
   numberOfLines: number;
   extendedlines: Generator<[number[], number]>;
   setPixel(line: number, column: number, value: number): any;
+  moveToPixel(line: number, column: number): any;
   togglePixel(line: number, column: number): any;
   clear(): void;
   setDataValue(dataString: string): void;
@@ -24,6 +25,7 @@ export class Area implements IArea {
   protected _numberOfBytesPerLine: number;
   protected _numberOfLines: number;
   protected currentLine: number;
+  protected moveFrom: {line: number, column: number};
 
   constructor(numberOfBytesPerLine: number, numberOfLines: number) {
     this._area = [];
@@ -206,6 +208,40 @@ export class Area implements IArea {
       const newValue = value ? currentValue | mask : currentValue & mask;
       const byte = this.getByte(column);
       this._area[line][byte] = newValue;
+      return true;
+    }
+    return false;
+  }
+
+  public moveToPixel(line: number, column: number) {
+    if (this.checkColumn(column) && this.checkLine(line)) {
+      if (this.moveFrom){
+        const deltaLine = line - this.moveFrom.line;
+        const deltaColumns = column - this.moveFrom.column;
+        this.moveFrom = {line, column};
+        const newArea: number[][]=[];
+        for (let i = 0; i < this._numberOfLines; i++) {
+          newArea[i] = [];
+          const currLine = this._area[i - deltaLine];
+          let uniqueBitLine = 0;
+          if (currLine){
+            for (let j = 0; j < this._numberOfBytesPerLine; j++) {
+              uniqueBitLine = uniqueBitLine + (currLine[j] << ((this._numberOfBytesPerLine -1 - j) * 8))
+            }
+            if (deltaColumns > 0){
+              uniqueBitLine = uniqueBitLine >> deltaColumns;
+            }else if (deltaColumns < 0){
+              uniqueBitLine = uniqueBitLine << Math.abs(deltaColumns);
+            }
+          }
+          for (let j = 0; j < this._numberOfBytesPerLine; j++) {
+            newArea[i][j] = (uniqueBitLine >> (this._numberOfBytesPerLine - 1 - j) * 8) & 255;
+          }
+        }
+        this._area = newArea;
+      } else {
+        this.moveFrom = {line, column};
+      }
       return true;
     }
     return false;

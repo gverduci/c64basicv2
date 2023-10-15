@@ -24,7 +24,10 @@ import StepperSection from "webview-common/build/StepperSection";
 import useDrawCanvas from "./useDrawCanvas";
 import Toolbar from "./toolbar";
 
+import { Draw, Move, Clear, Runner } from "./commandDrawCanvas";
+
 let spriteArea: IArea = new SpriteArea();
+let runner = new Runner(spriteArea);
 
 interface IMessage {
   command: string;
@@ -72,10 +75,13 @@ function SpriteEditor() {
     pixelWidth,
     pixelHeight,
     colorMap,
-    newPixel,
+    newEventSetPixel,
+    newEventMove,
     modes,
     mode,
-    setMode
+    setMode,
+    // undo,
+    // redo
   } = useDrawCanvas(
     spriteArea.numberOfColumns,
     spriteArea.numberOfLines,
@@ -83,15 +89,31 @@ function SpriteEditor() {
   );
 
   useEffect(() => {
-    if (newPixel) {
-      let newValue = newPixel.value;
+    if (newEventSetPixel) {
+      let newValue = newEventSetPixel.value;
       if (type === "SpriteMulticolor") {
         console.log(`${newValue} ---> ${pixelColor}`);
         newValue = newValue ? pixelColor : 0;
       }
-      spriteArea.setPixel(newPixel.line, newPixel.column, newValue);
+      // spriteArea.setPixel(newEventSetPixel.line, newEventSetPixel.column, newValue);
+      const command = new Draw({
+        line: newEventSetPixel.line,
+        column: newEventSetPixel.column,
+        value: newValue
+      });
+      runner.push(command);
     }
-  }, [newPixel]);
+  }, [newEventSetPixel]);
+
+  useEffect(() => {
+    if (newEventMove) {
+      const command = new Move({
+        line: newEventMove.line,
+        column: newEventMove.column
+      });
+      runner.push(command);
+    }
+  }, [newEventMove]);
 
   useEffect(() => {
     setPixelColor(1);
@@ -108,6 +130,7 @@ function SpriteEditor() {
       spriteArea = new MultiCharArea(multiCharsRows || 4, multiCharsCols || 3);
       update();
     }
+    runner = new Runner(spriteArea);
   }, [type, multiCharsCols, multiCharsRows]);
 
   const handleAdd = () => {
@@ -129,7 +152,18 @@ function SpriteEditor() {
   };
 
   const handleClr = () => {
-    spriteArea.clear();
+    const command = new Clear();
+    runner.push(command);
+    update();
+  };
+
+  const handleUndo = () => {
+    runner.undo();
+    update();
+  };
+
+  const handleRedo = () => {
+    runner.redo();
     update();
   };
 
@@ -264,6 +298,8 @@ function SpriteEditor() {
               mode={mode}
               setMode={mode => setMode(mode)}
               clearAll={()=>handleClr()}
+              undo={()=>handleUndo()}
+              redo={()=>handleRedo()}
             />
           </div>
           <div>

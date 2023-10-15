@@ -5,6 +5,8 @@ export interface IToolbarProps {
   mode: string;
   setMode: (mode: string) => void,
   clearAll: () => void,
+  undo: () => void,
+  redo: () => void,
 }
 
 const modeIcons: { [id: string]: string } = {
@@ -13,7 +15,7 @@ const modeIcons: { [id: string]: string } = {
   "MOVE": "codicon-move",
 };
 
-const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll }): ReactElement | null => {
+const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll, undo, redo }): ReactElement | null => {
   return (
     <div>
       {modes.map((m) => {
@@ -48,6 +50,34 @@ const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll }): ReactEl
         slot="top"
         className={"codicon codicon-clear-all"}
         onClick={() => clearAll()}
+      >
+        &nbsp;
+      </span> 
+      <span
+        style={{
+          height: "16px",
+          width: "16px",
+          maxHeight: "16px",
+          maxWidth: "16px",
+          fontSize: "var(--type-ramp-base-font-size)",
+        }}
+        slot="top"
+        className={"codicon codicon-discard"}
+        onClick={() => undo()}
+      >
+        &nbsp;
+      </span> 
+      <span
+        style={{
+          height: "16px",
+          width: "16px",
+          maxHeight: "16px",
+          maxWidth: "16px",
+          fontSize: "var(--type-ramp-base-font-size)",
+        }}
+        slot="top"
+        className={"codicon codicon-redo"}
+        onClick={() => redo()}
       >
         &nbsp;
       </span> 

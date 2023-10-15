@@ -58,7 +58,7 @@ describe('sprite editor - sprite area', () => {
         // for (const value of spriteArea.lines) {  
         //     console.log(lineCounter++, value);
         // }
-        expect(value.value[0]).toBe(128);
+        expect(value.value[0][0]).toBe(1);
     });
 
     it('MultiChar', () => {

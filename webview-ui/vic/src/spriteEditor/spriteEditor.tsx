@@ -24,7 +24,7 @@ import StepperSection from "webview-common/build/StepperSection";
 import useDrawCanvas from "./useDrawCanvas";
 import Toolbar from "./toolbar";
 
-import { Draw, Move, Clear, Runner } from "./commandDrawCanvas";
+import { Draw, Move, Clear, Runner, ResetMove } from "./commandDrawCanvas";
 
 let spriteArea: IArea = new SpriteArea();
 let runner = new Runner(spriteArea);
@@ -75,8 +75,7 @@ function SpriteEditor() {
     pixelWidth,
     pixelHeight,
     colorMap,
-    newEventSetPixel,
-    newEventMove,
+    statusCurrentAction,
     modes,
     mode,
     setMode,
@@ -89,31 +88,32 @@ function SpriteEditor() {
   );
 
   useEffect(() => {
-    if (newEventSetPixel) {
-      let newValue = newEventSetPixel.value;
+    if (statusCurrentAction && statusCurrentAction.action === "DRAW" && statusCurrentAction.status === "on") {
+      let newValue = statusCurrentAction.value;
       if (type === "SpriteMulticolor") {
         console.log(`${newValue} ---> ${pixelColor}`);
         newValue = newValue ? pixelColor : 0;
       }
       // spriteArea.setPixel(newEventSetPixel.line, newEventSetPixel.column, newValue);
       const command = new Draw({
-        line: newEventSetPixel.line,
-        column: newEventSetPixel.column,
+        line: statusCurrentAction.line,
+        column: statusCurrentAction.column,
         value: newValue
       });
       runner.push(command);
     }
-  }, [newEventSetPixel]);
-
-  useEffect(() => {
-    if (newEventMove) {
+    if (statusCurrentAction && statusCurrentAction.action === "MOVE" && statusCurrentAction.status === "on") {
       const command = new Move({
-        line: newEventMove.line,
-        column: newEventMove.column
+        line: statusCurrentAction.line,
+        column: statusCurrentAction.column
       });
       runner.push(command);
     }
-  }, [newEventMove]);
+    if (statusCurrentAction && statusCurrentAction.action === "MOVE" && statusCurrentAction.status === "off") {
+      const command = new ResetMove();
+      runner.push(command);
+    }
+  }, [statusCurrentAction]);
 
   useEffect(() => {
     setPixelColor(1);

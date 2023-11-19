@@ -9,6 +9,7 @@ export interface IArea {
   numberOfLines: number;
   extendedlines: Generator<[number[], number]>;
   setPixel(line: number, column: number, value: number): any;
+  resetMove():void;
   moveToPixel(line: number, column: number): any;
   togglePixel(line: number, column: number): any;
   clear(): void;
@@ -25,13 +26,14 @@ export class Area implements IArea {
   protected _numberOfBytesPerLine: number;
   protected _numberOfLines: number;
   protected currentLine: number;
-  protected moveFrom: {line: number, column: number};
+  protected moveFrom: {line: number, column: number} | undefined;
 
   constructor(numberOfBytesPerLine: number, numberOfLines: number) {
     this._area = [];
     this._numberOfBytesPerLine = numberOfBytesPerLine;
     this._numberOfLines = numberOfLines;
     this.currentLine = 0;
+    this.moveFrom = undefined;
 
     for (let i = 0; i < numberOfLines; i++) {
       this._area[i] = [];
@@ -42,6 +44,7 @@ export class Area implements IArea {
   }
 
   public clear(): void {
+    this.moveFrom = undefined;
     for (let i = 0; i < this._numberOfLines; i++) {
       this._area[i] = [];
       for (let j = 0; j < this._numberOfBytesPerLine; j++) {
@@ -72,6 +75,13 @@ export class Area implements IArea {
     }
   }
 
+  /**
+   * This is a generator function that yields lines from the area.
+   * It starts from the given count and continues until it reaches the total number of lines.
+   *
+   * @param {number} count - The starting line number.
+   * @yields {number[]} - The current line in the area.
+   */
   public *linesGenerator(count: number): Generator<number[]> {
     while (count < this._numberOfLines) {
       this.currentLine = count;
@@ -201,6 +211,7 @@ export class Area implements IArea {
   }
 
   public setPixel(line: number, column: number, value: number) {
+    this.moveFrom = undefined;
     if (this.checkColumn(column) && this.checkLine(line)) {
       const bit = this.getBit(column);
       const currentValue = this.getValue(column, line);
@@ -211,6 +222,10 @@ export class Area implements IArea {
       return true;
     }
     return false;
+  }
+
+  public resetMove() {
+    this.moveFrom = undefined;
   }
 
   public moveToPixel(line: number, column: number) {

@@ -72,6 +72,15 @@ export class Move implements ICommand {
   };
 }
 
+export class ResetMove implements ICommand {
+  execute = (spriteArea: IArea) => {
+    spriteArea.resetMove();
+    return true;
+  };
+
+  toSave = (stack: ICommand[]): ICommand | undefined => undefined;
+}
+
 export class Clear implements ICommand {
   execute = (spriteArea: IArea) => {
     spriteArea.clear();

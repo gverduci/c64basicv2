@@ -27,17 +27,14 @@ function useDrawCanvas(
   const [canvasWidth, setCanvasWidth] = useState(0);
   const [canvasHeight, setCanvasHeight] = useState(0);
   const canvasRef = useRef<null | HTMLCanvasElement>(null);
-  const [newEventSetPixel, setNewEventSetPixel] = useState<{
+  const [mode, setMode] = useState<string>(modes[0]);
+  const [statusCurrentAction, setStatusCurrentAction] = useState<{
+    action: string,
+    status: string,
     line: number;
     column: number;
     value: number;
   } | null>(null);
-  const [newEventMove, setNewEventMove] = useState<{
-    line: number;
-    column: number;
-  } | null>(null);
-  
-  const [mode, setMode] = useState<string>(modes[0]);
   
   useEffect(() => {
     /**
@@ -90,10 +87,7 @@ function useDrawCanvas(
       const newLocation = { x: event.offsetX, y: event.offsetY };
       const line = Math.floor(newLocation.y / HEIGHT);
       const column = Math.floor(newLocation.x / WIDTH);
-      setNewEventMove({
-        line,
-        column
-      });
+      setStatusCurrentAction({action:"MOVE", status: "on", line, column, value: 0 })
       setLastClick(new Date().toISOString());
     };
     const drawPixel = (event: any) => {
@@ -104,11 +98,7 @@ function useDrawCanvas(
       const line = Math.floor(newLocation.y / HEIGHT);
       const column = Math.floor(newLocation.x / WIDTH);
       const value = event.buttons === 5 || event.ctrlKey || mode === "ERASE" ? 0 : 1;
-      setNewEventSetPixel({
-        line,
-        column,
-        value
-      });
+      setStatusCurrentAction({action:"DRAW", status: "on", line, column, value })
       setLastClick(new Date().toISOString());
     };
 
@@ -122,13 +112,25 @@ function useDrawCanvas(
     };
 
     const handleMouseUp = () => {
-      isPainting = false;
-      isMoving = false;
+      if (isPainting){
+        isPainting = false;
+        setStatusCurrentAction({action:"DRAW", status: "off", line:0, column:0, value:0 })
+      }
+      if (isMoving){
+        isMoving = false;
+        setStatusCurrentAction({action:"MOVE", status: "off", line:0, column:0, value:0 })
+      }
     };
 
     const handleMouseOut = (event: MouseEvent) => {
-      isPainting = false;
-      isMoving = false;
+      if (isPainting){
+        isPainting = false;
+        setStatusCurrentAction({action:"DRAW", status: "off", line:0, column:0, value:0 })
+      }
+      if (isMoving){
+        isMoving = false;
+        setStatusCurrentAction({action:"MOVE", status: "off", line:0, column:0, value:0 })
+      }
     };
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -160,8 +162,7 @@ function useDrawCanvas(
     pixelWidth: WIDTH,
     pixelHeight: HEIGHT,
     colorMap,
-    newEventSetPixel,
-    newEventMove,
+    statusCurrentAction,
     modes,
     mode,
     setMode,

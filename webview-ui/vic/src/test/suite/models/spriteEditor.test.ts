@@ -1,5 +1,5 @@
 import {expect} from '@jest/globals';
-import { MultiCharArea, SpriteArea } from "../../spriteEditor/models/area";
+import { MultiCharArea, SpriteArea } from "../../../spriteEditor/models/area";
 
 const printArea = (spriteArea: SpriteArea) =>{
     for (const [index, value] of spriteArea.lines) {

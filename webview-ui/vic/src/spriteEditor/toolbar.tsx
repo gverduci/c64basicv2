@@ -3,42 +3,53 @@ import React, { FC, ReactElement } from "react";
 export interface IToolbarProps {
   modes: string[];
   mode: string;
-  setMode: (mode: string) => void,
-  clearAll: () => void,
-  undo: () => void,
-  redo: () => void,
+  setMode: (mode: string) => void;
+  clearAll: () => void;
+  undo: () => void;
+  redo: () => void;
 }
 
 const modeIcons: { [id: string]: string } = {
-  "DRAW": "codicon-edit",
-  "ERASE": "codicon-trash",
-  "MOVE": "codicon-move",
+  DRAW: "codicon-edit",
+  ERASE: "codicon-trash",
+  MOVE: "codicon-move",
 };
 
-const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll, undo, redo }): ReactElement | null => {
+const Toolbar: FC<IToolbarProps> = ({
+  modes,
+  mode,
+  setMode,
+  clearAll,
+  undo,
+  redo,
+}): ReactElement | null => {
   return (
     <div>
-      {modes.map((m) => {
-        return (
-          <>
-            <span
-              style={{
-                height: "16px",
-                width: "16px",
-                maxHeight: "16px",
-                maxWidth: "16px",
-                fontSize: "var(--type-ramp-base-font-size)",
-                color: m === mode ? "var(--vscode-inputOption-activeForeground)": "var(--vscode-disabledForeground)",
-              }}
-              slot="top"
-              className={`codicon ${modeIcons[m]}`}
-              onClick={() => setMode(m)}
-            >
-              &nbsp;
-            </span>
-          </>
-        );
-      })}
+      {modes
+        .map((m) => {
+          return (
+            <>
+              <span
+                style={{
+                  height: "16px",
+                  width: "16px",
+                  maxHeight: "16px",
+                  maxWidth: "16px",
+                  fontSize: "var(--type-ramp-base-font-size)",
+                  color:
+                    m === mode
+                      ? "var(--vscode-inputOption-activeForeground)"
+                      : "var(--vscode-disabledForeground)",
+                }}
+                slot="top"
+                className={`codicon ${modeIcons[m]}`}
+                onClick={() => setMode(m)}
+              >
+                &nbsp;
+              </span>
+            </>
+          );
+        })}
       <span
         style={{
           height: "16px",
@@ -52,7 +63,7 @@ const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll, undo, redo
         onClick={() => clearAll()}
       >
         &nbsp;
-      </span> 
+      </span>
       <span
         style={{
           height: "16px",
@@ -66,7 +77,7 @@ const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll, undo, redo
         onClick={() => undo()}
       >
         &nbsp;
-      </span> 
+      </span>
       <span
         style={{
           height: "16px",
@@ -80,7 +91,7 @@ const Toolbar: FC<IToolbarProps> = ({ modes, mode, setMode, clearAll, undo, redo
         onClick={() => redo()}
       >
         &nbsp;
-      </span> 
+      </span>
     </div>
   );
 };

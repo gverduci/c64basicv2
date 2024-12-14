@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { vscode } from "../utilities/vscode";
 import "../../node_modules/@vscode/codicons/dist/codicon.css";
 import "../../node_modules/@vscode/codicons/dist/codicon.ttf";
@@ -113,7 +113,7 @@ function SpriteEditor() {
       const command = new ResetMove();
       runner.push(command);
     }
-  }, [statusCurrentAction]);
+  }, [statusCurrentAction, type, pixelColor]);
 
   useEffect(() => {
     setPixelColor(1);
@@ -131,7 +131,7 @@ function SpriteEditor() {
       update();
     }
     runner = new Runner(spriteArea);
-  }, [type, multiCharsCols, multiCharsRows]);
+  }, [type, multiCharsCols, multiCharsRows, update]);
 
   const handleAdd = () => {
     const value = spriteArea.getDataValue();
@@ -143,6 +143,7 @@ function SpriteEditor() {
 
   const handleGet = () => {
     subscribeToMessage("getSelectionResponse", (data: string | undefined) => {
+      runner.reset();
       spriteArea.setDataValue(data ? data : "");
       update();
     });

@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import "../../node_modules/@vscode/codicons/dist/codicon.css";
 import "../../node_modules/@vscode/codicons/dist/codicon.ttf";
 import { useRef } from "react";
-// import { Draw, DrawArea, Erase, Init, Runner } from "./commandDrawCanvas";
-
-//const runner = new Runner();
 
 const WIDTH = 16;
 const HEIGHT = 16;
@@ -14,7 +11,7 @@ const colorMap: { [id: number]: string } = {
   2: "#9F4E44",
   3: "#6D5412",
 };
-const modes: string[] = ["INIT", "DRAW", "ERASE", "MOVE"];
+const modes: string[] = ["DRAW", "ERASE", "MOVE"];
 
 function useDrawCanvas(
   numberOfColumns: number,
@@ -67,7 +64,7 @@ function useDrawCanvas(
     if (canvasContext) {
       draw();
     }
-  }, [canvasContext, canvasHeight, canvasWidth, lastClick]);
+  }, [canvasContext, canvasHeight, canvasWidth, lastClick, extendedlines, numberOfColumns, numberOfLines]);
 
   useEffect(() => {
     if (canvasRef && canvasRef.current) {

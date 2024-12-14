@@ -134,6 +134,13 @@ export class Runner implements IRunner {
     });
     }
   };
+
+  reset = () => {
+    this._stack = [];
+    this._stackRedo = [];
+    this._spriteArea.clear();
+  };
+
 }
 
 /*

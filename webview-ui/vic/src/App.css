@@ -1,0 +1,53 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+}
+
+main > * {
+  margin: 0.25rem 0;
+}
+
+h5 {
+  font-style: italic;
+}
+
+button.control {
+  padding: 0;
+}
+.checkline {
+  position: relative;
+  grid-area: 1 / 1 / span 2 / auto;
+  color: var(--vscode-textLink-foreground);
+}
+.checkline:after {
+  content: "";
+  position: absolute;
+  border-left: 0.1rem solid currentcolor;
+  width: 0px;
+  top: 1.7rem;
+  bottom: -2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.3;
+}
+
+.noteButtonWhite:not(:active) {
+  background: #dadada;
+  transition: background-color 100ms step-end;
+}
+
+.noteButtonWhite:active {
+  background: #ffffff;
+}
+
+.noteButtonBlack:not(:active) {
+  background: #2a2a2a;
+  transition: background-color 100ms step-end;
+}
+
+.noteButtonBlack:active {
+  background: #000000;
+}

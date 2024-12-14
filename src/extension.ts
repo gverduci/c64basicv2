@@ -6,6 +6,7 @@ import * as diagnostics from './diagnostics/diagnosticsSubscription';
 
 import { decorators } from './decorators/decoratorsSubscription';
 import { SIDWebview } from './webview/sidWebview';
+import { VICWebview } from './webview/vicWebview';
 import { CharactersWebview } from './webview/charactersWebview';
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -68,6 +69,7 @@ export function activate(context: vscode.ExtensionContext) {
     const disposables: vscode.Disposable[] = [];
     context.subscriptions.push(new vscode.Disposable(() => vscode.Disposable.from(...disposables).dispose()));
     context.subscriptions.push(new SIDWebview(context));
+    context.subscriptions.push(new VICWebview(context));    
     context.subscriptions.push(new CharactersWebview(context));
 }
 

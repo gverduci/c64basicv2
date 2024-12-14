@@ -9,7 +9,7 @@ import {
 import { Disposable, Uri, window } from 'vscode';
 import { getUri } from '../utils/getUri';
 
-export type WebviewIds = 'sid' | 'chars';
+export type WebviewIds = 'sid' | 'chars' | 'vic';
 
 export interface Message {
     command: string;

@@ -1,22 +1,24 @@
 module.exports = {
   branches: [
     {
-      name: "master",
-      channel: "latest",
+      name: 'main',
+      channel: 'latest',
     },
     {
-      name: "develop",
-      prerelease: "alpha",
-      channel: "canary",
+      name: 'develop',
+      prerelease: 'alpha',
+      channel: 'canary',
     },
   ],
   plugins: [
     [
       "@semantic-release/commit-analyzer",
       {
-        preset: "angular",
-        releaseRules: [{ type: "config", release: "patch" }],
-      },
+        "preset": "angular",
+        "releaseRules": [
+          { "type": "config", "release": "patch" },
+        ]
+      }
     ],
     "@semantic-release/release-notes-generator",
     [
@@ -27,22 +29,24 @@ module.exports = {
       },
     ],
     [
-      "@semantic-release/npm",
-      {
-        npmPublish: false,
-      },
-    ],
+			'@semantic-release/npm',
+			{
+				npmPublish: false,
+			},
+		],
     [
-      "semantic-release-vsce",
-      {
-        packageVsix: true,
-        publish: false,
-      },
+        "semantic-release-vsce",
+        {
+          packageVsix: true,
+          publish: false
+        }
     ],
     [
       "@semantic-release/github",
       {
-        assets: [{ path: "./*.vsix" }],
+        assets: [
+          { path: "./*.vsix" },
+        ],
       },
     ],
     [

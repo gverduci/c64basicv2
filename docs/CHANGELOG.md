@@ -1,3 +1,7 @@
+# Release notes
+
+## [0.8.2](https://github.com/gverduci/c64basicv2/compare/v0.8.1...v0.8.2) (2024-12-15)
+
 # Change Log
 
 All notable changes to the "c64basicv2" extension will be documented in this file.

@@ -27,7 +27,7 @@ jobs:
       #     npm run install:all
       #     packageJsonVersion=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
       #     echo "pkgVersion=$packageJsonVersion" >> $GITHUB_OUTPUT
-      - run: npm run install:all
+      - run: npm run install:all:ci
       - name: Release
         env:
           HUSKY: 0

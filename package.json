@@ -259,7 +259,7 @@
         "build:charswebview": "cd webview-ui/chars && npm run build && cd ../..",
         "start:vicwebview": "cd webview-ui/vic && npm run start",
         "build:vicwebview": "cd webview-ui/vic && npm run build && cd ../..",
-        "build:all": "cd webview-ui/common && npm run build && cd ../sid && npm run build && cd ../chars && npm run build && cd ../chars && npm run build && cd ../..",
+        "build:all": "cd webview-ui/common && npm run build && cd ../sid && npm run build && cd ../chars && npm run build && cd ../vic && npm run build && cd ../..",
         "test:charswebview": "cd webview-ui/chars && npm run test",
         "vscode:prepublish": "npm run compile",
         "compile": "npm run build:all && tsc -p ./",

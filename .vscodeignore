@@ -11,6 +11,8 @@ out/test/**
 # Ignore source code
 src/**
 
+node_modules/**
+
 # Ignore all webview-ui files except the build directory
 webview-ui/common/src/**
 webview-ui/common/public/**
@@ -39,6 +41,20 @@ webview-ui/chars/package.json
 webview-ui/chars/package-lock.json
 webview-ui/chars/node_modules/**
 !webview-ui/chars/node_modules/@vscode/codicons/dist
+webview-ui/vic/src/**
+webview-ui/vic/public/**
+webview-ui/vic/scripts/**
+webview-ui/vic/index.html
+webview-ui/vic/README.md
+webview-ui/vic/package.json
+webview-ui/vic/package-lock.json
+webview-ui/vic/node_modules/**
+!webview-ui/vic/node_modules/@vscode/codicons/dist
+
+release.config.js
+.husky/**
+.github/**
+
 
 # Ignore Misc
 .yarnrc

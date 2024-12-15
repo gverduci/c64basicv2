@@ -1,5 +1,14 @@
 # Release notes
 
+## [0.8.3-alpha.2](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.1...v0.8.3-alpha.2) (2024-12-15)
+
+
+### Bug Fixes
+
+* add package-lock.json ([03dbb9f](https://github.com/gverduci/c64basicv2/commit/03dbb9f9ef31a67a8778be8ca77fdc06e9f0ad4b))
+* add package-lock.json ([7d593bc](https://github.com/gverduci/c64basicv2/commit/7d593bcf8e36c5906a68536815b647f81b0280a9))
+* vsix file too big and without vic ([3bfed0b](https://github.com/gverduci/c64basicv2/commit/3bfed0b9964a840e5532b1a442b93a63cd5ac567))
+
 ## [0.8.3-alpha.1](https://github.com/gverduci/c64basicv2/compare/v0.8.2...v0.8.3-alpha.1) (2024-12-15)
 
 ## [0.8.2](https://github.com/gverduci/c64basicv2/compare/v0.8.1...v0.8.2) (2024-12-15)

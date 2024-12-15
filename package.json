@@ -248,8 +248,8 @@
         }
     },
     "scripts": {
-        "install:all": "npm install && cd webview-ui/common && npm install && cd ../sid && npm install && cd ../chars && npm install && cd ../..",
-        "install:all:ci": "npm ci && cd webview-ui/common && npm ci && cd ../sid && npm ci && cd ../chars && npm ci && cd ../..",
+        "install:all": "npm install && cd webview-ui/common && npm install && cd ../sid && npm install && cd ../chars && npm install && cd ../vic && npm install && cd ../..",
+        "install:all:ci": "npm ci && cd webview-ui/common && npm ci && cd ../sid && npm ci && cd ../chars && npm ci && cd ../vic && npm ci && cd ../..",
         "start:sidwebview": "cd webview-ui/sid && npm run start",
         "build:commonwebview": "cd webview-ui/common && npm run build && cd ../..",
         "test:commonwebview": "cd webview-ui/common && npm run test",

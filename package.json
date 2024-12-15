@@ -265,7 +265,7 @@
         "compile": "npm run build:all && tsc -p ./",
         "watch": "tsc -watch -p ./",
         "pretest": "npm run compile && npm run lint",
-        "lint": "npx eslint .",
+        "lint": "npx eslint ./src/**",
         "test": "node ./out/test/runTest.js",
         "package": "npx vsce package",
         "publish": "npx vsce publish",

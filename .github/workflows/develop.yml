@@ -34,10 +34,10 @@ jobs:
         run: npx semantic-release
       - id: versionSet
         run: echo "tag_name=v"$(cat $VERSION_FILE)"" >> "$GITHUB_OUTPUT"
-      - name: Package extension
-        uses: lannonbr/vsce-action@4.0.0
-        with:
-          args: "package"
+      # - name: Package extension
+      #   uses: lannonbr/vsce-action@4.0.0
+      #   with:
+      #     args: "package"
       # - name: Github Release
       #   uses: softprops/action-gh-release@v1
       #   with:

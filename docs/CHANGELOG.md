@@ -1,5 +1,12 @@
 # Release notes
 
+## [0.8.3-alpha.3](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.2...v0.8.3-alpha.3) (2024-12-18)
+
+
+### Bug Fixes
+
+* [#12](https://github.com/gverduci/c64basicv2/issues/12) removed useEffect dependency that was blocking drawing ([#13](https://github.com/gverduci/c64basicv2/issues/13)) ([d1900e7](https://github.com/gverduci/c64basicv2/commit/d1900e74391ab38625d77c9eeab3fbd17e2a428d))
+
 ## [0.8.3-alpha.2](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.1...v0.8.3-alpha.2) (2024-12-15)
 
 

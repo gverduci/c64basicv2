@@ -1,5 +1,12 @@
 # Release notes
 
+## [0.8.3-alpha.4](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.3...v0.8.3-alpha.4) (2024-12-18)
+
+
+### Bug Fixes
+
+* update poke command from 's+' to 'v+' in TabOccurrenceGrid and enhance README with VIC view details ([21e3b0e](https://github.com/gverduci/c64basicv2/commit/21e3b0e4bce73c5ec1671aaff22c7aba7c84bffd))
+
 ## [0.8.3-alpha.3](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.2...v0.8.3-alpha.3) (2024-12-18)
 
 

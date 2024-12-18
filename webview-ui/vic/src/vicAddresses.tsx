@@ -737,8 +737,8 @@ const TabOccurrenceGrid: FC<IRegisterOccurrenceProps> = ({
               color: "var(--button-primary-background)",
             }}
             className="clickable"
-            onClick={() => handleAddressClick(`poke s+${address},`)}
-          >{`s+${address}`}</VSCodeDataGridCell>
+            onClick={() => handleAddressClick(`poke v+${address},`)}
+          >{`v+${address}`}</VSCodeDataGridCell>
           <VSCodeDataGridCell grid-column="2">
             {row.bits.map((b, index) => (
               <div
@@ -761,7 +761,7 @@ const TabOccurrenceGrid: FC<IRegisterOccurrenceProps> = ({
                           }
                           addToCode={() =>
                             handleAddressAndValueClick(
-                              `poke s+${address},${registerValues[address]}`,
+                              `poke v+${address},${registerValues[address]}`,
                             )
                           }
                         />
@@ -774,7 +774,7 @@ const TabOccurrenceGrid: FC<IRegisterOccurrenceProps> = ({
                       <Palette
                         selectCallback={(color) =>
                           handleAddressAndValueClick(
-                            `poke s+${address},${color}`,
+                            `poke v+${address},${color}`,
                           )
                         }
                       />
@@ -792,7 +792,7 @@ const TabOccurrenceGrid: FC<IRegisterOccurrenceProps> = ({
                         }}
                         onClick={() =>
                           handleAddressAndValueClick(
-                            `poke s+${address},${n.value}`,
+                            `poke v+${address},${n.value}`,
                           )
                         }
                       >

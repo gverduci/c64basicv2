@@ -45,10 +45,11 @@ The provided features are:
 - Rulers: 40th and 80th column
 - Tasks: suggested in this README
 - Keyboard Shortcuts
-- Command: Automatic Proofreader, Convert, Convert and Run
-- Control character view in the Primary Sidebar 
-- Sid info view (address, ADSR calculator and notes) in the Primary Sidebar  
+- [Command: Automatic Proofreader, Convert, Convert and Run](#command--automatic-proofreader--convert--convert-and-run)
+- [Control character view in the Primary Sidebar](#character-view-on-the-primary-sidebar)
+- [Sid info view (address, ADSR calculator and notes) in the Primary Sidebar](#sid-view-address-adsr-calculator-and-notes-in-the-primary-sidebar)
 - [Code preview](#code-preview)
+- [VIC view (address, Sprite editor) in the Primary Sidebar](#vic-view-address-sprite-editor-in-the-primary-sidebar)
 
 ### Syntax highlighting
 An example of syntax highlighting is:
@@ -134,8 +135,8 @@ Click on the character to add the corresponding symbol in the code, or click on 
 The font is "Pet Me 64", released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
 
 ### SID view (address, ADSR calculator and notes) in the Primary Sidebar
-Using this view, you can
-- (first section) show Sid registries and add the poke command directly in the code:
+Using this view, you can:
+- (first section) navigate Sid registries and add the poke command directly in the code:
 
 ![c64basicv2 Sid Registries](images/c64basicv2_sidRegView.png)
 
@@ -153,6 +154,16 @@ Using the preview button on the editor Toolbar, you can show a panel containing 
 ![c64basicv2 Preview](https://raw.githubusercontent.com/gverduci/c64basicv2/main/images/c64basicv2_preview.png)
 
 The preview uses the "Pet Me 64" font, released by [Kreative Korporation](https://www.kreativekorp.com/software/fonts/c64/).
+
+### VIC view (address, Sprite editor) in the Primary Sidebar
+Using this view, you can:
+- (first section) navigate VIC registries and add the poke command directly in the code:
+
+![c64basicv2 VIC Registries](images/c64basicv2_vicRegView.png)
+
+- (section Sprite editor) draw the desired sprite (single or multi-color) or char (single or multiple):
+
+![c64basicv2 Sprite editor](images/c64basicv2_vicSpriteEditor.png)
 
 ### Diagnostic
 Check lines for errors and warnings. 

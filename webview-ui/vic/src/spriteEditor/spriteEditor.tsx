@@ -131,7 +131,8 @@ function SpriteEditor() {
       update();
     }
     runner = new Runner(spriteArea);
-  }, [type, multiCharsCols, multiCharsRows, update]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [type, multiCharsCols, multiCharsRows]);
 
   const handleAdd = () => {
     const value = spriteArea.getDataValue();

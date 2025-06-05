@@ -16,13 +16,22 @@ export function convert (outputChannel: vscode.OutputChannel) : TokenizedBASICFi
         const outputRelativeDir : string | undefined = configuration.get("convertOutputDir");
         const command : string | undefined = configuration.get("petcat");
         if (command && fs.existsSync(command)) {
-            const rootFolder = vscode.workspace.workspaceFolders ? path.normalize(vscode.workspace.workspaceFolders[0].uri.fsPath) : undefined;
+            let rootFolder = vscode.workspace.workspaceFolders ? path.normalize(vscode.workspace.workspaceFolders[0].uri.fsPath) : undefined;
+            if (!rootFolder) {
+                const workspaceFolders = vscode.workspace.textDocuments.map(doc => path.dirname(doc.fileName));
+                if (workspaceFolders.length > 0) {
+                    rootFolder = workspaceFolders[0];
+                }
+            }
             const fileBasename = path.basename(document.fileName);
             const fileExt = path.extname(document.fileName);
             if (utils.isC64basicv2Extension(fileExt)){
                 const outputDir = `${rootFolder}${path.sep}${outputRelativeDir}`;
-                
                 const outputFile = `${outputDir}${path.sep}${fileBasename}`;
+                if (!fs.existsSync(outputDir)) {
+                    fs.mkdirSync(outputDir, { recursive: true });
+                    vscode.window.showInformationMessage(`c64basicv2.convert: output folder ${outputDir} created!`);
+                }
                 if (outputDir && fs.existsSync(outputDir)) {
                     const basePetcatArgs = [
                         "-w2", 

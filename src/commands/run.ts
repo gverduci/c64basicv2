@@ -11,7 +11,13 @@ export function run(tokenizedBASICFile: TokenizedBASICFile.TokenizedBASICFile, o
         formatter.infoFormatter("Run...", outputChannel);
         const command: string | undefined = configuration.get("x64sc");
         if (command && fs.existsSync(command)) {
-            const rootFolder = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
+            let rootFolder = vscode.workspace.workspaceFolders ? vscode.workspace.workspaceFolders[0].uri.fsPath : undefined;
+            if (!rootFolder) {
+                const workspaceFolders = vscode.workspace.textDocuments.map(doc => path.dirname(doc.fileName));
+                if (workspaceFolders.length > 0) {
+                    rootFolder = workspaceFolders[0];
+                }
+            }
             const baseX64scArgs = [
                 tokenizedBASICFile.outputFile
             ];

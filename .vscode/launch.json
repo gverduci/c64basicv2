@@ -29,6 +29,19 @@
 				"${workspaceFolder}/out/test/**/*.js"
 			],
 			"preLaunchTask": "${defaultBuildTask}"
-		}
+		},
+		{
+			"name": "Debug CRA Tests (vic)",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "${workspaceRoot}/webview-ui/vic/node_modules/.bin/react-scripts",
+			"args": ["test", "--runInBand", "--no-cache", "--watchAll=false"],
+			"cwd": "${workspaceRoot}/webview-ui/vic",
+			"protocol": "inspector",
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"env": { "CI": "true" },
+			"disableOptimisticBPs": true
+		  }
 	]
 }

@@ -1,6 +1,10 @@
 # Change Log
 
 All notable changes to the "c64basicv2" extension will be documented in this file.
+## [0.8.0] - 14/12/2024
+
+- [VIC View] Added VIC view in the Primary Sidebar: registry, sprite/char editor
+
 ## [0.7.1] - 25/06/2023
 
 - [SID View] Added SID view in the Primary Sidebar: registry, ADSR, notes

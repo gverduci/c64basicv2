@@ -8,12 +8,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm run install:all
-      - run: npm run build:sidwebview
-      - run: npm run build:charswebview
-      # - uses: lannonbr/vsce-action@4.0.0
-      #   with:
-      #     args: "publish -p $VSCE_TOKEN"
-      #   env:
-      #     VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: npm run install:all:ci
+      - name: Release
+        env:
+          HUSKY: 0
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: npx semantic-release
+      - id: versionSet
+        run: echo "tag_name=v"$(cat $VERSION_FILE)"" >> "$GITHUB_OUTPUT"

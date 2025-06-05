@@ -1,5 +1,12 @@
 # Release notes
 
+## [0.8.3-alpha.5](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.4...v0.8.3-alpha.5) (2025-06-05)
+
+
+### Bug Fixes
+
+* [#14](https://github.com/gverduci/c64basicv2/issues/14) Ensure output path is handled when workspace folder is missing ([eda33fd](https://github.com/gverduci/c64basicv2/commit/eda33fdf601d9e1243ae772abfa43fa33c5ec896))
+
 ## [0.8.3-alpha.4](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.3...v0.8.3-alpha.4) (2024-12-18)
 
 

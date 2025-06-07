@@ -38,7 +38,7 @@ module.exports = {
         "semantic-release-vsce",
         {
           packageVsix: true,
-          publish: false
+          publish: process.env.SEMANTIC_RELEASE_BRANCH === 'main', // Only publish on the main branch
         }
     ],
     [

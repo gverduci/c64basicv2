@@ -1,5 +1,17 @@
 # Release notes
 
+## [0.8.3](https://github.com/gverduci/c64basicv2/compare/v0.8.2...v0.8.3) (2025-06-07)
+
+
+### Bug Fixes
+
+* [#12](https://github.com/gverduci/c64basicv2/issues/12) removed useEffect dependency that was blocking drawing ([#13](https://github.com/gverduci/c64basicv2/issues/13)) ([d1900e7](https://github.com/gverduci/c64basicv2/commit/d1900e74391ab38625d77c9eeab3fbd17e2a428d))
+* [#14](https://github.com/gverduci/c64basicv2/issues/14) Ensure output path is handled when workspace folder is missing ([eda33fd](https://github.com/gverduci/c64basicv2/commit/eda33fdf601d9e1243ae772abfa43fa33c5ec896))
+* add package-lock.json ([03dbb9f](https://github.com/gverduci/c64basicv2/commit/03dbb9f9ef31a67a8778be8ca77fdc06e9f0ad4b))
+* add package-lock.json ([7d593bc](https://github.com/gverduci/c64basicv2/commit/7d593bcf8e36c5906a68536815b647f81b0280a9))
+* update poke command from 's+' to 'v+' in TabOccurrenceGrid and enhance README with VIC view details ([21e3b0e](https://github.com/gverduci/c64basicv2/commit/21e3b0e4bce73c5ec1671aaff22c7aba7c84bffd))
+* vsix file too big and without vic ([3bfed0b](https://github.com/gverduci/c64basicv2/commit/3bfed0b9964a840e5532b1a442b93a63cd5ac567))
+
 ## [0.8.3-alpha.5](https://github.com/gverduci/c64basicv2/compare/v0.8.3-alpha.4...v0.8.3-alpha.5) (2025-06-05)
 
 

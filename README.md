@@ -283,4 +283,8 @@ If you use vice on *Ubuntu* remenber to install bin files (kernal, basic, etc.):
 
 ## Release Notes
 
-[CHANGELOG.md](./CHANGELOG.md)
+[CHANGELOG.md](./docs/CHANGELOG.md)
+
+## Development notes
+
+[developmentNotes.md](./docs/developmentNotes.md)
